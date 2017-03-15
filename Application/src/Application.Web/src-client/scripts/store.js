@@ -1,21 +1,21 @@
-import Backbone from 'backbone';
-import ReactDOM from 'react-dom';
-import React from 'react';
-import {ACTIONS} from './actions.js';
-
-const STORE = {
-  _mainData: {
+export const STORE = {
+  _data: {
     currentUser: '',
-    mapMarkers: [],
-  }
+    currentRoute: '',
+    mapHazards: [],
+    savedRides: []
+  },
 
   getStore: function(){
-    return this._mainData;
+    return this._data;
   },
 
-  setStore: function(){
-
+  setStore: function(prop, propVal){
+    this._data[prop] = propVal;
+		if(typeof _callbackFunction === 'function'){this._callbackFunction();};
   },
 
-
+  storeChange: function(callback){
+    this._callbackFunction = callback;
+  }
 };
