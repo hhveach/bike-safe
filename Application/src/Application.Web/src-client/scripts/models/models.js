@@ -8,6 +8,7 @@ export const SingleRide = Backbone.Model.extend({
   urlRoot: '/api/rides',
   idAttribute: '_id'
 });
+
 export const AllRides = Backbone.Collection.extend({
   model: SingleRide,
   url: '/api/rides'
