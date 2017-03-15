@@ -1,16 +1,10 @@
-<<<<<<< HEAD
-import React from 'react';
-import ReactDOM from 'react-dom';
-import GoogleMapReact from 'google-map-react';
-import {BasicMap} from './maps-try.js';
-
-ReactDOM.render(<BasicMap/>, document.querySelector('#app-container'));
-=======
 import Backbone from 'backbone';
 import ReactDOM from 'react-dom';
 import React from 'react';
-import {HomeView} from './views/home-view.js'
-import {LoginView} from './views/login-view.js'
+import {HomeView} from './views/home-view.js';
+import {LoginView} from './views/login-view.js';
+import GoogleMapReact from 'google-map-react';
+import {BasicMap} from './maps-try.js';
 
 
 const AppRouter = Backbone.Router.extend({
@@ -44,4 +38,3 @@ const AppRouter = Backbone.Router.extend({
     },
 })
 new AppRouter()
->>>>>>> f8a58fc48d48809638ffd58fe66a680e02c8ed65
