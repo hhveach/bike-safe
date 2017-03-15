@@ -1,8 +1,10 @@
 import Backbone from 'backbone';
 import ReactDOM from 'react-dom';
 import React from 'react';
-import {HomeView} from './views/home-view.js'
-import {LoginView} from './views/login-view.js'
+import {HomeView} from './views/home-view.js';
+import {LoginView} from './views/login-view.js';
+import GoogleMapReact from 'google-map-react';
+import {BasicMap} from './maps-try.js';
 
 
 const AppRouter = Backbone.Router.extend({
