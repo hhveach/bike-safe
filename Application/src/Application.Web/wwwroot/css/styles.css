@@ -1,8 +1,67 @@
 * {
   box-sizing: border-box; }
 
+body {
+  background-color: #000; }
+
+#app-container {
+  background: #000; }
+
 img {
   width: 100%;
+  display: block; }
+
+p {
+  text-align: center;
+  color: #aaa; }
+
+.home-view-container h1 {
+  color: #FDE060;
+  text-align: center;
+  font-size: 80px;
+  font-family: sans-serif;
+  font-weight: lighter; }
+
+.input-form {
+  max-width: 35%;
+  margin-left: auto;
+  margin-right: auto; }
+
+.input-form input {
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px; }
+
+.input-form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 16px; }
+
+.drop-btn {
+  color: #fff;
+  margin-top: 24px;
+  margin-left: 10%;
+  cursor: pointer; }
+
+.drop-btn:hover,
+.drop-btn:focus {
+  background-color: #bbb; }
+
+.side-bar-nav {
+  position: relative;
+  display: inline-block; }
+
+.side-nav-content {
+  display: none;
+  position: absolute;
+  background-color: #CE5C82;
+  max-width: 15%;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1; }
+
+.side-nav-content a {
+  text-decoration: none;
+  color: #000;
   display: block; }
 
 /*# sourceMappingURL=styles.css.map*/

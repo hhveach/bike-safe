@@ -1,6 +1,7 @@
 import Backbone from 'backbone';
 import ReactDOM from 'react-dom';
 import React from 'react';
+import {FormComponent} from './component-form.js'
 
 export const LogInComponent = React.createClass({
 
@@ -8,11 +9,7 @@ export const LogInComponent = React.createClass({
     return (
       <div>
         <h1>Bike Safe</h1>
-        <form>
-          <input type="text" placeholder="username"></input>
-          <input type="password" placeholder="password"></input>
-          <button type="submit">Log In</button>
-        </form>
+        <FormComponent/>
         <h2>or</h2>
         <button type="onClick">Sign Up</button>
       </div>
