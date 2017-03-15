@@ -17,7 +17,6 @@ export const ViewController = React.createClass({
     return store;
   },
 
-
   render: function(){
     let renderComponent;
 
@@ -47,11 +46,10 @@ export const ViewController = React.createClass({
       default;
     };
 
-    return (
-      <div className="main-container">
-        <NavComponentSide/>
-        {renderComponent}
-      </div>
-    )
+    return (  <div className="main-container">
+                <NavComponentSide/>
+                {renderComponent}
+              </div>
+           )
   }
 });

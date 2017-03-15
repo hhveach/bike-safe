@@ -1,9 +1,4 @@
-import Backbone from 'backbone';
-import ReactDOM from 'react-dom';
-import React from 'react';
-import {ACTIONS} from './actions.js';
-
-const STORE = {
+export const STORE = {
   _data: {
     currentUser: '',
     currentRoute: '',
@@ -17,7 +12,6 @@ const STORE = {
 
   setStore: function(prop, propVal){
     this._data[prop] = propVal;
-
 		if(typeof _callbackFunction === 'function'){this._callbackFunction();};
   },
 

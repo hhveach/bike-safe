@@ -4,6 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Application.Web.Data.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Application.Web.Data;
 
 namespace Application.Web
 {
