@@ -38,7 +38,7 @@ export const ACTIONS = {
   saveHazard: function(newHazard){
     let bad = new SingleHazard();
       bad.set(newHazard);
-      bad.save().then(functin(serverRes){
+      bad.save().then(function(serverRes){
       });
   },
 
