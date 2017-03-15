@@ -8,7 +8,7 @@ import {UserModel} from './models/model-user.js';
 export const ACTIONS = {
 
   changeNav: function(selectedRoute, urlHash){
-    STORE.setStore('currentRoute': selectedRoute);
+    STORE.setStore('currentRoute', selectedRoute);
     if(urlHash === 'home'){urlHash = ''};
     window.location.hash = urlHash;
   },
@@ -22,17 +22,17 @@ export const ACTIONS = {
 
   getSingleSavedRide: function(rideId){
     let rides = new AllRides();
-    rides.map(function(listEl){
-      if(rideId === listEl._id){
-        return listEl;
-      }
+    let correctRide = rides.map(function(listEl){
+      if(rideId === listEl._id){return listEl;}
     })
+    return correctRide;
   },
 
   getAllSavedRides: function(){
     let rides = new AllRides();
       rides.fetch().then(function(serverRes){
-      })
+        STORE.setStore('savedRides', serverRes)
+      });
   },
 
   saveHazard: function(newHazard){
@@ -42,12 +42,19 @@ export const ACTIONS = {
       });
   },
 
-  getSingleHazard: function(){
-
+  getSingleHazard: function(hazardId){
+    let hazard = new AllHazards();
+    let correctHazard = hazard.map(function(listEl){
+      if(hazardId === listEl._id){return listEl}
+    })
+    return correctHazard;
   },
 
   getAllHazards: function(){
-
+    let hazards = new AllHazards();
+      hazards.fetch().then(function(serverRes){
+        STORE.setStore('mapHazards', serverRes);
+      })
   },
 
   userLogin: function(){

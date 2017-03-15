@@ -7,7 +7,7 @@ const STORE = {
   _data: {
     currentUser: '',
     currentRoute: '',
-    mapMarkers: [],
+    mapHazards: [],
     savedRides: []
   },
 
