@@ -57,19 +57,29 @@ export const ACTIONS = {
       })
   },
 
-  userLogin: function(){
-    //UserModel.logIn
+  userLogin: function(username, password){
+    UserModel.logIn(username, password).then(function(serverRes){
+      STORE.setStore('currentUser', serverRes);
+      ACTIONS.changeNav('home', '')
+    })
   },
 
-  userRegister: function(){
-    //UserModel.register
+  userRegister: function(newUserObj){
+    UserModel.register(newUserObj).then(function(serverRes){
+      ACTIONS.changeNav('profile', 'profile');
+    })
   },
 
   userLogout: function(){
-      //UserModel.logOut
+    UserModel.logOut().then(function(serverRes){
+      STORE.setStore('currentUser', '');
+      ACTIONS.changeNav('home', '');
+    })
   },
 
   getUser: function(){
-      //UserModel.getCurrentUser
+    UserModel.getCurrentUser().then(function(serverRes){
+      STORE.setStore('currentUser', serverRes);
+    })
   }
 };
