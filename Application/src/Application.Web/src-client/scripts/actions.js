@@ -1,6 +1,3 @@
-// import Backbone from 'backbone';
-// import ReactDOM from 'react-dom';
-// import React from 'react';
 import {STORE} from './store.js';
 import {SingleRide, AllRides, SingleHazard, AllHazards} from './models/models.js';
 import {UserModel} from './models/model-user.js';
@@ -38,7 +35,7 @@ export const ACTIONS = {
   saveHazard: function(newHazard){
     let bad = new SingleHazard();
       bad.set(newHazard);
-      bad.save().then(functin(serverRes){
+      bad.save().then(function(serverRes){
       });
   },
 

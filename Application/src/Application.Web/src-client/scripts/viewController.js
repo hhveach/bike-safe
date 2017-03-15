@@ -12,7 +12,7 @@ import {ACTIONS} from './store.js';
 
 export const ViewController = React.createClass({
   getInitialState: function(){
-    ACTIONS.changeNav(this.props.route, window.location.hash);
+    // ACTIONS.changeNav(this.props.route, window.location.hash);
     let store = STORE.getStore();
     return store;
   },
