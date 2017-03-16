@@ -6,7 +6,7 @@ import {ProfileComponent} from '../components/component-profile.js';
 export const ProfileView = React.createClass({
   render: function(){
     return ( <div>
-              <ProfileComponent/>
+              <ProfileComponent user={this.props.currentUser}/>
              </div>
           )
   }
