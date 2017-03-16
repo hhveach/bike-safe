@@ -3,15 +3,15 @@ import React from 'react'
 export const RegisterComponent = React.createClass({
 
   _handleSubmit: function(evt){
-    let current = evt.target;
-
-    let registerObj = {
-      // current.name.value;
-      current.username.value;
-      current.password.value;
-      // current.profileImage.value;
-      // current.bikeName.value;
-    },
+    // let current = evt.target;
+    //
+    // let registerObj = {
+    //   // current.name.value;
+    //   current.username.value;
+    //   current.password.value;
+    //   // current.profileImage.value;
+    //   // current.bikeName.value;
+    // },
   },
 
   render: function(){
