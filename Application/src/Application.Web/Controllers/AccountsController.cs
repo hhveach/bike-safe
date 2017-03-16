@@ -79,6 +79,7 @@ namespace Application.Web.Controllers
             return Ok();
         }
 
+        [HttpGet("~/api/accounts")]
         public IActionResult Get()
         {
             return Ok(new { IsAuthenticated = User.Identity.IsAuthenticated, Email = User.Identity.Name });
