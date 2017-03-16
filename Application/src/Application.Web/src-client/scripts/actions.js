@@ -1,6 +1,3 @@
-// import Backbone from 'backbone';
-// import ReactDOM from 'react-dom';
-// import React from 'react';
 import {STORE} from './store.js';
 import {SingleRide, AllRides, SingleHazard, AllHazards} from './models/models.js';
 import {UserModel} from './models/model-user.js';

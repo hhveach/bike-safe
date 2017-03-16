@@ -61,7 +61,7 @@ p {
 }
 
 .drop-btn:hover, .drop-btn:focus {
-	background-color: #bbb;
+	background-color: #000;
 }
 
 .side-bar-nav {
@@ -76,6 +76,9 @@ p {
 	max-width: 15%;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	z-index: 1;
+	padding: 16px;
+	margin-left: 10%;
+	border-radius: 10px;
 }
 
 .side-nav-content a {

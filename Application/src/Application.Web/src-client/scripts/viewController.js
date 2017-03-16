@@ -12,7 +12,7 @@ import {ACTIONS} from './store.js';
 
 export const ViewController = React.createClass({
   getInitialState: function(){
-    ACTIONS.changeNav(this.props.route, window.location.hash);
+    // ACTIONS.changeNav(this.props.route, window.location.hash);
     let store = STORE.getStore();
     return store;
   },
@@ -22,25 +22,25 @@ export const ViewController = React.createClass({
 
     switch(this.state.currentRoute){
         case '':
-          renderComponent = <HomeView/>;
+          renderComponent = <HomeView {...this.state}/>;
           break;
         case 'login':
-          renderComponent = <LoginView/>;
+          renderComponent = <LoginView {...this.state}/>;
           break;
         case 'register':
-          renderComponent = <RegisterView/>;
+          renderComponent = <RegisterView {...this.state}/>;
           break;
         case 'profile':
-          renderComponent = <ProfileView/>;
+          renderComponent = <ProfileView {...this.state}/>;
           break;
         case 'reminders':
-          renderComponent = <RemindersView/>;
+          renderComponent = <RemindersView {...this.state}/>;
           break;
         case 'rides':
-          renderComponent = <RidesView/>;
+          renderComponent = <RidesView {...this.state}/>;
           break;
         case 'hazards':
-          renderComponent = <HazardsView/>;
+          renderComponent = <HazardsView {...this.state}/>;
           break;
 
       default;
