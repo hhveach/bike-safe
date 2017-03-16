@@ -43,7 +43,7 @@ export const ViewController = React.createClass({
           renderComponent = <HazardsView {...this.state}/>;
           break;
 
-      default;
+      default:
     };
 
     return (  <div className="main-container">

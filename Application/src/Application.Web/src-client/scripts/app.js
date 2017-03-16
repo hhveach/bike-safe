@@ -1,8 +1,6 @@
 import Backbone from 'backbone';
 import ReactDOM from 'react-dom';
 import React from 'react';
-// import {HomeView} from './views/home-view.js';
-// import {LoginView} from './views/login-view.js';
 import GoogleMapReact from 'google-map-react';
 import {BasicMap} from './maps-try.js';
 import {ViewController} from './viewController.js';
@@ -16,7 +14,6 @@ const AppRouter = Backbone.Router.extend({
     	routes: {
     	'login' : 'showLoginComponent',
     	'register' : 'showRegisterComponent',
-    	// 'logout' : 'showLogoutComponent',
     	'profile' : 'showProfileComponent',
     	'reminders' : 'showRemindersComponent',
     	'hazards' : 'showHazardsComponent',
@@ -27,51 +24,32 @@ const AppRouter = Backbone.Router.extend({
     },
 
     showHomePageComponent: function(){
-      ReactDOM.render(
-        <ViewController route={'home'}/>, document.querySelector('#app-container')
-      )
+      ReactDOM.render(<ViewController route={'home'}/>, document.querySelector('#app-container'));
     },
 
     showLoginComponent: function(){
-    ReactDOM.render(
-      <ViewController route={'login'}/>, document.querySelector('#app-container')
-    )
+      ReactDOM.render(<ViewController route={'login'}/>, document.querySelector('#app-container'));
     },
 
     showRegisterComponent: function(){
-      ReactDOM.render(
-        <ViewController route={'register'}/>, document.querySelector('#app-container')
-      )
+      ReactDOM.render(<ViewController route={'register'}/>, document.querySelector('#app-container'));
     },
 
-    // showLogoutComponent: function(){
-    // ReactDOM.render(
-    //   <ViewController/>, document.querySelector('#app-container')
-    // )
-    // },
-
     showRemindersComponent: function(){
-      ReactDOM.render(
-        <ViewController route={'reminders'}/>, document.querySelector('#app-container')
-      )
+      ReactDOM.render(<ViewController route={'reminders'}/>, document.querySelector('#app-container'));
     },
 
     showProfileComponent: function(){
-    ReactDOM.render(
-      <ViewController route={'profile'}/>, document.querySelector('#app-container')
-    )
+      ReactDOM.render(<ViewController route={'profile'}/>, document.querySelector('#app-container'));
     },
 
     showRidesComponent: function(){
-      ReactDOM.render(
-        <ViewController route={'rides'}/>, document.querySelector('#app-container')
-      )
+      ReactDOM.render(<ViewController route={'rides'}/>, document.querySelector('#app-container'));
     },
 
     showHazardsComponent: function(){
-    ReactDOM.render(
-      <ViewController route={'hazards'}/>, document.querySelector('#app-container')
-    )
+      ReactDOM.render(<ViewController route={'hazards'}/>, document.querySelector('#app-container'));
     }
-})
-new AppRouter()
+});
+
+const SickApp = new AppRouter();
