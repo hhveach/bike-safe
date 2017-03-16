@@ -6,9 +6,9 @@ import {ProfileView} from './views/login-view.js';
 import {RemindersView} from './views/home-view.js';
 import {RidesView} from './views/login-view.js';
 import {HazardsView} from './views/login-view.js';
-import {NavComponentSide} from './components/component-nav.js';
-import {STORE} from './actions.js';
-import {ACTIONS} from './store.js';
+import {NavComponent} from './components/component-nav.js';
+import {STORE} from './store.js';
+import {ACTIONS} from './actions.js';
 
 export const ViewController = React.createClass({
   getInitialState: function(){
@@ -47,7 +47,7 @@ export const ViewController = React.createClass({
     };
 
     return (  <div className="main-container">
-                <NavComponentSide/>
+                <NavComponent/>
                 {renderComponent}
               </div>
            )
