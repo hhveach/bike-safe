@@ -15,7 +15,7 @@ const AppRouter = Backbone.Router.extend({
     	routes: {
     	'login' : 'showLoginComponent',
     	'register' : 'showRegisterComponent',
-    	'logout' : 'showLogoutComponent',
+    	// 'logout' : 'showLogoutComponent',
     	'profile' : 'showProfileComponent',
     	'reminders' : 'showRemindersComponent',
     	'hazards' : 'showHazardsComponent',
@@ -27,13 +27,49 @@ const AppRouter = Backbone.Router.extend({
 
     showHomePageComponent: function(){
       ReactDOM.render(
-        <HomeView/>, document.querySelector('#app-container')
+        <ViewController route={'home'}/>, document.querySelector('#app-container')
       )
     },
 
     showLoginComponent: function(){
     ReactDOM.render(
-      <LoginView/>, document.querySelector('#app-container')
+      <ViewController route={'login'}/>, document.querySelector('#app-container')
+    )
+    },
+
+    showRegisterComponent: function(){
+      ReactDOM.render(
+        <ViewController route={'register'}/>, document.querySelector('#app-container')
+      )
+    },
+
+    // showLogoutComponent: function(){
+    // ReactDOM.render(
+    //   <ViewController/>, document.querySelector('#app-container')
+    // )
+    // },
+
+    showRemindersComponent: function(){
+      ReactDOM.render(
+        <ViewController route={'reminders'}/>, document.querySelector('#app-container')
+      )
+    },
+
+    showProfileComponent: function(){
+    ReactDOM.render(
+      <ViewController route={'profile'}/>, document.querySelector('#app-container')
+    )
+    },
+
+    showRidesComponent: function(){
+      ReactDOM.render(
+        <ViewController route={'rides'}/>, document.querySelector('#app-container')
+      )
+    },
+
+    showHazardsComponent: function(){
+    ReactDOM.render(
+      <ViewController route={'hazards'}/>, document.querySelector('#app-container')
     )
     },
 })
