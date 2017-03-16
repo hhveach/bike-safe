@@ -70,7 +70,7 @@ export const ACTIONS = {
   userLogout: function(){
     UserModel.logOut().then(function(serverRes){
       STORE.setStore('currentUser', '');
-      ACTIONS.changeNav('home', '');
+      ACTIONS.changeNav('login', 'login');
     })
   },
 

@@ -12,12 +12,12 @@ export const RegisterComponent = React.createClass({
   //   //   // current.profileImage.value;
   //   //   // current.bikeName.value;
   //   // },
-  // },onSubmit={this._handleSubmit}
+  // },
 
   render: function(){
     return (
       <div className="input-form">
-        <form >
+        <form onSubmit={this._handleSubmit}>
           {/* <input type="text" name="name" placeholder="Full Name *"></input> */}
           <input type="text" name="username" placeholder="Email Address *"></input>
           <input type="text" name="password" placeholder="Password *"></input>

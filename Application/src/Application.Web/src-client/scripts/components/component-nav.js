@@ -9,17 +9,17 @@ export const NavComponent = React.createClass({
     let routeList = []
     if (typeof currentUserOnStore.id === 'undefined'){
       routeList = [
-        {appRouteName: 'home', hashRoute: ''},
-        {appRouteName: 'login', hashRoute: 'login'},
-        {appRouteName: 'register', hashRoute: 'register'},
+        {appRouteName: 'home', showText: 'home', hashRoute: ''},
+        {appRouteName: 'login', showText: 'login', hashRoute: 'login'},
+        {appRouteName: 'register', showText: 'register', hashRoute: 'register'},
       ]
     } if (currentUserOnStore.isAuthenticated === true) {
       routeList = [
-        {appRouteName: 'home', hashRoute: ''},
-        {appRouteName: 'profile', hashRoute: 'profile'},
-        {appRouteName: 'rides', hashRoute: 'rides'},
-        {appRouteName: 'hazards', hashRoute: 'hazards'},
-        {appRouteName: 'logout', hashRoute: 'login'}
+        {appRouteName: 'home', showText: 'home', hashRoute: ''},
+        {appRouteName: 'profile', showText: 'profile', hashRoute: 'profile'},
+        {appRouteName: 'rides', showText: 'rides', hashRoute: 'rides'},
+        {appRouteName: 'hazards', showText: 'hazards', hashRoute: 'hazards'},
+        {appRouteName: 'login', showText: 'logout', hashRoute: 'login'}
       ]
     }
     return routeList;
@@ -51,16 +51,22 @@ export const NavComponent = React.createClass({
     )
   }
 })
-// {this.props.hashRoute}
+
 const RouteOption = React.createClass({
 
   _handleNavClick: function(evt){
-    ACTIONS.changeNav(this.props.appRouteName.toLowerCase(), this.props.hashRoute)
+    let current = evt.target.dataset.text;
+    if(current === 'logout'){
+      ACTIONS.userLogout();
+    }
+    else {
+      ACTIONS.changeNav(this.props.appRouteName, this.props.hashRoute);
+    }
   },
 
   render: function(){
     return (
-      <a onClick={this._handleNavClick}>{this.props.appRouteName}</a>
+      <a onClick={this._handleNavClick} data-text={this.props.showText}>{this.props.showText}</a>
     )
   }
 })
