@@ -72,6 +72,6 @@ const AppRouter = Backbone.Router.extend({
     ReactDOM.render(
       <ViewController route={'hazards'}/>, document.querySelector('#app-container')
     )
-    },
+    }
 })
 new AppRouter()
