@@ -12,9 +12,9 @@ export const NavComponent = React.createClass({
     // let routeList = []
     // if (typeof currentUserOnStore._id === 'undefined'){
       let routeList = [
-        {appRouteName: 'HOME', hashRoute: ''},
-        {appRouteName: 'LOGIN', hashRoute: 'login'},
-        {appRouteName: 'REGISTER', hashRoute: 'register'},
+        {appRouteName: 'home', hashRoute: ''},
+        {appRouteName: 'login', hashRoute: 'login'},
+        {appRouteName: 'register', hashRoute: 'register'},
       ]
     // } else {
       // routeList = [
@@ -53,16 +53,16 @@ export const NavComponent = React.createClass({
     )
   }
 })
-
+// {this.props.hashRoute}
 const RouteOption = React.createClass({
 
   _handleNavClick: function(evt){
-    ACTIONS.changeNav(this.props.appRouteName, this.props.hashRoute)
+    ACTIONS.changeNav(this.props.appRouteName.toLowerCase(), this.props.hashRoute)
   },
 
   render: function(){
     return (
-          <a href={this.props.hashRoute} onClick={this._handleNavClick}>{this.props.appRouteName}</a>
+      <a onClick={this._handleNavClick}>{this.props.appRouteName}</a>
     )
   }
 })

@@ -6,7 +6,6 @@ export const HomeView = React.createClass({
   render: function(){
     return(
     <div>
-    <NavComponent/>
     <div className="home-view-container">
       <h1>Ride It Out</h1>
       <FormComponent/>
