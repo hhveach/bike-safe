@@ -1,6 +1,6 @@
 import React from 'react';
-import {STORE} from './scripts/store.js';
-import {ACTIONS} from './scripts/actions.js';
+import {STORE} from '../store.js';
+import {ACTIONS} from '../actions.js';
 //import {ProfileComponent} from './components/component-profile.js';
 
 export const ProfileView = React.createClass({
