@@ -6,7 +6,7 @@ import Backbone from 'backbone';
 
 export const SingleRide = Backbone.Model.extend({
   urlRoot: '/api/rides',
-  idAttribute: '_id'
+  idAttribute: 'id'
 });
 
 export const AllRides = Backbone.Collection.extend({
@@ -17,7 +17,7 @@ export const AllRides = Backbone.Collection.extend({
 
 export const SingleHazard = Backbone.Model.extend({
   urlRoot: '/api/hazards',
-  idAttribute: '_id'
+  idAttribute: 'id'
 });
 
 export const AllHazards = Backbone.Collection.extend({

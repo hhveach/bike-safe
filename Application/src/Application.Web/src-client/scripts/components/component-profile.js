@@ -1,19 +1,16 @@
 import React from 'react';
 import {STORE} from '../store.js';
 import {ACTIONS} from '../actions.js';
-//import {ProfileComponent} from './components/component-profile.js';
 
-export const ProfileView = React.createClass({
-
-  // getInitialState: function(){
-  //   ACTIONS.getUser();
-  //   let storeInfo = STORE.getStore();
-  //     return storeInfo;
-  // },
+export const ProfileComponent = React.createClass({
 
   _handleProfileBuild: function(userObject){
     let user = userObject.map(function(listEl){
-      return <ProfileJSX {...listEl}/>;
+      return (<div className="profile">
+                <h1>{listEl.email}</h1>
+                <p>{listEl.password}</p>
+              </div>
+      )
     })
     return user;
 
@@ -28,15 +25,15 @@ export const ProfileView = React.createClass({
   }
 });
 
-const ProfileJSX = React.createClass({
-  render: function(){
-    return (
-        <div className="profile">
-          <img src={this.props.avatarImg}/>
-          <h2>{this.props.username}</h2>
-          <div className="rides">{this.props.savedRides}</div>
-          <div className="hazards">{this.props.mapHazards}</div>
-        </div>
-    )
-  }
-});
+// const ProfileJSX = React.createClass({
+//   render: function(){
+//     return (
+//         <div className="profile">
+//           <img src={this.props.avatarImg}/>
+//           <h2>{this.props.username}</h2>
+//           <div className="rides">{this.props.savedRides}</div>
+//           <div className="hazards">{this.props.mapHazards}</div>
+//         </div>
+//     )
+//   }
+// });
