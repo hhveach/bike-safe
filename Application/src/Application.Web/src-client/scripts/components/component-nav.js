@@ -5,24 +5,26 @@ import {STORE} from '../store.js'
 export const NavComponent = React.createClass({
 
   getInitialState: function(){
-    return STORE.getStore()
+    // ACTIONS.getUser();
+    return STORE.getStore();
   },
 
   _getMenuOptions: function(currentUserOnStore){
+    console.log(currentUserOnStore)
     // let routeList = []
-    // if (typeof currentUserOnStore._id === 'undefined'){
+    // if (typeof currentUserOnStore.id === 'undefined'){
       let routeList = [
         {appRouteName: 'home', hashRoute: ''},
         {appRouteName: 'login', hashRoute: 'login'},
         {appRouteName: 'register', hashRoute: 'register'},
       ]
     // } else {
-      // routeList = [
-      //   {appRouteName: 'HOME', hashRoute: ''},
-      //   {appRouteName: 'PROFILE', hashRoute: 'profile'},
-      //   {appRouteName: 'RIDES', hashRoute: 'rides'},
-      //   {appRouteName: 'HAZARDS', hashRoute: 'hazards'}
-      // ]
+    //   routeList = [
+    //     {appRouteName: 'home', hashRoute: ''},
+    //     {appRouteName: 'profile', hashRoute: 'profile'},
+    //     {appRouteName: 'rides', hashRoute: 'rides'},
+    //     {appRouteName: 'hazards', hashRoute: 'hazards'}
+    //   ]
     // }
     return routeList;
   },
