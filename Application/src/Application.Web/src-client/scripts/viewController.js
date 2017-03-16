@@ -1,29 +1,32 @@
 import React from 'react';
 import {HomeView} from './views/home-view.js';
 import {LoginView} from './views/login-view.js';
-import {RegisterView} from './views/home-view.js';
-import {ProfileView} from './views/login-view.js';
-import {RemindersView} from './views/home-view.js';
-import {RidesView} from './views/login-view.js';
-import {HazardsView} from './views/login-view.js';
+import {RegisterView} from './views/register-view.js';
+import {ProfileView} from './views/profile-view.js';
+import {RemindersView} from './views/reminders-view.js';
+import {RidesView} from './views/rides-view.js';
+import {HazardsView} from './views/hazards-view.js';
 import {NavComponent} from './components/component-nav.js';
 import {STORE} from './store.js';
 import {ACTIONS} from './actions.js';
 
 export const ViewController = React.createClass({
+
   getInitialState: function(){
     ACTIONS.changeNav(this.props.route, window.location.hash);
-    let store = STORE.getStore();
-    return store;
+    return STORE.getStore();
   },
 
   componentDidMount: function(){
     let comp = this;
     STORE.storeChange(function(){
-      let newStoreObj = STORE.getStoreData();
-      comp.setState(newStoreObj)
-    })
+      let newStoreObj = STORE.getStore();
+      comp.setState(newStoreObj);
+    });
   },
+
+  // componentWillUnmount: function(){
+  // },
 
   render: function(){
     let renderComponent;
@@ -53,7 +56,6 @@ export const ViewController = React.createClass({
 
       default:
     };
-
     return (  <div className="main-container">
                 <NavComponent {...this.state}/>
                 {renderComponent}
