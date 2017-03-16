@@ -5,6 +5,12 @@ import GoogleMapReact from 'google-map-react';
 import {BasicMap} from './views/map-view.js';
 import {ViewController} from './viewController.js';
 
+if(window.location.hostname === 'localhost'){
+    let headEl = document.querySelector('head')
+    let linkEl = document.querySelector('link[href="./css/styles.css"]')
+    headEl.removeChild(linkEl)
+}
+
 
 const AppRouter = Backbone.Router.extend({
   initialize: function(){
