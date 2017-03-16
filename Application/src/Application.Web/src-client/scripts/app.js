@@ -2,7 +2,7 @@ import Backbone from 'backbone';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
-import {BasicMap} from './maps-try.js';
+import {BasicMap} from './views/map-view.js';
 import {ViewController} from './viewController.js';
 
 
