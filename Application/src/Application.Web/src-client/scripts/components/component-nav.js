@@ -11,28 +11,27 @@ export const NavComponent = React.createClass({
 
   _getMenuOptions: function(currentUserOnStore){
     console.log(currentUserOnStore)
-    // let routeList = []
-    // if (typeof currentUserOnStore.id === 'undefined'){
-      let routeList = [
+    let routeList = []
+    if ( typeof currentUserOnStore.id === 'undefined'){
+      routeList = [
         {appRouteName: 'home', hashRoute: ''},
         {appRouteName: 'login', hashRoute: 'login'},
         {appRouteName: 'register', hashRoute: 'register'},
       ]
-    // } else {
-    //   routeList = [
-    //     {appRouteName: 'home', hashRoute: ''},
-    //     {appRouteName: 'profile', hashRoute: 'profile'},
-    //     {appRouteName: 'rides', hashRoute: 'rides'},
-    //     {appRouteName: 'hazards', hashRoute: 'hazards'}
-    //   ]
-    // }
+    } else {
+      routeList = [
+        {appRouteName: 'home', hashRoute: ''},
+        {appRouteName: 'profile', hashRoute: 'profile'},
+        {appRouteName: 'rides', hashRoute: 'rides'},
+        {appRouteName: 'hazards', hashRoute: 'hazards'}
+      ]
+    }
     return routeList;
   },
 
   _showNavBarJSX: function(currentNavRoute, currentUser){
     let menuOptions = this._getMenuOptions(currentUser)
     let componentsList = menuOptions.map(function(routeObj, i){
-      console.log(componentsList)
       return <RouteOption {...routeObj} key={i} _currentNavRoute={currentNavRoute}/>
     })
     return componentsList
@@ -43,6 +42,7 @@ export const NavComponent = React.createClass({
   },
 
   render: function(){
+    console.log(this.props.currentUser)
     return (
       <div className="nav-comp">
         <div className="top-nav">

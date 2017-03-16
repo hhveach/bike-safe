@@ -41,6 +41,7 @@ p {
 	border-radius: 10px;
 	font-size: 20px;
 	font-weight: lighter;
+	color: #F1F2E5;
 }
 
 .input-form button {
@@ -48,13 +49,13 @@ p {
 	padding: 12px;
 	margin-top: 16px;
 	border-radius: 10px;
-	font-size: 24px;
-	font-weight: bold;
+	font-size: 22px;
+	font-weight: normal;
 	color: #006A55;
 }
 
 .drop-btn {
-	color: #fff;
+	color: #F1F2E5;
 	margin-top: 24px;
 	margin-left: 10%;
 	cursor: pointer;
@@ -90,4 +91,10 @@ p {
 
 .show {
 	display: block;
+}
+
+.log-in-container h2 {
+	color: #F1F2E5;
+	text-align: center;
+	font-size: 52px;
 }
