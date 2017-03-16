@@ -11,21 +11,21 @@ export const NavComponent = React.createClass({
 
   _getMenuOptions: function(currentUserOnStore){
     console.log(currentUserOnStore)
-    // let routeList = []
-    // if (typeof currentUserOnStore.id === 'undefined'){
-      let routeList = [
+    let routeList = []
+    if (typeof currentUserOnStore.id === 'undefined'){
+      routeList = [
         {appRouteName: 'home', hashRoute: ''},
         {appRouteName: 'login', hashRoute: 'login'},
         {appRouteName: 'register', hashRoute: 'register'},
       ]
-    // } else {
-    //   routeList = [
-    //     {appRouteName: 'home', hashRoute: ''},
-    //     {appRouteName: 'profile', hashRoute: 'profile'},
-    //     {appRouteName: 'rides', hashRoute: 'rides'},
-    //     {appRouteName: 'hazards', hashRoute: 'hazards'}
-    //   ]
-    // }
+    } else {
+      routeList = [
+        {appRouteName: 'home', hashRoute: ''},
+        {appRouteName: 'profile', hashRoute: 'profile'},
+        {appRouteName: 'rides', hashRoute: 'rides'},
+        {appRouteName: 'hazards', hashRoute: 'hazards'}
+      ]
+    }
     return routeList;
   },
 
