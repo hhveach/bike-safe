@@ -54,7 +54,7 @@ export const ViewController = React.createClass({
       default:
     };
 
-    return (  <div className="main-container">
+    return (  <div>
                 <NavComponent/>
                 {renderComponent}
               </div>

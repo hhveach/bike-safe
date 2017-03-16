@@ -4,8 +4,9 @@ import {RegisterComponent} from './components/component-register.js';
 export const RegisterView = React.createClass({
 
   render: function(){
-    return (
+    return (<div>
       <RegisterComponent/>
+    </div>
     )
   }
 });
