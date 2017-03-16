@@ -1,6 +1,6 @@
 export const STORE = {
   _data: {
-    currentUser: '',
+    currentUser: {},
     currentRoute: '',
     mapHazards: [],
     savedRides: []

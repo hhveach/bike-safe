@@ -12,7 +12,7 @@ export const NavComponent = React.createClass({
   _getMenuOptions: function(currentUserOnStore){
     console.log(currentUserOnStore)
     let routeList = []
-    if (typeof currentUserOnStore.id === 'undefined'){
+    if ( typeof currentUserOnStore.id === 'undefined'){
       routeList = [
         {appRouteName: 'home', hashRoute: ''},
         {appRouteName: 'login', hashRoute: 'login'},
@@ -43,6 +43,7 @@ export const NavComponent = React.createClass({
   },
 
   render: function(){
+    console.log(this.props.currentUser)
     return (
       <div className="nav-comp">
         <div className="top-nav">
