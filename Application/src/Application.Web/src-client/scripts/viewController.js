@@ -17,11 +17,19 @@ export const ViewController = React.createClass({
     return store;
   },
 
+  componentDidMount: function(){
+    let comp = this;
+    STORE.storeChange(function(){
+    let newStoreObj = STORE.getStoreData();
+    comp.setState(newStoreObj)
+    })
+  },
+
   render: function(){
     let renderComponent;
 
     switch(this.state.currentRoute){
-        case '':
+        case 'home':
           renderComponent = <HomeView {...this.state}/>;
           break;
         case 'login':
