@@ -5,11 +5,11 @@ import {ACTIONS} from '../actions.js';
 
 export const ProfileView = React.createClass({
 
-  getInitialState: function(){
-    ACTIONS.getUser();
-    let storeInfo = STORE.getStore();
-      return storeInfo;
-  },
+  // getInitialState: function(){
+  //   ACTIONS.getUser();
+  //   let storeInfo = STORE.getStore();
+  //     return storeInfo;
+  // },
 
   _handleProfileBuild: function(userObject){
     let user = userObject.map(function(listEl){
