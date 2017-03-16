@@ -6,22 +6,30 @@ import {ProfileView} from './views/login-view.js';
 import {RemindersView} from './views/home-view.js';
 import {RidesView} from './views/login-view.js';
 import {HazardsView} from './views/login-view.js';
-import {NavComponentSide} from './components/component-nav.js';
-import {STORE} from './actions.js';
-import {ACTIONS} from './store.js';
+import {NavComponent} from './components/component-nav.js';
+import {STORE} from './store.js';
+import {ACTIONS} from './actions.js';
 
 export const ViewController = React.createClass({
   getInitialState: function(){
-    // ACTIONS.changeNav(this.props.route, window.location.hash);
+    ACTIONS.changeNav(this.props.route, window.location.hash);
     let store = STORE.getStore();
     return store;
+  },
+
+  componentDidMount: function(){
+    let comp = this;
+    STORE.storeChange(function(){
+    let newStoreObj = STORE.getStoreData();
+    comp.setState(newStoreObj)
+    })
   },
 
   render: function(){
     let renderComponent;
 
     switch(this.state.currentRoute){
-        case '':
+        case 'home':
           renderComponent = <HomeView {...this.state}/>;
           break;
         case 'login':
@@ -43,11 +51,11 @@ export const ViewController = React.createClass({
           renderComponent = <HazardsView {...this.state}/>;
           break;
 
-      default;
+      default:
     };
 
     return (  <div className="main-container">
-                <NavComponentSide/>
+                <NavComponent/>
                 {renderComponent}
               </div>
            )
