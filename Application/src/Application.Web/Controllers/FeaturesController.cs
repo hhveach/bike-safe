@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace Application.Web.Controllers
 {
-    [Authorize]
     public class FeaturesController : Controller
     {
         private UserManager<User> _UserManager { get; set; }
