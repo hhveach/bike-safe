@@ -32,7 +32,6 @@ export const NavComponent = React.createClass({
   _showNavBarJSX: function(currentNavRoute, currentUser){
     let menuOptions = this._getMenuOptions(currentUser)
     let componentsList = menuOptions.map(function(routeObj, i){
-      console.log(componentsList)
       return <RouteOption {...routeObj} key={i} _currentNavRoute={currentNavRoute}/>
     })
     return componentsList

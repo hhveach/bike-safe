@@ -6,9 +6,10 @@ export const LogInComponent = React.createClass({
   _handleSubmit: function(evt){
     evt.preventDefault();
     let formEl = evt.target;
-    console.log(formEl)
     let emailVal = formEl.emailfield.value
+    console.log(emailVal)
     let passwordVal = formEl.passwordfield.value
+    console.log(passwordVal)
     ACTIONS.userLogin(emailVal, passwordVal);
   },
 
@@ -20,7 +21,7 @@ export const LogInComponent = React.createClass({
           <form onSubmit={this._handleSubmit}>
             <input type="text" placeholder="email" name="emailfield"></input>
             <input type="text" placeholder="password" name="passwordfield"></input>
-            <button type="onSubmit">Ride!</button>
+            <button type="submit">Ride!</button>
           </form>
         </div>
         <h2>or</h2>
