@@ -20,8 +20,8 @@ export const ViewController = React.createClass({
   componentDidMount: function(){
     let comp = this;
     STORE.storeChange(function(){
-    let newStoreObj = STORE.getStoreData();
-    comp.setState(newStoreObj)
+      let newStoreObj = STORE.getStoreData();
+      comp.setState(newStoreObj)
     })
   },
 
@@ -54,8 +54,13 @@ export const ViewController = React.createClass({
       default:
     };
 
+<<<<<<< HEAD
     return (  <div>
                 <NavComponent/>
+=======
+    return (  <div className="main-container">
+                <NavComponent {...this.state}/>
+>>>>>>> 14fbdb0c41ab8797d13598b232d8250ba21fa189
                 {renderComponent}
               </div>
            )
