@@ -14,7 +14,7 @@ UserModel.logIn =  function(username, password){
 
 	return $.ajax({
 		method: 'POST',
-		data: JSON.stringify({ username: username, password: password}),
+		data: JSON.stringify({ email: username, password: password}),
 		headers: {
 			'Content-Type': 'application/json'
 		},
