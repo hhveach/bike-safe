@@ -8,10 +8,13 @@ namespace Application.Web.Data.Entities
 {
     public class User : IdentityUser
     {
-        public ICollection<Ride> Rides { get; set; }
-        public ICollection<Hazard> Hazards { get; set; }
-        public ICollection<Feature> Features { get; set; }
-        public ICollection<Permission> Permissions { get; set; }
+        public string Image { get; set;  }
+        public string Name { get; set; }
+        public virtual Bike Bike { get; set; }
+        public virtual ICollection<Ride> Rides { get; set; }
+        public virtual ICollection<Hazard> Hazards { get; set; }
+        public virtual ICollection<Feature> Features { get; set; }
+        public virtual ICollection<Permission> Permissions { get; set; }
 
         public User()
         {
