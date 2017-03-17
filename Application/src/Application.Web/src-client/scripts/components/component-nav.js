@@ -12,6 +12,7 @@ export const NavComponent = React.createClass({
         {appRouteName: 'home', showText: 'home', hashRoute: ''},
         {appRouteName: 'login', showText: 'login', hashRoute: 'login'},
         {appRouteName: 'register', showText: 'register', hashRoute: 'register'},
+        {appRouteName: 'map', showText: 'map', hashRoute: 'map'},
       ]
     } if (currentUserOnStore.isAuthenticated === true) {
       routeList = [

@@ -63,7 +63,7 @@ export const ACTIONS = {
 
   userRegister: function(newUserObj){
     UserModel.register(newUserObj).then(function(serverRes){
-      ACTIONS.changeNav('profile', 'profile');
+      ACTIONS.changeNav('login', 'login');
     })
   },
 

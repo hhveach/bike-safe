@@ -5,21 +5,16 @@ import {ACTIONS} from '../actions.js';
 export const ProfileComponent = React.createClass({
 
   _handleProfileBuild: function(userObject){
-    let user = userObject.map(function(listEl){
-      return (<div className="profile">
-                <h1>{listEl.email}</h1>
-                <p>{listEl.password}</p>
-              </div>
+      return (  <div className="profile">
+                  <h1>{userObject.email}</h1>
+                </div>
       )
-    })
-    return user;
-
   },
 
   render: function(){
     return (
     <div>
-        {this._handleProfileBuild(this.props.currentUser)}
+        {this._handleProfileBuild(this.props.user)}
     </div>
     )
   }

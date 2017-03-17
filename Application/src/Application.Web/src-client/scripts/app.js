@@ -1,8 +1,6 @@
 import Backbone from 'backbone';
 import ReactDOM from 'react-dom';
 import React from 'react';
-import GoogleMapReact from 'google-map-react';
-import {BasicMap} from './views/map-view.js';
 import {ViewController} from './viewController.js';
 
 if(window.location.hostname === 'localhost'){
@@ -26,7 +24,12 @@ const AppRouter = Backbone.Router.extend({
     	'hazards/:id' : 'showHazardsComponent',
     	'rides' : 'showRidesComponent',
     	'rides/:id' : 'showRidesComponent',
-    	'' : 'showHomePageComponent'
+    	'' : 'showHomePageComponent',
+      'map' : 'showMapForPractice'
+    },
+
+    showMapForPractice: function(){
+      ReactDOM.render(<ViewController route={'map'}/>, document.querySelector('#app-container'))
     },
 
     showHomePageComponent: function(){
