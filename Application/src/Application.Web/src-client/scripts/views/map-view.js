@@ -1,38 +1,41 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+// const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 export const BasicMapView = React.createClass({
-  getdefaultProps: function(){
-    center: {lat: 59.95, lng: 30.33},
-    zoom: 11
-  };
+  getInitialState: function(){
+  return  {
+          center: {lat: 32.7846418, lng: -79.940918},
+          zoom: 14
+        };
 
-  render() {
-    return (
+  },
+
+  // _handleClick: function(evt){
+  //   let marker = new google.maps.Marker({
+  //   position: ,
+  //   title:"Hello World!"
+  //   });
+  // },
+
+  render: function() {
+
+    return (<div className="first-map">
       <GoogleMapReact
-        defaultCenter={this.props.center}
-        defaultZoom={this.props.zoom}
+        defaultCenter={this.state.center}
+        defaultZoom={this.state.zoom}
+        bootstrapURLKeys={{key: 'AIzaSyBGmL06icW_4nOifeu4rxUuEuFzOj2HBjY'}}
+        layerTypes={['TrafficLayer', 'TransitLayer']}
+        // onClick={this._handleClick}
       >
-        <AnyReactComponent
+        {/* <AnyReactComponent
           lat={59.955413}
           lng={30.337844}
           text={'Kreyser Avrora'}
-        />
+        /> */}
       </GoogleMapReact>
+      </div>
     );
   }
 });
-
-// export const BasicMapView = React.createClass({
-//   render: function(){
-// return (
-//             <Map google={this.props.google} zoom={14}>
-//
-//               {/* <Marker onClick={this.onMarkerClick}
-//                       name={'Current location'} /> */}
-//           </Map>
-// )
-// }
-// });
