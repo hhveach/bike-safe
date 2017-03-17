@@ -13,6 +13,13 @@ export const LogInComponent = React.createClass({
     ACTIONS.userLogin(emailVal, passwordVal);
   },
 
+  _handleRegisterClick: function(evt){
+    evt.preventDefault();
+    let hashRoute = 'register'
+    let appRouteName = 'register'
+    ACTIONS.changeNav(appRouteName, hashRoute)
+  },
+
   render: function(){
     return (
       <div className="log-in-container">
@@ -26,7 +33,7 @@ export const LogInComponent = React.createClass({
         </div>
         <h2>or</h2>
         <div className="input-form">
-          <button type="onClick">Sign Up</button>
+          <button data-route="register" onClick={this._handleRegisterClick}>Sign Up</button>
         </div>
       </div>
     )
