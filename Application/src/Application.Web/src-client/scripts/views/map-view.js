@@ -2,6 +2,7 @@
 // import ReactDOM from 'react-dom';
 // import GoogleMapReact from 'google-map-react';
 // import Map from 'google-map-react';
+// import {GoogleApiWrapper} from 'GoogleMapsReactComponent'
 //
 // // const MapInitialTry = React.createClass({
 // //   render: function(){
@@ -30,18 +31,11 @@
 // export const BasicMapView = React.createClass({
 //   render: function(){
 // return (
-//         <Map google={this.props.google} zoom={14} center={{lat: 32.784618, lng: -79.940918}}
-//         bootstrapURLKeys={'AIzaSyBGmL06icW_4nOifeu4rxUuEuFzOj2HBjY'}/>
+//             <Map google={this.props.google} zoom={14}>
 //
-// //             {/* <Marker onClick={this.onMarkerClick}
-// //                 name={'Current location'} /> */}
-// //
-// //   {/* <InfoWindow onClose={this.onInfoWindowClose}>
-// //       <div>
-// //         <h1>{this.state.selectedPlace.name}</h1>
-// //       </div>
-// //   </InfoWindow> */}
-// // // </Map>
+//               {/* <Marker onClick={this.onMarkerClick}
+//                       name={'Current location'} /> */}
+//           </Map>
 // )
 // }
 // });

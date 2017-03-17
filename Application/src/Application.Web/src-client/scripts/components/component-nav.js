@@ -36,6 +36,19 @@ export const NavComponent = React.createClass({
 
   _showSideNav: function(){
     document.getElementById("side-nav-bar").classList.toggle('show');
+      window.onclick = function(evt){
+        console.log(evt.target)
+        if(!evt.target.matches('.drop-btn')) {
+          let dropsdown = document.getElementsByClassName('side-nav-content');
+          let i;
+          for (i=0; i < dropsdown.length; i++){
+            let openDropDown = dropsdown[i]
+            if(openDropDown.classList.contains('show')){
+            openDropDown.classList.remove('show')
+          }
+        }
+      }
+    }
   },
 
   render: function(){
