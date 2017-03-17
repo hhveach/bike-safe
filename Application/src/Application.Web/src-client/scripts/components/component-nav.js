@@ -9,7 +9,6 @@ export const NavComponent = React.createClass({
     let routeList = []
     if (typeof currentUserOnStore.id === 'undefined'){
       routeList = [
-        {appRouteName: 'home', showText: 'home', hashRoute: ''},
         {appRouteName: 'login', showText: 'login', hashRoute: 'login'},
         {appRouteName: 'register', showText: 'register', hashRoute: 'register'},
         {appRouteName: 'map', showText: 'map', hashRoute: 'map'},
@@ -37,7 +36,6 @@ export const NavComponent = React.createClass({
   _showSideNav: function(){
     document.getElementById("side-nav-bar").classList.toggle('show');
       window.onclick = function(evt){
-        console.log(evt.target)
         if(!evt.target.matches('.drop-btn')) {
           let dropsdown = document.getElementsByClassName('side-nav-content');
           let i;
