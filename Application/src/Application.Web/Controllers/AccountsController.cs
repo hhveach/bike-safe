@@ -59,7 +59,7 @@ namespace Application.Web.Controllers
         {
             var user = new User();
             user.UserName = user.Email = model.Email;
-
+            
             var result = await _UserManager.CreateAsync(user, model.Password);
 
             if(result.Succeeded)
@@ -80,9 +80,20 @@ namespace Application.Web.Controllers
         }
 
         [HttpGet("~/api/accounts")]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(new { IsAuthenticated = User.Identity.IsAuthenticated, Email = User.Identity.Name });
+            var user = await _UserManager.GetUserAsync(User);
+
+            var output = new
+            {
+                IsAuthenticated = User.Identity.IsAuthenticated,
+                Email = User.Identity.Name,
+                Name = user.UserName,
+                Image = user.Image,
+                Bike = user.Bike
+            };
+
+            return Ok(output);
         }
     }
 }
