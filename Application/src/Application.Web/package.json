@@ -12,11 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "backbone": "1.3.3",
-<<<<<<< HEAD
     "google-map-react": "^0.23.0",
-=======
->>>>>>> 4059e578e971487c6643da553952a3f87d5d87e6
-    "google-maps-react": "^1.0.19",
     "jquery": "2.2.4",
     "react": "15.4.2",
     "react-dom": "15.4.2"
