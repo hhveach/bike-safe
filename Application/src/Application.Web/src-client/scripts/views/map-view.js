@@ -10,20 +10,30 @@ export const BasicMapView = React.createClass({
 
   },
 
-  _onClick: function(obj){
-    console.log(obj.lat, obj.lng,);
+  _onMapClick: function(map, maps){
+    console.log(map.lat, map.lng,);
+    console.log(map);
+    console.log(maps);
     // let newHazardObj = {
     //   newLat: obj.lat,
     //   newLong: obj.lng;
     // };
-    let latitude = obj.lat;
-    let longitude = obj.lng;
-    let marker = new google.maps.Marker({
-      position: {lat: latitude, lng: longitude},
-      // map: {GoogleMap}
+    // let latitude = map.lat;
+    // let longitude = map.lng;
+    let marker = new maps.Marker({
+      position: {lat: map.lat, lng: map.lng},
+      map: map
   });
 
   },
+
+//   renderMarkers(map, maps) {
+//   let marker = new maps.Marker({
+//     position: myLatLng,
+//     map,
+//     title: 'Hello World!'
+//   });
+// }
 
   render: function() {
 
@@ -33,7 +43,9 @@ export const BasicMapView = React.createClass({
         defaultZoom={this.state.zoom}
         bootstrapURLKeys={{key: 'AIzaSyBGmL06icW_4nOifeu4rxUuEuFzOj2HBjY'}}
         layerTypes={['TrafficLayer', 'TransitLayer']}
-        onClick={this._onClick}
+        onClick={this._onMapClick}
+        onGoogleApiLoaded={({map, maps}) => this._onMapClick(map, maps)}
+        yesIWantToUseGoogleMapApiInternals
       />
       </div>
     );
