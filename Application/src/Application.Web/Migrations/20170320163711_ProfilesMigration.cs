@@ -42,22 +42,10 @@ namespace Application.Web.Migrations
                 name: "IX_Users_BikeId",
                 table: "Users",
                 column: "BikeId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Users_Bike_BikeId",
-                table: "Users",
-                column: "BikeId",
-                principalTable: "Bike",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Users_Bike_BikeId",
-                table: "Users");
-
             migrationBuilder.DropTable(
                 name: "Bike");
 
