@@ -5,36 +5,30 @@ export const BasicMapView = React.createClass({
   getInitialState: function(){
   return  {
           center: {lat: 32.7846418, lng: -79.940918},
-          zoom: 14
+          zoom: 14,
+          markers: []
         };
 
   },
 
-  _onMapClick: function(map, maps){
+  _onMapClick: function(map){
     console.log(map.lat, map.lng,);
-    console.log(map);
-    console.log(maps);
     // let newHazardObj = {
     //   newLat: obj.lat,
     //   newLong: obj.lng;
     // };
     // let latitude = map.lat;
     // let longitude = map.lng;
-    let marker = new maps.Marker({
-      position: {lat: map.lat, lng: map.lng},
-      map: map
-  });
+  //   let marker = new maps.Marker({
+  //     position: {lat: map.lat, lng: map.lng},
+  //     map: this.map
+  // });
+
+    this.setState({
+      markers: [...this.state.markers, <MapMarker lat={map.lat} lng={map.lng}/>]
+    })
 
   },
-
-//   renderMarkers(map, maps) {
-//   let marker = new maps.Marker({
-//     position: myLatLng,
-//     map,
-//     title: 'Hello World!'
-//   });
-// }
-
   render: function() {
 
     return (<div className="first-map">
@@ -42,12 +36,20 @@ export const BasicMapView = React.createClass({
         defaultCenter={this.state.center}
         defaultZoom={this.state.zoom}
         bootstrapURLKeys={{key: 'AIzaSyBGmL06icW_4nOifeu4rxUuEuFzOj2HBjY'}}
-        layerTypes={['TrafficLayer', 'TransitLayer']}
+        layerTypes={['BicyclingLayer']}
         onClick={this._onMapClick}
-        onGoogleApiLoaded={({map, maps}) => this._onMapClick(map, maps)}
-        yesIWantToUseGoogleMapApiInternals
-      />
+      >
+        <MapMarker lat={this.props.lat} lng={this.props.lng}/>
+        {this.state.markers}
+      </GoogleMap>
+
       </div>
     );
   }
 });
+
+const MapMarker = React.createClass({
+  render: function(){
+    return <div>&#8671;</div>
+  }
+})
