@@ -2,11 +2,14 @@
 using Application.Web.Data.Entities;
 using Application.Web.Models.Requests;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,8 +20,8 @@ namespace Application.Web.Controllers
     {
         private BikesContext _Context { get; set; }
         private UserManager<User> _UserManager { get; set; }
-
-        public ProfilesController(BikesContext bikesContext, UserManager<User> userManager)
+        private IHostingEnvironment _Environment { get; set; }
+        public ProfilesController(IHostingEnvironment environment, BikesContext bikesContext, UserManager<User> userManager)
         {
             _Context = bikesContext;
             _UserManager = userManager;
@@ -50,6 +53,32 @@ namespace Application.Web.Controllers
             _Context.SaveChanges();
 
             return Ok(model);
+        }
+
+        [HttpPost("~/api/profiles/image")]
+        public async Task<IActionResult> Image(IFormFile image)
+        {
+
+            var profilesPath = Path.Combine(_Environment.WebRootPath, "images", "profiles");
+
+            var extension = Path.GetExtension(image.FileName);
+            var name = Guid.NewGuid().ToString();
+            var path = Path.Combine(profilesPath, name, extension);
+
+            using (var stream = System.IO.File.Create(path))
+            {
+                image.CopyTo(stream);
+            }
+
+            string url = $"/images/profiles/{name}.{extension}";
+
+            var user = await _UserManager.GetUserAsync(User);
+
+            user.Image = url;
+
+            var result = await _UserManager.UpdateAsync(user);
+
+            return Ok(new { ImageUrl = url });
         }
     }
 }

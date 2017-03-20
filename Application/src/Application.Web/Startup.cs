@@ -39,7 +39,7 @@ namespace Application.Web
             {
                 options.UseSqlite("Data Source=./bike-safe.db");
             });
-            
+
             services.AddIdentity<User, IdentityRole>(options =>
             {
                 options.Lockout = new LockoutOptions()
@@ -55,7 +55,7 @@ namespace Application.Web
                     RequireNonAlphanumeric = false,
                     RequireUppercase = false
                 };
-            })     
+            })
             .AddEntityFrameworkStores<BikesContext>();
         }
 
@@ -64,7 +64,7 @@ namespace Application.Web
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
