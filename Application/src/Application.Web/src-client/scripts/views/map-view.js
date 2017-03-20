@@ -1,5 +1,5 @@
 import React from 'react';
-import GoogleMapReact from 'google-map-react';
+import GoogleMap from 'google-map-react';
 
 export const BasicMapView = React.createClass({
   getInitialState: function(){
@@ -10,29 +10,43 @@ export const BasicMapView = React.createClass({
 
   },
 
-  // _handleClick: function(evt){
-  //   let marker = new google.maps.Marker({
-  //   position: ,
-  //   title:"Hello World!"
-  //   });
-  // },
+  _onMapClick: function(map, maps){
+    console.log(map.lat, map.lng,);
+    console.log(map);
+    console.log(maps);
+    // let newHazardObj = {
+    //   newLat: obj.lat,
+    //   newLong: obj.lng;
+    // };
+    // let latitude = map.lat;
+    // let longitude = map.lng;
+    let marker = new maps.Marker({
+      position: {lat: map.lat, lng: map.lng},
+      map: map
+  });
+
+  },
+
+//   renderMarkers(map, maps) {
+//   let marker = new maps.Marker({
+//     position: myLatLng,
+//     map,
+//     title: 'Hello World!'
+//   });
+// }
 
   render: function() {
 
     return (<div className="first-map">
-      <GoogleMapReact
+      <GoogleMap
         defaultCenter={this.state.center}
         defaultZoom={this.state.zoom}
         bootstrapURLKeys={{key: 'AIzaSyBGmL06icW_4nOifeu4rxUuEuFzOj2HBjY'}}
         layerTypes={['TrafficLayer', 'TransitLayer']}
-        // onClick={this._handleClick}
-      >
-        {/* <AnyReactComponent
-          lat={59.955413}
-          lng={30.337844}
-          text={'Kreyser Avrora'}
-        /> */}
-      </GoogleMapReact>
+        onClick={this._onMapClick}
+        onGoogleApiLoaded={({map, maps}) => this._onMapClick(map, maps)}
+        yesIWantToUseGoogleMapApiInternals
+      />
       </div>
     );
   }

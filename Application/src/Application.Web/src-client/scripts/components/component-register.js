@@ -8,11 +8,11 @@ export const RegisterComponent = React.createClass({
     let current = evt.target;
 
     let registerObj = {
-      // current.name.value;
+      name: current.name.value,
       email: current.email.value,
-      password: current.password.value
-      // current.profileImage.value;
-      // current.bikeName.value;
+      password: current.password.value,
+      image: current.profileImage.value,
+      bike: current.bikeName.value
     };
 
     ACTIONS.userRegister(registerObj);
@@ -22,12 +22,12 @@ export const RegisterComponent = React.createClass({
     return (
       <div className="input-form">
         <form onSubmit={this._handleSubmit}>
-          {/* <input type="text" name="name" placeholder="Full Name *"></input> */}
+          <input type="text" name="name" placeholder="Username *"></input>
           <input type="text" name="email" placeholder="Email Address *"></input>
           <input type="text" name="password" placeholder="Password *"></input>
           {/* <input type="text" placeholder="Confirm Password"></input> */}
-          {/* <input type="text" name="profileImage" placeholder="Profile Image"></input>
-          <input type="text" name="bikeName" placeholder="Your Bike"></input> */}
+          <input type="text" name="profileImage" placeholder="Profile Image"></input>
+          <input type="text" name="bikeName" placeholder="Your Bike"></input>
           <button>Start Riding!</button>
         </form>
       </div>
