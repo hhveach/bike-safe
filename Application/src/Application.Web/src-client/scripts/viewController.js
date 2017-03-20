@@ -7,7 +7,7 @@ import {RemindersView} from './views/reminders-view.js';
 import {RidesView} from './views/rides-view.js';
 import {HazardsView} from './views/hazards-view.js';
 import {NavComponent} from './components/component-nav.js';
-import {BasicMapView} from './views/map-view.js';
+import {DirectionsView} from './views/directions-view.js';
 import {STORE} from './store.js';
 import {ACTIONS} from './actions.js';
 
@@ -55,7 +55,7 @@ export const ViewController = React.createClass({
           renderComponent = <HazardsView {...this.state}/>;
           break;
         case 'map':
-          renderComponent = <BasicMapView {...this.state}/>;
+          renderComponent = <DirectionsView {...this.state}/>;
           break;
 
       default:

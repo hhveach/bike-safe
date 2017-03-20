@@ -3,7 +3,9 @@ export const STORE = {
     currentUser: {},
     currentRoute: '',
     mapHazards: [],
-    savedRides: []
+    savedRides: [],
+    // directionsRequest: {},
+    directionsResult: {}
   },
 
   getStore: function(){

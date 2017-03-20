@@ -1,6 +1,9 @@
 import {STORE} from './store.js';
 import {SingleRide, AllRides, SingleHazard, AllHazards} from './models/models.js';
 import {UserModel} from './models/model-user.js';
+import DirectionsService from '@google/maps';
+import DirectionsRenderer from '@google/maps';
+
 
 export const ACTIONS = {
 
@@ -20,7 +23,7 @@ export const ACTIONS = {
   getSingleSavedRide: function(rideId){
     let rides = new AllRides();
     let correctRide = rides.map(function(listEl){
-      if(rideId === listEl._id){return listEl;}
+      if(rideId === listEl.id){return listEl;}
     })
     return correctRide;
   },
@@ -42,7 +45,7 @@ export const ACTIONS = {
   getSingleHazard: function(hazardId){
     let hazard = new AllHazards();
     let correctHazard = hazard.map(function(listEl){
-      if(hazardId === listEl._id){return listEl}
+      if(hazardId === listEl.id){return listEl}
     })
     return correctHazard;
   },
@@ -78,5 +81,15 @@ export const ACTIONS = {
     UserModel.getCurrentUser().then(function(serverRes){
       STORE.setStore('currentUser', serverRes);
     })
+  },
+
+  getDirections: function(directionsRequestObj){
+     let directions = new google.maps.DirectionsService();
+     let render = new google.maps.DirectionsRenderer();
+     directions.route(directionsRequestObj, function(result, status){
+       console.log(result);
+      //  let actual = result.routes[0].legs[0];
+      if(status === 'OK'){STORE.setStore('directionsResult', result)};
+     });
   }
 };
