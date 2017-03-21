@@ -21,19 +21,13 @@ export const ViewController = React.createClass({
   componentDidMount: function(){
     let comp = this;
     STORE.storeChange(function(){
-
-      console.log('firing')
       let newStoreObj = STORE.getStore();
       comp.setState(newStoreObj);
     });
   },
 
-  // componentWillUnmount: function(){
-  // },
-
   render: function(){
     let renderComponent;
-    console.log(this.state.hazardsToSave)
 
     switch(this.state.currentRoute){
         case 'home':

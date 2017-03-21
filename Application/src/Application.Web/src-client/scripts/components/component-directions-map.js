@@ -2,8 +2,9 @@ import React from 'react';
 import GoogleMap from 'google-map-react';
 import {DirFormComponent} from './component-form.js';
 import DirectionsRenderer from '@google/maps';
-import google from '@google/maps';
-
+import { maps } from '@google/maps';
+import {ACTIONS} from '../actions.js';
+import {STORE} from '../store.js'
 export const DirectionsMapView = React.createClass({
 
   getInitialState: function(){
@@ -13,14 +14,11 @@ export const DirectionsMapView = React.createClass({
           };
   },
 
-  // componentDidMount: function(){
-  //   let directionsDisplay = new google.maps.DirectionsRenderer();
-  //   directionsDisplay.setMap();
-  //   directionsDisplay.setDirections(this.props.directionsResult);
-  // },
+  _setMapToStore: function(map, maps){
+    STORE.setStore("mapEl", {map, maps})
+  },
 
   render: function() {
-
     return (
               <div className="first-map">
                 <GoogleMap
@@ -28,22 +26,23 @@ export const DirectionsMapView = React.createClass({
                   defaultZoom={this.state.zoom}
                   bootstrapURLKeys={{key: 'AIzaSyBGmL06icW_4nOifeu4rxUuEuFzOj2HBjY'}}
                   layerTypes={['BicyclingLayer']}
+                  onGoogleApiLoaded={({ map, maps }) => this._setMapToStore(map, maps)}
+                  yesIWantToUseGoogleMapApiInternals
                 >
-                {/* <Directions dir={this.props.directionsResult} ref={<GoogleMap/>}/> */}
                 </GoogleMap>
               </div>
     );
   }
 });
 
-// export const Directions = React.createClass({
+// const Directions = React.createClass({
+{/* <Directions lat={32.7846418} lng={-79.940918}
+  dir={this.props.directionsResult}/> */}
 //
 //   render: function(){
 //     return (
 //         <div>
-//          {this.props.dir}
 //         </div>
 //     );
 //   }
-//
 // });

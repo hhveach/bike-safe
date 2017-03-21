@@ -4,7 +4,6 @@ import {UserModel} from './models/model-user.js';
 import DirectionsService from '@google/maps';
 import DirectionsRenderer from '@google/maps';
 
-
 export const ACTIONS = {
 
   changeNav: function(selectedRoute, urlHash){
@@ -90,13 +89,15 @@ export const ACTIONS = {
     })
   },
 
-  getDirections: function(directionsRequestObj){
-     let directions = new google.maps.DirectionsService();
-     let render = new google.maps.DirectionsRenderer();
+  getDirections: function(mapObj, directionsRequestObj){
+     let directions = new mapObj.maps.DirectionsService();
      directions.route(directionsRequestObj, function(result, status){
-       console.log(result);
-      //  let actual = result.routes[0].legs[0];
-      if(status === 'OK'){STORE.setStore('directionsResult', result)};
+      if(status === 'OK'){
+        let directionsDisplay = new mapObj.maps.DirectionsRenderer();
+        STORE.setStore('directionsResult', result);
+          directionsDisplay.setDirections(result)
+          directionsDisplay.setMap(mapObj.map);
+      };
      });
   }
 };
