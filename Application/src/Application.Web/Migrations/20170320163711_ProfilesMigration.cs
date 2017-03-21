@@ -56,7 +56,7 @@ namespace Application.Web.Migrations
             migrationBuilder.DropColumn(
                 name: "BikeId",
                 table: "Users");
-
+             
             migrationBuilder.DropColumn(
                 name: "Image",
                 table: "Users");

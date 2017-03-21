@@ -4,7 +4,8 @@ export const STORE = {
     currentRoute: '',
     mapHazards: [],
     hazardsToSave: {},
-    savedRides: []
+    savedRides: [],
+    directionsResult: {}
   },
 
   getStore: function(){
