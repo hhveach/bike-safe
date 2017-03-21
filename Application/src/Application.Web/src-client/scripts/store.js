@@ -3,18 +3,24 @@ export const STORE = {
     currentUser: {},
     currentRoute: '',
     mapHazards: [],
+    hazardsToSave: {},
     savedRides: [],
-    // directionsRequest: {},
     directionsResult: {}
   },
 
   getStore: function(){
+    console.log(this._data)
     return this._data;
   },
 
   setStore: function(prop, propVal){
+    console.log('firingffff')
     this._data[prop] = propVal;
-		if(typeof _callbackFunction === 'function'){this._callbackFunction();};
+    console.log(propVal)
+		if(typeof this._callbackFunction === 'function'){
+      console.log('in this iff')
+      this._callbackFunction();
+    };
   },
 
   storeChange: function(callback){
