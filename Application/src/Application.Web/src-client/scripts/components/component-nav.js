@@ -5,7 +5,7 @@ import {STORE} from '../store.js'
 export const NavComponent = React.createClass({
 
   _getMenuOptions: function(currentUserOnStore){
-    console.log(currentUserOnStore)
+    // console.log(currentUserOnStore)
     let routeList = []
     if (typeof currentUserOnStore.id === 'undefined'){
       routeList = [
@@ -50,7 +50,7 @@ export const NavComponent = React.createClass({
   },
 
   render: function(){
-    console.log(this.props.currentUser)
+    // console.log(this.props.currentUser)
     return (
       <div className="nav-comp">
         <div className="top-nav">

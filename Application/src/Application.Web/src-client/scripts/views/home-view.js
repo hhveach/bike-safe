@@ -5,12 +5,13 @@ import {BasicMapView} from './map-view.js'
 
 export const HomeView = React.createClass({
   render: function(){
+
     return(
     <div>
       <div className="home-view-container">
-        <BasicMapView/>
+        <BasicMapView {...this.props}/>
         <h1>Ride It Out</h1>
-        <FormComponent/>
+        <FormComponent {...this.props}/>
       </div>
     </div>
   )

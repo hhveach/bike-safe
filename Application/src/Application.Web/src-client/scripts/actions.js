@@ -33,10 +33,17 @@ export const ACTIONS = {
   },
 
   saveHazard: function(newHazard){
-    let bad = new SingleHazard();
-      bad.set(newHazard);
-      bad.save().then(function(serverRes){
-      });
+      let bad = new SingleHazard();
+      // saving in backend format
+        // let hazard = {
+        //   Latitude: newHazard.lat,
+        //   Longitude: newHazard.lng
+        // }
+        bad.set(hazard);
+        bad.save().then(function(serverRes){
+
+    })
+
   },
 
   getSingleHazard: function(hazardId){
