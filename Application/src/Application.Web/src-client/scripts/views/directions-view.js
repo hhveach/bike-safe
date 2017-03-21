@@ -7,8 +7,8 @@ export const DirectionsView = React.createClass({
   render: function(){
     return (
       <div>
-        <DirFormComponent/>
-        <DirectionsMapView/>
+        <DirFormComponent {...this.props}/>
+        <DirectionsMapView {...this.props}/>
       </div>
     )
 
