@@ -82,18 +82,24 @@ namespace Application.Web.Controllers
         [HttpGet("~/api/accounts")]
         public async Task<IActionResult> Get()
         {
-            var user = await _UserManager.GetUserAsync(User);
-
-            var output = new
+            if(User.Identity.IsAuthenticated)
             {
-                IsAuthenticated = User.Identity.IsAuthenticated,
-                Email = User.Identity.Name,
-                Name = user.UserName,
-                Image = user.Image,
-                Bike = user.Bike
-            };
+                var user = await _UserManager.GetUserAsync(User);
+                var output = new
+                {
+                    IsAuthenticated = User.Identity.IsAuthenticated,
+                    Email = User.Identity.Name,
+                    Name = user.UserName,
+                    Image = user.Image,
+                    Bike = user.Bike
+                };
 
-            return Ok(output);
+                return Ok(output);
+            }
+            else
+            {
+                return Ok(new { IsAuthenticated = User.Identity.IsAuthenticated });
+            }
         }
     }
 }

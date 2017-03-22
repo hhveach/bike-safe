@@ -21,30 +21,15 @@ namespace Application.Web.Controllers
             _Context = context;
         }
 
-        [HttpGet("~/api/hazards")]
+        [HttpGet("~/api/consumer/hazards")]
         public IActionResult GetWindow(double upperLatitude, double upperLongitude, double lowerLatitude, double lowerLongitude)
         {
-            var hazards = _Context.Hazards.Where(q => q.Latitude <= upperLatitude && q.Latitude >= lowerLatitude && q.Longitude <= upperLongitude && q.Longitude >= lowerLongitude);
+            var hazards = _Context.Hazards.Where(q => q.Latitude <= upperLatitude && q.Latitude >= lowerLatitude && q.Longitude >= upperLongitude && q.Longitude <= lowerLongitude);
 
             return Ok(hazards);
         }
 
-        [HttpGet("~/api/hazards")]
-        public IActionResult GetAll(int page = 1, int size = 25)
-        {
-            var index = page - 1 * size;
-
-            var hazards = _Context.Hazards.OrderBy(q => q.Id).Skip(index).Take(size);
-
-            return Ok(hazards);
-        }
-
-        [HttpGet("~/api/hazards/{id}")]
-        public IActionResult Get(int id)
-        {
-            return Ok(_Context.Hazards.Find(id));
-        }
-
+        [Authorize]
         [HttpPost("~/api/consumer/hazards")]
         public async Task<IActionResult> ConsumerPost([FromBody]Hazard hazard)
         {
@@ -69,6 +54,7 @@ namespace Application.Web.Controllers
             return Ok(hazard);
         }
 
+        [Authorize]
         [HttpPut("~/api/consumer/hazards/{id}")]
         public IActionResult ConsumerPut(int id , [FromBody]Hazard hazard)
         {
@@ -97,8 +83,8 @@ namespace Application.Web.Controllers
 
             return Ok(existingHazard);
         }
-
-        [Authorize(Roles = Roles.Admin)]
+        
+        [Authorize]
         [HttpDelete("~/api/consumer/hazards/{id}")]
         public IActionResult ConsumerDelete(int id)
         {
@@ -124,6 +110,24 @@ namespace Application.Web.Controllers
             _Context.SaveChanges();
 
             return Ok(existingHazard);
+        }
+
+        [Authorize(Roles = Roles.Admin)]
+        [HttpGet("~/api/admin/hazards")]
+        public IActionResult GetAll(int page = 1, int size = 25)
+        {
+            var index = page - 1 * size;
+
+            var hazards = _Context.Hazards.OrderBy(q => q.Id).Skip(index).Take(size);
+
+            return Ok(hazards);
+        }
+
+        [Authorize(Roles = Roles.Admin)]
+        [HttpGet("~/api/admin/hazards/{id}")]
+        public IActionResult AdminGet(int id)
+        {
+            return Ok(_Context.Hazards.Find(id));
         }
 
         [Authorize(Roles = Roles.Admin)]

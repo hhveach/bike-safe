@@ -22,7 +22,7 @@ namespace Application.Web.Controllers
             _Context = context;
         }
 
-        [HttpGet("~/api/rides")]
+        [HttpGet("~/api/consumer/rides")]
         public IActionResult GetAll()
         {
             var userId = _UserManager.GetUserId(User);
@@ -32,7 +32,7 @@ namespace Application.Web.Controllers
             return Ok(rides);
         }
 
-        [HttpGet("~/api/rides/{id}")]
+        [HttpGet("~/api/consumer/rides/{id}")]
         public IActionResult Get(int id)
         {
             var ride = _Context.Rides.Find(id);
@@ -113,6 +113,17 @@ namespace Application.Web.Controllers
             _Context.SaveChanges();
 
             return Ok(existingRide);
+        }
+
+        [Authorize(Roles = Roles.Admin)]
+        [HttpPost("~/api/admin/rides")]
+        public IActionResult AdminGet(int page, int size)
+        {
+            var index = (page - 1) * size;
+
+            var rides = _Context.Rides.Skip(index).Take(size);
+
+            return Ok(rides);
         }
 
         [Authorize(Roles = Roles.Admin)]
