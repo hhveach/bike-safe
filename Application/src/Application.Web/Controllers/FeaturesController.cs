@@ -21,15 +21,16 @@ namespace Application.Web.Controllers
             _Context = context;
         }
 
-        [HttpGet("~/api/features")]
+        [HttpGet("~/api/consumer/features")]
         public IActionResult GetWindow(double upperLatitude, double upperLongitude, double lowerLatitude, double lowerLongitude)
         {
-            var features = _Context.Features.Where(q => q.Latitude <= upperLatitude && q.Latitude >= lowerLatitude && q.Longitude <= upperLongitude && q.Longitude >= lowerLongitude);
+            var features = _Context.Features.Where(q => q.Latitude <= upperLatitude && q.Latitude >= lowerLatitude && q.Longitude >= upperLongitude && q.Longitude <= lowerLongitude);
 
             return Ok(features);
         }
 
-        [HttpGet("~/api/features")]
+        [Authorize(Roles = Roles.Admin)]
+        [HttpGet("~/api/admin/features")]
         public IActionResult GetAll(int page = 1, int size = 50)
         {
             int index = (page - 1) * size;
@@ -38,12 +39,13 @@ namespace Application.Web.Controllers
             return Ok(features);
         }
 
-        [HttpGet("~/api/features/{id}")]
+        [HttpGet("~/api/consumer/features/{id}")]
         public IActionResult Get(int id)
         {
             return Ok(_Context.Features.Find(id));
         }
 
+        [Authorize]
         [HttpPost("~/api/consumer/features")]
         public async Task<IActionResult> ConsumerPost([FromBody]Feature feature)
         {
@@ -68,6 +70,7 @@ namespace Application.Web.Controllers
             return Ok(feature);
         }
 
+        [Authorize]
         [HttpPut("~/api/consumer/features/{id}")]
         public IActionResult ConsumerPut(int id, [FromBody]Feature feature)
         {
@@ -97,8 +100,8 @@ namespace Application.Web.Controllers
             return Ok(existingFeature);
         }
 
-        [Authorize(Roles = Roles.Admin)]
-        [HttpDelete("~/api/admin/features/{id}")]
+        [Authorize]
+        [HttpDelete("~/api/consumer/features/{id}")]
         public IActionResult ConsumerDelete(int id)
         {
             var userId = _UserManager.GetUserId(User);
@@ -111,7 +114,7 @@ namespace Application.Web.Controllers
             }
 
             var permission = _Context.Permissions
-                .FirstOrDefault(q => q.Signature == existingFeature.Signature && q.Delete == true && q.User.Id == userId);
+                .FirstOrDefault(q => q.Signature == existingFeature.Signature && q.Delete == true && q.User.Id == userId && q.Type == Permissions.Feature);
 
             if (permission == null)
             {

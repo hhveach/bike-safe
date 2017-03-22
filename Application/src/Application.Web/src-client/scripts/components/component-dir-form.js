@@ -11,9 +11,7 @@ export const DirFormComponent = React.createClass({
          travelMode: 'BICYCLING',
          provideRouteAlternatives: true
       };
-    ACTIONS.getDirections(directionsRequest)
-
-    //  {this.props.directionsResult}
+    ACTIONS.getDirections(this.props.mapEl, directionsRequest);
   },
 
   render: function(){

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Web.Controllers
 {
@@ -22,33 +23,44 @@ namespace Application.Web.Controllers
             _Context = context;
         }
 
-        [HttpGet("~/api/rides")]
-        public IActionResult GetAll()
+        [HttpGet("~/api/consumer/rides")]
+        public IActionResult GetAll(int page = 1, int size = 20)
         {
+            var blah = User.IsInRole(Roles.Admin);
             var userId = _UserManager.GetUserId(User);
-            var permissions = _Context.Permissions.Where(q => q.User.Id == userId);
+
+            int index = (Math.Max(1, page) - 1) * size;
+
+            var permissions = _Context.Permissions
+                .Where(q => q.User.Id == userId && q.Read == true && q.Type == Permissions.Ride)
+                .Skip(index)
+                .Take(size)
+                .ToList();
+
             var rides = _Context.Rides.Where(q => permissions.Any(r => r.Signature == q.Signature)).ToList();
 
             return Ok(rides);
         }
 
-        [HttpGet("~/api/rides/{id}")]
+        [HttpGet("~/api/consumer/rides/{id}")]
         public IActionResult Get(int id)
         {
-            var ride = _Context.Rides.Find(id);
-            
-            if(ride == null)
+            var userId = _UserManager.GetUserId(User);
+
+            var existingRide = _Context.Rides.Find(id);
+
+            if (existingRide == null)
             {
                 return NotFound();
             }
 
-            var hasPermissions = HasPermission(ride.Signature);
-            if(!hasPermissions)
+            var permission = _Context.Permissions.FirstOrDefault(q => q.Read == true && q.Signature == existingRide.Signature && q.User.Id == userId);
+            if (permission == null)
             {
                 return Unauthorized();
             }
 
-            return Ok(ride);
+            return Ok(existingRide);
         }
 
         [HttpPost("~/api/consumer/rides")]
@@ -64,9 +76,11 @@ namespace Application.Web.Controllers
 
             permission.Type = Permissions.Ride;
             permission.User = user;
+
             ride.Signature = permission.Signature = Guid.NewGuid();
 
             _Context.Rides.Add(ride);
+            _Context.Permissions.Add(permission);
 
             _Context.SaveChanges();
 
@@ -76,43 +90,65 @@ namespace Application.Web.Controllers
         [HttpPut("~/api/consumer/rides/{id}")]
         public IActionResult ConsumerPut(int id, [FromBody]Ride ride)
         {
+            var userId = _UserManager.GetUserId(User);
+
             var existingRide = _Context.Rides.Find(id);
-            
-            if(existingRide == null)
+
+            if (existingRide == null)
             {
                 return NotFound();
             }
 
-            if(!HasPermission(existingRide.Signature))
+            var permission = _Context.Permissions.Where(q => q.Write == true && q.Signature == existingRide.Signature && q.User.Id == userId);
+            if (permission == null)
             {
                 return Unauthorized();
             }
 
+            existingRide.Name = ride.Name;
             existingRide.Destination = ride.Destination;
             existingRide.Source = ride.Source;
-            
+
+            _Context.SaveChanges();
+
             return Ok(existingRide);
         }
 
         [HttpDelete("~/api/consumer/rides/{id}")]
         public IActionResult ConsumerDelete(int id)
         {
+            var userId = _UserManager.GetUserId(User);
+
             var existingRide = _Context.Rides.Find(id);
 
-            if(existingRide == null)
+            if (existingRide == null)
             {
                 return NotFound();
             }
 
-            if(!HasPermission(existingRide.Signature))
+            var permission = _Context.Permissions.FirstOrDefault(q => q.Delete == true && q.Signature == existingRide.Signature && q.User.Id == userId);
+            if (permission == null)
             {
                 return Unauthorized();
             }
 
             _Context.Rides.Remove(existingRide);
+            _Context.Permissions.Remove(permission);
+
             _Context.SaveChanges();
 
             return Ok(existingRide);
+        }
+
+        [Authorize(Roles = Roles.Admin)]
+        [HttpGet("~/api/admin/rides")]
+        public IActionResult AdminGet(int page = 1, int size = 20)
+        {
+            var index = (Math.Max(page, 1) - 1) * size;
+
+            var rides = _Context.Rides.Skip(index).Take(size).ToList();
+
+            return Ok(rides);
         }
 
         [Authorize(Roles = Roles.Admin)]
@@ -125,9 +161,12 @@ namespace Application.Web.Controllers
             {
                 return NotFound();
             }
+
             existingRide.Name = ride.Name;
             existingRide.Destination = ride.Destination;
             existingRide.Source = ride.Source;
+
+            _Context.SaveChanges();
 
             return Ok(existingRide);
         }

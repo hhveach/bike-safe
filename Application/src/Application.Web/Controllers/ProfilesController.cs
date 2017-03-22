@@ -23,6 +23,7 @@ namespace Application.Web.Controllers
         private IHostingEnvironment _Environment { get; set; }
         public ProfilesController(IHostingEnvironment environment, BikesContext bikesContext, UserManager<User> userManager)
         {
+            _Environment = environment;
             _Context = bikesContext;
             _UserManager = userManager;
         }
@@ -41,7 +42,7 @@ namespace Application.Web.Controllers
             return Ok(profile);
         }
 
-        [HttpPost("~/api/profiles")]
+        [HttpPut("~/api/profiles")]
         public IActionResult Post([FromBody]ProfileRequest model)
         {
             var userId = _UserManager.GetUserId(User);
@@ -58,23 +59,31 @@ namespace Application.Web.Controllers
         [HttpPost("~/api/profiles/image")]
         public async Task<IActionResult> Image(IFormFile image)
         {
+            var user = await _UserManager.GetUserAsync(User);
 
             var profilesPath = Path.Combine(_Environment.WebRootPath, "images", "profiles");
 
             var extension = Path.GetExtension(image.FileName);
             var name = Guid.NewGuid().ToString();
-            var path = Path.Combine(profilesPath, name, extension);
+            var path = Path.Combine(profilesPath, $"{name}{extension}");
 
             using (var stream = System.IO.File.Create(path))
             {
                 image.CopyTo(stream);
+                stream.Flush();
             }
 
-            string url = $"/images/profiles/{name}.{extension}";
+            var fileName = Path.GetFileName(user.Image);
+            var existingImage = Path.Combine(profilesPath, fileName);
+            if (System.IO.File.Exists(existingImage))
+            {
+                System.IO.File.Delete(existingImage);
+            }
 
-            var user = await _UserManager.GetUserAsync(User);
+            string url = $"/images/profiles/{name}{extension}";
 
             user.Image = url;
+
 
             var result = await _UserManager.UpdateAsync(user);
 

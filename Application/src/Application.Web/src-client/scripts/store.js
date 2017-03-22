@@ -5,7 +5,7 @@ export const STORE = {
     mapHazards: [],
     hazardsToSave: {},
     savedRides: [],
-    directionsResult: {}
+    directionsResult: {},
   },
 
   getStore: function(){
@@ -14,7 +14,6 @@ export const STORE = {
 
   setStore: function(prop, propVal){
     this._data[prop] = propVal;
-    // console.log(propVal)
 		if(typeof this._callbackFunction === 'function'){
       this._callbackFunction();
     };

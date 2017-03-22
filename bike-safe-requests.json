@@ -1,0 +1,668 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Bike Safe",
+		"_postman_id": "c1118fe1-d936-829f-201d-ecc38c0394c0",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Accounts",
+			"description": "",
+			"item": [
+				{
+					"name": "Admin Login",
+					"request": {
+						"url": "http://localhost:54473/api/accounts/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"email\": \"admin@bike-safe.com\", \"password\": \"qwer1234\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Consumer Login",
+					"request": {
+						"url": "http://localhost:54473/api/accounts/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"email\": \"consumer@bike-safe.com\", \"password\": \"qwer1234\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"url": "http://localhost:54473/api/accounts/register",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"email\": \"account@bike-safe.com\", \"password\": \"qwer1234\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"url": "http://localhost:54473/api/accounts/logout",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account",
+					"request": {
+						"url": "http://localhost:54473/api/accounts",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Features",
+			"description": "",
+			"item": [
+				{
+					"name": "Consumer Get",
+					"request": {
+						"url": "http://localhost:54473/api/consumer/features?upperLatitude=100&upperLongitude=-100&lowerLatitude=-100&lowerLongitude=100",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Get All",
+					"request": {
+						"url": "http://localhost:54473/api/consumer/features?page=1&size=20",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Id",
+					"request": {
+						"url": "http://localhost:54473/api/consumer/features/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Consumer Post",
+					"request": {
+						"url": "http://localhost:54473/api/consumer/features",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"name\": \"Mooses Bike Shop\", \"type\": \"Bike Shop\", \"latitude\": 0, \"longitude\": 0 }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Consumer Put",
+					"request": {
+						"url": "http://localhost:54473/api/consumer/features/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"name\": \"Bike Shop\", \"type\": \"Bike Shop\", \"latitude\": 0, \"longitude\": 0 }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Consumer Delete",
+					"request": {
+						"url": "http://localhost:54473/api/consumer/features/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"name\": \"Bike Shop\", \"type\": \"Bike Shop\", \"latitude\": 0, \"longitude\": 0 }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Delete",
+					"request": {
+						"url": "http://localhost:54473/api/admin/features/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"name\": \"Bike Shop\", \"type\": \"Bike Shop\", \"latitude\": 0, \"longitude\": 0 }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hazards",
+			"description": "",
+			"item": [
+				{
+					"name": "Consumer Get",
+					"request": {
+						"url": "http://localhost:54473/api/consumer/hazards?upperLatitude=100&upperLongitude=-100&lowerLatitude=-100&lowerLongitude=100",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Get",
+					"request": {
+						"url": "http://localhost:54473/api/consumer/hazards?page=1&size=20",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Get Id",
+					"request": {
+						"url": "http://localhost:54473/api/admin/hazards/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Consumer Post",
+					"request": {
+						"url": "http://localhost:54473/api/consumer/hazards",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"type\": \"Crazy Cat Lady\", \"latitude\": 0, \"longitude\": 0 }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Consumer Put",
+					"request": {
+						"url": "http://localhost:54473/api/consumer/hazards/3",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"type\": \"Hazard\", \"latitude\": 0, \"longitude\": 0 }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Consumer Delete",
+					"request": {
+						"url": "http://localhost:54473/api/consumer/hazards/3",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"name\": \"Bike Shop\", \"type\": \"Bike Shop\", \"latitude\": 0, \"longitude\": 0 }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Delete",
+					"request": {
+						"url": "http://localhost:54473/api/admin/hazards/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"name\": \"Bike Shop\", \"type\": \"Bike Shop\", \"latitude\": 0, \"longitude\": 0 }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profiles",
+			"description": "",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"url": "http://localhost:54473/api/profiles",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Post",
+					"request": {
+						"url": "http://localhost:54473/api/profiles",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"name\": \"Display Name\", \"bike\": { \"make\": \"Sir\", \"model\": \"Bikes Alot\" } }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Image",
+					"request": {
+						"url": "http://localhost:54473/api/profiles/image",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"enabled": true,
+									"src": "2244579.png"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rides",
+			"description": "",
+			"item": [
+				{
+					"name": "Consumer Get All",
+					"request": {
+						"url": "http://localhost:54473/api/consumer/rides?page=1&size=20",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Consumer Get",
+					"request": {
+						"url": "http://localhost:54473/api/consumer/rides/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Consumer Post",
+					"request": {
+						"url": "http://localhost:54473/api/consumer/rides",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"name\": \"Quick Ride\", \"source\": \"The Iron Yard\", \"destination\": \"Hawaii\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Consumer Put",
+					"request": {
+						"url": "http://localhost:54473/api/consumer/rides/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"name\": \"Altered Ride\", \"source\": \"The Iron Yard\", \"destination\": \"Hawaii\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Consumer Delete",
+					"request": {
+						"url": "http://localhost:54473/api/consumer/rides/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Get All",
+					"request": {
+						"url": "http://localhost:54473/api/admin/rides",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Get",
+					"request": {
+						"url": "http://localhost:54473/api/admin/rides",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Put",
+					"request": {
+						"url": "http://localhost:54473/api/admin/rides/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Delete",
+					"request": {
+						"url": "http://localhost:54473/api/admin/rides/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

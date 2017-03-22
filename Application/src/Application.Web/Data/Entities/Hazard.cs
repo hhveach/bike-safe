@@ -15,6 +15,7 @@ namespace Application.Web.Data.Entities
         public double Latitude { get; set; }
         [Required]
         public double Longitude { get; set; }
+
         public Guid Signature { get; set; }
     }
 }
