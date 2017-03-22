@@ -20,6 +20,7 @@ export const ViewController = React.createClass({
 
   componentDidMount: function(){
     let comp = this;
+    // ACTIONS.getAllHazards();
     STORE.storeChange(function(){
       let newStoreObj = STORE.getStore();
       comp.setState(newStoreObj);

@@ -7,9 +7,7 @@ export const LogInComponent = React.createClass({
     evt.preventDefault();
     let formEl = evt.target;
     let emailVal = formEl.emailfield.value
-    console.log(emailVal)
     let passwordVal = formEl.passwordfield.value
-    console.log(passwordVal)
     ACTIONS.userLogin(emailVal, passwordVal);
   },
 

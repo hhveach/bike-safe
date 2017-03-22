@@ -29,26 +29,9 @@ namespace Application.Web.Controllers
             return Ok(hazards);
         }
 
-<<<<<<< HEAD
-        [HttpGet("~/api/admin/hazards")]
-        public IActionResult GetAll(int page = 1, int size = 25)
-        {
-            var index = page - 1 * size;
 
-            var hazards = _Context.Hazards.OrderBy(q => q.Id).Skip(index).Take(size);
-
-            return Ok(hazards);
-        }
-
-        [HttpGet("~/api/hazards/{id}")]
-        public IActionResult Get(int id)
-        {
-            return Ok(_Context.Hazards.Find(id));
-        }
-
-=======
         [Authorize]
->>>>>>> 3ea2a3067c49416c8d3777a5f30b9e24cafd3d39
+
         [HttpPost("~/api/consumer/hazards")]
         public async Task<IActionResult> ConsumerPost([FromBody]Hazard hazard)
         {
@@ -102,7 +85,7 @@ namespace Application.Web.Controllers
 
             return Ok(existingHazard);
         }
-        
+
         [Authorize]
         [HttpDelete("~/api/consumer/hazards/{id}")]
         public IActionResult ConsumerDelete(int id)

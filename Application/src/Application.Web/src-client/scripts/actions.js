@@ -37,10 +37,12 @@ export const ACTIONS = {
   saveHazard: function(newHazard){
     console.log('saving hazard')
       let bad = new SingleHazard();
-        bad.set(newHazard);
-        bad.save().then(function(serverRes){
-          ACTIONS.getAllHazards()
-
+      bad.set(newHazard);
+      bad.save().then(function(serverRes){
+        console.log('saved hazard:', serverRes)
+          // ACTIONS.getAllHazards()
+    }).fail(function(err){
+      console.log('err : ', err.responseText)
     })
 
   },
@@ -56,14 +58,16 @@ export const ACTIONS = {
   getAllHazards: function(){
     let hazards = new AllHazards();
       hazards.fetch().then(function(serverRes){
+        console.log(serverRes)
         STORE.setStore('hazardsToSave', {})
         STORE.setStore('mapHazards', serverRes);
       })
   },
+
   setHazardToSave: function(hazard){
     STORE.setStore('hazardsToSave', hazard)
-
   },
+
   userLogin: function(username, password){
     UserModel.logIn(username, password).then(function(serverRes){
       STORE.setStore('currentUser', serverRes);

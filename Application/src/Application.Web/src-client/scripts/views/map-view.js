@@ -13,19 +13,18 @@ export const BasicMapView = React.createClass({
 
   },
 
-  // componentDidMount: function(){
-  //   console.log('FETCH BOI')
-  //   ACTIONS.getAllHazards();
-  // },
 
   _renderMapMarker: function(){
     if(this.props.hazardsToSave.lat === undefined && this.props.hazardsToSave.lng === undefined){
       return
     }else{
-      console.log(this.props)
+      // console.log(this.props)
       return(
-
-        <MapMarker lat={this.props.hazardsToSave.lat} lng={this.props.hazardsToSave.lng} type={this.props.hazardsToSave.type}/>
+        <MapMarker
+          lat={this.props.hazardsToSave.lat}
+          lng={this.props.hazardsToSave.lng}
+          type={this.props.hazardsToSave.type}
+        />
       )
     }
   },
