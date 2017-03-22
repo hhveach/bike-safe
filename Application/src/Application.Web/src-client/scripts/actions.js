@@ -1,6 +1,8 @@
 import {STORE} from './store.js';
 import {SingleRide, AllRides, SingleHazard, AllHazards} from './models/models.js';
 import {UserModel} from './models/model-user.js';
+import DirectionsService from '@google/maps';
+import DirectionsRenderer from '@google/maps';
 
 export const ACTIONS = {
 
@@ -20,7 +22,7 @@ export const ACTIONS = {
   getSingleSavedRide: function(rideId){
     let rides = new AllRides();
     let correctRide = rides.map(function(listEl){
-      if(rideId === listEl._id){return listEl;}
+      if(rideId === listEl.id){return listEl;}
     })
     return correctRide;
   },
@@ -33,16 +35,23 @@ export const ACTIONS = {
   },
 
   saveHazard: function(newHazard){
-    let bad = new SingleHazard();
-      bad.set(newHazard);
-      bad.save().then(function(serverRes){
-      });
+      let bad = new SingleHazard();
+      // saving in backend format
+        // let hazard = {
+        //   Latitude: newHazard.lat,
+        //   Longitude: newHazard.lng
+        // }
+        bad.set(hazard);
+        bad.save().then(function(serverRes){
+
+    })
+
   },
 
   getSingleHazard: function(hazardId){
     let hazard = new AllHazards();
     let correctHazard = hazard.map(function(listEl){
-      if(hazardId === listEl._id){return listEl}
+      if(hazardId === listEl.id){return listEl}
     })
     return correctHazard;
   },
@@ -78,5 +87,17 @@ export const ACTIONS = {
     UserModel.getCurrentUser().then(function(serverRes){
       STORE.setStore('currentUser', serverRes);
     })
+  },
+
+  getDirections: function(mapObj, directionsRequestObj){
+     let directions = new mapObj.maps.DirectionsService();
+     directions.route(directionsRequestObj, function(result, status){
+      if(status === 'OK'){
+        let directionsDisplay = new mapObj.maps.DirectionsRenderer();
+        STORE.setStore('directionsResult', result);
+          directionsDisplay.setDirections(result)
+          directionsDisplay.setMap(mapObj.map);
+      };
+     });
   }
 };

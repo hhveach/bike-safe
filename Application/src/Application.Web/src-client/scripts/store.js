@@ -3,7 +3,9 @@ export const STORE = {
     currentUser: {},
     currentRoute: '',
     mapHazards: [],
-    savedRides: []
+    hazardsToSave: {},
+    savedRides: [],
+    directionsResult: {},
   },
 
   getStore: function(){
@@ -12,7 +14,9 @@ export const STORE = {
 
   setStore: function(prop, propVal){
     this._data[prop] = propVal;
-		if(typeof _callbackFunction === 'function'){this._callbackFunction();};
+		if(typeof this._callbackFunction === 'function'){
+      this._callbackFunction();
+    };
   },
 
   storeChange: function(callback){
