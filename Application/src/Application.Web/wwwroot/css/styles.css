@@ -28,7 +28,7 @@ p {
   font-weight: lighter; }
 
 .input-form {
-  max-width: 35%;
+  max-width: 50%;
   margin-left: auto;
   margin-right: auto; }
 
@@ -42,13 +42,14 @@ p {
   color: #F1F2E5; }
 
 .input-form button {
-  width: 100%;
+  width: 30%;
   padding: 12px;
   margin-top: 16px;
   border-radius: 10px;
   font-size: 22px;
   font-weight: normal;
-  color: #006A55; }
+  color: #006A55;
+  margin-left: 12px; }
 
 .drop-btn {
   color: #F1F2E5;

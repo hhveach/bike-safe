@@ -21,7 +21,7 @@ namespace Application.Web.Controllers
             _Context = context;
         }
 
-        [HttpGet("~/api/hazards")]
+        [HttpGet("~/api/consumer/hazards")]
         public IActionResult GetWindow(double upperLatitude, double upperLongitude, double lowerLatitude, double lowerLongitude)
         {
             var hazards = _Context.Hazards.Where(q => q.Latitude <= upperLatitude && q.Latitude >= lowerLatitude && q.Longitude <= upperLongitude && q.Longitude >= lowerLongitude);
@@ -29,7 +29,7 @@ namespace Application.Web.Controllers
             return Ok(hazards);
         }
 
-        [HttpGet("~/api/hazards")]
+        [HttpGet("~/api/admin/hazards")]
         public IActionResult GetAll(int page = 1, int size = 25)
         {
             var index = page - 1 * size;

@@ -12,11 +12,11 @@ export const AllRides = Backbone.Collection.extend({
 
 
 export const SingleHazard = Backbone.Model.extend({
-  urlRoot: '/api/hazards',
+  urlRoot: '/api/consumer/hazards',
   idAttribute: 'id'
 });
 
 export const AllHazards = Backbone.Collection.extend({
   model: SingleHazard,
-  url: '/api/hazards'
+  url: '/api/consumer/hazards'
 });

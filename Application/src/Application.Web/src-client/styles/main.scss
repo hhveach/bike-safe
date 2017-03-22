@@ -47,7 +47,7 @@ p {
 	border-radius: 10px;
 	font-size: 20px;
 	font-weight: lighter;
-	color: #F1F2E5;
+	color: #232D2F;
 }
 
 .input-form button {
@@ -59,6 +59,34 @@ p {
 	font-weight: normal;
 	color: #006A55;
 	margin-left: 12px;
+}
+
+.login-form {
+	max-width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.login-form button {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 12px;
+	margin-top: 16px;
+	border-radius: 10px;
+	font-size: 22px;
+	font-weight: normal;
+	color: #006A55;
+}
+
+.login-form input {
+	width: 100%;
+	margin-top: 16px;
+	padding: 12px;
+	border-radius: 10px;
+	font-size: 20px;
+	font-weight: lighter;
+	color: #232D2F;
 }
 
 .drop-btn {
