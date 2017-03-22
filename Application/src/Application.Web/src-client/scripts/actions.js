@@ -3,6 +3,7 @@ import {SingleRide, AllRides, SingleHazard, AllHazards} from './models/models.js
 import {UserModel} from './models/model-user.js';
 import DirectionsService from '@google/maps';
 import DirectionsRenderer from '@google/maps';
+import React from 'react';
 
 export const ACTIONS = {
 
@@ -89,15 +90,45 @@ export const ACTIONS = {
     })
   },
 
+  autoType: function(mapObj, elementOne, elementTwo){
+      let options = {
+         types: [],
+      }
+    let autoOne = new mapObj.maps.places.Autocomplete(elementOne, options);
+    let autoTwo = new mapObj.maps.places.Autocomplete(elementTwo, options);
+
+  },
+
   getDirections: function(mapObj, directionsRequestObj){
      let directions = new mapObj.maps.DirectionsService();
-     directions.route(directionsRequestObj, function(result, status){
+       directions.route(directionsRequestObj, function(result, status){
       if(status === 'OK'){
+        console.log(result)
+        let wind = new mapObj.maps.InfoWindow();
         let directionsDisplay = new mapObj.maps.DirectionsRenderer();
-        STORE.setStore('directionsResult', result);
-          directionsDisplay.setDirections(result)
-          directionsDisplay.setMap(mapObj.map);
-      };
+        wind.setContent("<i class='fa fa-bicycle' aria-hidden='true'></i>" + " " + result.routes[0].legs[0].distance.text + "<br>" + result.routes[0].legs[0].duration.text + " ");
+        wind.setPosition(result.routes[0].legs[0].steps[2].end_location);
+        wind.open(mapObj.map);
+            directionsDisplay.setDirections(result);
+            directionsDisplay.setMap(mapObj.map);
+      }
+      // navigator.geolocation.getCurrentPosition(function(position) {
+      //   var pos = {
+      //     lat: position.coords.latitude,
+      //     lng: position.coords.longitude
+      //   };
+      // }),
+      //wind.setPosition(pos);
+      // let renderArray = [];
+      // let requestArray = [];
+      // STORE.setStore('directionsResult', result);
+      // let mapIt = result.routes.map(function(listEl){
+      //   console.log(listEl);
+      //   let directionsDisplay = new mapObj.maps.DirectionsRenderer();
+      //   renderArray.push(directionsDisplay);
+      // });
+      // directionsDisplay.setDirections(listEl);
+      // directionsDisplay.setMap(mapObj.map);
      });
   }
 };

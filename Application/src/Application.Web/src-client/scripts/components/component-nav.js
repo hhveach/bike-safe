@@ -11,7 +11,7 @@ export const NavComponent = React.createClass({
       routeList = [
         {appRouteName: 'login', showText: 'login', hashRoute: 'login'},
         {appRouteName: 'register', showText: 'register', hashRoute: 'register'},
-        {appRouteName: 'map', showText: 'map', hashRoute: 'map'},
+        // {appRouteName: 'map', showText: 'map', hashRoute: 'map'},
       ]
     } if (currentUserOnStore.isAuthenticated === true) {
       routeList = [
@@ -19,7 +19,8 @@ export const NavComponent = React.createClass({
         {appRouteName: 'profile', showText: 'profile', hashRoute: 'profile'},
         {appRouteName: 'rides', showText: 'rides', hashRoute: 'rides'},
         {appRouteName: 'hazards', showText: 'hazards', hashRoute: 'hazards'},
-        {appRouteName: 'login', showText: 'logout', hashRoute: 'login'}
+        {appRouteName: 'login', showText: 'logout', hashRoute: 'login'},
+        {appRouteName: 'map', showText: 'map', hashRoute: 'map'}
       ]
     }
     return routeList;

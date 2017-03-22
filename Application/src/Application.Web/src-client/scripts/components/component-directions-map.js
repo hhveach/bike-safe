@@ -11,12 +11,35 @@ export const DirectionsMapView = React.createClass({
   return  {
           center: {lat: 32.7846418, lng: -79.940918},
           zoom: 14
+
+          // navigator.geolocation.getCurrentPosition(function(position) {
+          //   let center = {
+          //     lat: position.coords.latitude,
+          //     lng: position.coords.longitude
+          //   };
+          // }),
           };
   },
 
   _setMapToStore: function(map, maps){
     STORE.setStore("mapEl", {map, maps})
+    // let service = new maps.places.PlacesService(map);
+    // console.log(service)
   },
+
+  // _renderTime: function(){
+  //   console.log(this.props.duration, this.props.distance);
+  //   return (
+  //   <TravelInfo time={this.props.duration} length={this.props.distance}  />
+  // )
+  // },
+
+  // navigator.geolocation.getCurrentPosition(function(position) {
+  //   var pos = {
+  //     lat: position.coords.latitude,
+  //     lng: position.coords.longitude
+  //   };
+  // }),
 
   render: function() {
     return (
@@ -29,20 +52,20 @@ export const DirectionsMapView = React.createClass({
                   onGoogleApiLoaded={({ map, maps }) => this._setMapToStore(map, maps)}
                   yesIWantToUseGoogleMapApiInternals
                 >
+                  {/* {this._renderTime()}
+                  <TravelInfo dist={this.props.length} dur={this.props.time} LatLng={this.state.center}/> */}
                 </GoogleMap>
               </div>
     );
   }
 });
 
-// const Directions = React.createClass({
-{/* <Directions lat={32.7846418} lng={-79.940918}
-  dir={this.props.directionsResult}/> */}
-//
+// const TravelInfo = React.createClass({
 //   render: function(){
 //     return (
-//         <div>
-//         </div>
-//     );
+//       <div><h1>{this.props.dist}</h1>
+//                               <h1>{this.props.dur}</h1>
+//                             </div>
+//     )
 //   }
 // });

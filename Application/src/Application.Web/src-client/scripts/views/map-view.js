@@ -1,7 +1,9 @@
 import React from 'react';
 import GoogleMap from 'google-map-react';
 import {ACTIONS} from '../actions.js'
-import {STORE} from '../store.js'
+import {STORE} from '../store.js';
+import Autocomplete from '@google/maps';
+
 export const BasicMapView = React.createClass({
   getInitialState: function(){
   return  {
