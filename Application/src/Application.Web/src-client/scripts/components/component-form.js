@@ -14,23 +14,34 @@ export const FormComponent = React.createClass({
 
     _saveHazards: function(evt){
       evt.preventDefault();
-      if(this.props.hazardsToSave.lat === undefined){
+      console.log([evt.target])
+      if(this.props.hazardsToSave.lat === undefined && this.props.hazardsToSave.lng === undefined){
 
       }else{
-        console.log(this.props.hazardsToSave, 'hazard to saver')
-        // ACTIONS.saveHazard(this.props.hazardToSave)
+        console.log(this.refs, 'hazard to save')
+        let hazardObj = {
+          type: this.refs.hazardInfo.value,
+          latitude: this.props.hazardsToSave.lat,
+          longitude: this.props.hazardsToSave.lng
+        }
+        console.log(hazardObj)
+        ACTIONS.saveHazard(hazardObj)
       }
 
     },
 
     render: function(){
-      console.log(this.props)
+      // console.log(this.props)
       return (
         <div className="input-form">
             <input type="text" placeholder="origin address"></input>
             <input type="text" placeholder="destination address"></input>
             <button type="onSubmit" name="ridefield">Ride!</button>
-            <button onClick={this._saveHazards} name="hazardsfield">Save Hazards</button>
+            <form onSubmit={this._saveHazards}>
+              <input type="text" ref="hazardInfo" placeholder="hazard info"></input>
+              <button type="submit" name="hazardsfield">Save Hazards</button>
+            </form>
+            <input type="text" placeholder="ride info"></input>
             <button type="onClick" name="routesfield">Save Routes</button>
         </div>
       )

@@ -29,7 +29,9 @@ namespace Application.Web.Controllers
             return Ok(hazards);
         }
 
+
         [Authorize]
+
         [HttpPost("~/api/consumer/hazards")]
         public async Task<IActionResult> ConsumerPost([FromBody]Hazard hazard)
         {
@@ -83,7 +85,7 @@ namespace Application.Web.Controllers
 
             return Ok(existingHazard);
         }
-        
+
         [Authorize]
         [HttpDelete("~/api/consumer/hazards/{id}")]
         public IActionResult ConsumerDelete(int id)
