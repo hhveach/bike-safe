@@ -45,6 +45,7 @@ namespace Application.Web
                 };
 
                 var result = await userManager.CreateAsync(user, "qwer1234");
+                await userManager.AddToRoleAsync(user, Roles.Admin);
             }
 
             if (await userManager.FindByEmailAsync("consumer@bike-safe.com") == null)
@@ -60,6 +61,7 @@ namespace Application.Web
                 };
 
                 var result = await userManager.CreateAsync(user, "qwer1234");
+                await userManager.AddToRoleAsync(user, Roles.Consumer);
             }
 
             return builder;
