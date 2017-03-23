@@ -1,8 +1,11 @@
 import React from 'react';
 import GoogleMap from 'google-map-react';
 import {ACTIONS} from '../actions.js'
+import {STORE} from '../store.js'
+import {getViewCorners} from '../utils/utils-map.js'
 import {STORE} from '../store.js';
 import Autocomplete from '@google/maps';
+
 
 export const BasicMapView = React.createClass({
   getInitialState: function(){
@@ -12,6 +15,17 @@ export const BasicMapView = React.createClass({
           markers: []
         };
 
+  },
+
+  componentDidMount: function(){
+
+  },
+
+  _handleMapLoaded: function({map, maps} ) {
+    console.log(map)
+    let cornerCoords = getViewCorners(map)
+    console.log(cornerCoords)
+    ACTIONS.getAllHazards(cornerCoords);
   },
 
 
@@ -30,11 +44,6 @@ export const BasicMapView = React.createClass({
     }
   },
 
-  // _renderSavedHazards: function(){
-  //   // let hazards = this.props.mapHazards
-  //   ACTIONS.getAllHazards()
-  // },
-
   _onMapClick: function(map){
     console.log(map.lat, map.lng,);
     console.log('wahht')
@@ -45,22 +54,10 @@ export const BasicMapView = React.createClass({
 
     ACTIONS.setHazardToSave(newHazardObj)
 
-    //Set store to newHazardObj
-    //
-    // let latitude = map.lat;
-    // let longitude = map.lng;
-    // let marker = new maps.Marker({
-    //   position: {lat: map.lat, lng: map.lng},
-    //   map: this.map
-  // });
-
-    // this.setState({
-    //   markers: [...this.state.markers, <MapMarker lat={map.lat} lng={map.lng}/>]
-    // })
-
   },
+
   render: function() {
-    console.log(this.props.hazardsToSave, 'lat n long')
+    // console.log(this.props.mapHazards, 'lat n long')
     return (<div className="first-map">
       <GoogleMap
         defaultCenter={this.state.center}
@@ -68,8 +65,9 @@ export const BasicMapView = React.createClass({
         bootstrapURLKeys={{key: 'AIzaSyBGmL06icW_4nOifeu4rxUuEuFzOj2HBjY'}}
         layerTypes={['BicyclingLayer']}
         onClick={this._onMapClick}
+        onGoogleApiLoaded={this._handleMapLoaded}
+        yesIWantToUseGoogleMapApiInternals={true}
       >
-        {/* {this._renderSavedHazards()} */}
         {this._renderMapMarker()}
         <MapMarker lat={this.props.lat} lng={this.props.lng}/>
         {this.state.markers}
