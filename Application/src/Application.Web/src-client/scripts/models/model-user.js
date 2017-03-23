@@ -42,12 +42,11 @@ UserModel.getCurrentUser =  function(){
 		headers: {
 			'Content-Type': 'application/json'
 		},
-		url: '/api/accounts/current'
+		url: '/api/accounts'
 	})
 }
 
 UserModel.logOut =  function(){
-	console.log('logging in!')
 	return $.ajax({
 		method: 'POST',
 		url: '/api/accounts/logout'

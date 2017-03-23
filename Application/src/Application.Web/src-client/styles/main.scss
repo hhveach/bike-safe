@@ -151,3 +151,37 @@ p {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.profile {
+	width: 65%;
+	margin: 0 auto;
+}
+
+.profile img {
+	width: 50%;
+	margin: 25px auto;
+	border: 2px solid #fff;
+}
+
+.rides-list {
+	width: 75%;
+	margin: 0 auto;
+}
+
+.rides-list ul {
+	width: 100%;
+	list-style-type: none;
+	color: white;
+}
+
+.rides-list li:hover {
+	cursor: default;
+}
+
+.rides-list p {text-align: left;}
+
+.rides-list i {
+	margin: 0 8px;
+	font-size: 16px;
+	color: #fff;
+}

@@ -1,13 +1,13 @@
 import Backbone from 'backbone';
 
 export const SingleRide = Backbone.Model.extend({
-  urlRoot: '/api/rides',
+  urlRoot: '/api/consumer/rides',
   idAttribute: 'id'
 });
 
 export const AllRides = Backbone.Collection.extend({
   model: SingleRide,
-  url: '/api/rides'
+  url: '/api/consumer/rides'
 });
 
 
