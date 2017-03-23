@@ -59,7 +59,7 @@ namespace Application.Web.Controllers
         {
             var user = new User();
             user.UserName = user.Email = model.Email;
-            
+
             var result = await _UserManager.CreateAsync(user, model.Password);
 
             if(result.Succeeded)

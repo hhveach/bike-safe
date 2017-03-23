@@ -3,11 +3,9 @@ import {SingleRide, AllRides, SingleHazard, AllHazards} from './models/models.js
 import {UserModel} from './models/model-user.js';
 import DirectionsService from '@google/maps';
 import DirectionsRenderer from '@google/maps';
-<<<<<<< HEAD
 import GoogleMap from 'google-map-react';
-=======
 import React from 'react';
->>>>>>> 5774cc40428ba76ddee645784331c1edae72289f
+
 
 export const ACTIONS = {
 
@@ -21,6 +19,8 @@ export const ACTIONS = {
     let ride = new SingleRide();
       ride.set(newRideEntry);
       ride.save().then(function(serverRes){
+        console.log(serverRes)
+        ACTIONS.getAllSavedRides();
       });
   },
 
@@ -84,7 +84,9 @@ export const ACTIONS = {
 
   userLogin: function(username, password){
     UserModel.logIn(username, password).then(function(serverRes){
-      STORE.setStore('currentUser', serverRes);
+      // localStorage.setItem("user", JSON.stringify(serverRes))
+      // STORE.setStore('currentUser', serverRes);
+      ACTIONS.getUser();
       ACTIONS.changeNav('home', '')
     })
   },
@@ -145,6 +147,11 @@ export const ACTIONS = {
       // directionsDisplay.setDirections(listEl);
       // directionsDisplay.setMap(mapObj.map);
      });
+  },
+
+  goToRide: function(org, dest){
+    STORE.setStore('inputRide', {origin: org, destination: dest});
+    ACTIONS.changeNav('map', 'map');
   }
 
 };

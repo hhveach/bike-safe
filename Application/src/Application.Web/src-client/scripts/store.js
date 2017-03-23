@@ -5,15 +5,12 @@ export const STORE = {
     mapHazards: [],
     hazardsToSave: {},
     savedRides: [],
-<<<<<<< HEAD
     directionsResult: {},
     viewCorners: {}
-=======
     mapEl: {}
     // directionsResult: {}
     // duration: '',
     // distance: ''
->>>>>>> 5774cc40428ba76ddee645784331c1edae72289f
   },
 
   getStore: function(){
@@ -28,6 +25,14 @@ export const STORE = {
   },
 
   storeChange: function(callback){
+    if(typeof callback !== 'function'){
+    	throw new Error('must have a callback function')
+    	}
+
+    if(typeof this._callbackFunction === 'function'){
+    	throw new Error('already fired')
+    	}
+
     this._callbackFunction = callback;
   }
 };
