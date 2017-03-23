@@ -45,7 +45,7 @@ export const ACTIONS = {
       bad.set(mapHazards);
       bad.save().then(function(serverRes){
         console.log('saved hazard:', serverRes)
-          // ACTIONS.getAllHazards()
+          // ACTIONS.getAllHazards(this.props.viewCorners)
     }).fail(function(err){
       console.log('err : ', err.responseText)
     })

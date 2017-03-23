@@ -2,8 +2,10 @@ import React from 'react';
 import GoogleMap from 'google-map-react';
 import {ACTIONS} from '../actions.js';
 import {STORE} from '../store.js';
+import {HazardsComponent} from '../components/component-hazards.js';
 
 export const HazardsView = React.createClass({
+<<<<<<< HEAD
 
     getInitialState: function(){
     return  {
@@ -68,3 +70,11 @@ export const HazardsView = React.createClass({
       return <div>&#8671;</div>
     }
   })
+=======
+  render: function(){
+    return (
+      <HazardsComponent {...this.props}/>
+    )
+  }
+});
+>>>>>>> 22ab4bfe044f8195312076ced4f9ac1e3bce2e5f

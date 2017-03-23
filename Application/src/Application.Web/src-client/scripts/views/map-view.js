@@ -2,7 +2,11 @@ import React from 'react';
 import GoogleMap from 'google-map-react';
 import {ACTIONS} from '../actions.js'
 import {STORE} from '../store.js'
+<<<<<<< HEAD
 import {getViewCorners} from '../utils/utils-map.js'
+=======
+import {getViewCorners} from '../utils/utils-map.js';
+>>>>>>> 22ab4bfe044f8195312076ced4f9ac1e3bce2e5f
 import Autocomplete from '@google/maps';
 
 
