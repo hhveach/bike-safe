@@ -24,7 +24,7 @@ namespace Application.Web.Controllers
         [HttpGet("~/api/consumer/hazards")]
         public IActionResult GetWindow(double upperLatitude, double upperLongitude, double lowerLatitude, double lowerLongitude)
         {
-            var hazards = _Context.Hazards.Where(q => q.Latitude <= upperLatitude && q.Latitude >= lowerLatitude && q.Longitude >= upperLongitude && q.Longitude <= lowerLongitude);
+            var hazards = _Context.Hazards.Where(q => q.Latitude <= upperLatitude && q.Latitude >= lowerLatitude && q.Longitude <= upperLongitude && q.Longitude >= lowerLongitude);
 
             return Ok(hazards);
         }
