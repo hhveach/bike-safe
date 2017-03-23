@@ -3,6 +3,8 @@ import GoogleMap from 'google-map-react';
 import {ACTIONS} from '../actions.js'
 import {STORE} from '../store.js'
 import {getViewCorners} from '../utils/utils-map.js'
+import {STORE} from '../store.js';
+import Autocomplete from '@google/maps';
 
 
 export const BasicMapView = React.createClass({

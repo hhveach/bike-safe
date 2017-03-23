@@ -5,8 +5,15 @@ export const STORE = {
     mapHazards: [],
     hazardsToSave: {},
     savedRides: [],
+<<<<<<< HEAD
     directionsResult: {},
     viewCorners: {}
+=======
+    mapEl: {}
+    // directionsResult: {}
+    // duration: '',
+    // distance: ''
+>>>>>>> 5774cc40428ba76ddee645784331c1edae72289f
   },
 
   getStore: function(){

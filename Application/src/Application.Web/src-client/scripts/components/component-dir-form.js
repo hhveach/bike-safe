@@ -14,12 +14,19 @@ export const DirFormComponent = React.createClass({
     ACTIONS.getDirections(this.props.mapEl, directionsRequest);
   },
 
+  _handleAuto: function(event, mapObj){
+    ACTIONS.autoType(this.props.mapEl, this.refs.search, this.refs.searchTwo)
+  },
+
   render: function(){
+
     return (
       <div className="input-form">
         <form onSubmit={this._handleSubmit}>
-          <input type="text" placeholder="origin address" name="origin"></input>
-          <input type="text" placeholder="destination address" name="dest"></input>
+          <input onKeyDown={(evt) => this._handleAuto(evt, this.props.mapEl)}
+                 ref="search" type="text" placeholder="origin address" name="origin"></input>
+          <input onKeyDown={(evt) => this._handleAuto(evt, this.props.mapEl)}
+                 ref="searchTwo" type="text" placeholder="destination address" name="dest"></input>
           <button type="submit">Ride!</button>
         </form>
       </div>
