@@ -25,6 +25,10 @@ export const FormComponent = React.createClass({
           longitude: this.props.hazardsToSave.lng
         }
         console.log(hazardObj)
+        
+        
+        
+        
         ACTIONS.saveHazard(hazardObj)
       }
 

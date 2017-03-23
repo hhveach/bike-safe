@@ -3,6 +3,7 @@ import {SingleRide, AllRides, SingleHazard, AllHazards} from './models/models.js
 import {UserModel} from './models/model-user.js';
 import DirectionsService from '@google/maps';
 import DirectionsRenderer from '@google/maps';
+import GoogleMap from 'google-map-react';
 
 export const ACTIONS = {
 
@@ -34,13 +35,13 @@ export const ACTIONS = {
       });
   },
 
-  saveHazard: function(newHazard){
+  saveHazard: function(mapHazards){
     console.log('saving hazard')
       let bad = new SingleHazard();
-      bad.set(newHazard);
+      bad.set(mapHazards);
       bad.save().then(function(serverRes){
         console.log('saved hazard:', serverRes)
-          // ACTIONS.getAllHazards()
+        // ACTIONS.getAllHazards()
     }).fail(function(err){
       console.log('err : ', err.responseText)
     })
@@ -54,14 +55,19 @@ export const ACTIONS = {
     })
     return correctHazard;
   },
+  // ACTIONS.getAllHazards(this.state.viewCorners)
 
-  getAllHazards: function(){
-    let hazards = new AllHazards();
-      hazards.fetch().then(function(serverRes){
-        console.log(serverRes)
-        STORE.setStore('hazardsToSave', {})
-        STORE.setStore('mapHazards', serverRes);
-      })
+  getAllHazards: function(currentViewCorners){
+    console.log(currentViewCorners)
+
+    let hazards = new AllHazards(currentViewCorners); //
+    console.log(hazards.url)
+
+    hazards.fetch().then(function(serverRes){
+      console.log(serverRes)
+      STORE.setStore('hazardsToSave', {})
+      STORE.setStore('mapHazards', serverRes);
+    })
   },
 
   setHazardToSave: function(hazard){
@@ -105,4 +111,5 @@ export const ACTIONS = {
       };
      });
   }
+
 };
