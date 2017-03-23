@@ -27,18 +27,7 @@ export const HazardsView = React.createClass({
           />
         )
       }
-    },
-
-    _onMapClick: function(map){
-      console.log(map.lat, map.lng,);
-      console.log('wahht')
-      let newHazardObj = {
-        lat: map.lat,
-        lng: map.lng
-      };
-
-      ACTIONS.setHazardToSave(newHazardObj)
-
+      
     },
 
     _makeSavedHazards: function(hazardsList){
@@ -52,7 +41,7 @@ export const HazardsView = React.createClass({
 
     render: function() {
       let allHazards = this.props.mapHazards
-      console.log(allHazards)
+      // console.log(allHazards)
       // console.log(this.props.hazardsToSave, 'lat n long')
       return (<div className="first-map">
         <GoogleMap

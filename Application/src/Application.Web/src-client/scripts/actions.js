@@ -45,11 +45,7 @@ export const ACTIONS = {
       bad.set(mapHazards);
       bad.save().then(function(serverRes){
         console.log('saved hazard:', serverRes)
-<<<<<<< HEAD
-        // ACTIONS.getAllHazards()
-=======
-          ACTIONS.getAllHazards()
->>>>>>> 5774cc40428ba76ddee645784331c1edae72289f
+          // ACTIONS.getAllHazards()
     }).fail(function(err){
       console.log('err : ', err.responseText)
     })
@@ -72,7 +68,7 @@ export const ACTIONS = {
     console.log(hazards.url)
 
     hazards.fetch().then(function(serverRes){
-      console.log(serverRes)
+      // console.log(serverRes)
       STORE.setStore('hazardsToSave', {})
       STORE.setStore('mapHazards', serverRes);
     })
