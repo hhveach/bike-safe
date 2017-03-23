@@ -7,6 +7,7 @@ export const ProfileComponent = React.createClass({
   _handleProfileBuild: function(userObject){
       return (  <div className="profile">
                   <h1>{userObject.email}</h1>
+                  <h1>{userObject.bike}</h1>
                 </div>
       )
   },

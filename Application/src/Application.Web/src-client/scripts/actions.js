@@ -41,7 +41,7 @@ export const ACTIONS = {
       bad.set(newHazard);
       bad.save().then(function(serverRes){
         console.log('saved hazard:', serverRes)
-          // ACTIONS.getAllHazards()
+          ACTIONS.getAllHazards()
     }).fail(function(err){
       console.log('err : ', err.responseText)
     })
@@ -96,23 +96,20 @@ export const ACTIONS = {
   },
 
   autoType: function(mapObj, elementOne, elementTwo){
-      let options = {
-         types: [],
-      }
+    let options = {types: []}
     let autoOne = new mapObj.maps.places.Autocomplete(elementOne, options);
     let autoTwo = new mapObj.maps.places.Autocomplete(elementTwo, options);
-
   },
 
   getDirections: function(mapObj, directionsRequestObj){
      let directions = new mapObj.maps.DirectionsService();
        directions.route(directionsRequestObj, function(result, status){
       if(status === 'OK'){
-        console.log(result)
+        // console.log(result.routes[0].overview_polyline.length)
         let wind = new mapObj.maps.InfoWindow();
         let directionsDisplay = new mapObj.maps.DirectionsRenderer();
         wind.setContent("<i class='fa fa-bicycle' aria-hidden='true'></i>" + " " + result.routes[0].legs[0].distance.text + "<br>" + result.routes[0].legs[0].duration.text + " ");
-        wind.setPosition(result.routes[0].legs[0].steps[2].end_location);
+        wind.setPosition(result.routes[0].legs[0].steps[0].end_location);
         wind.open(mapObj.map);
             directionsDisplay.setDirections(result);
             directionsDisplay.setMap(mapObj.map);
