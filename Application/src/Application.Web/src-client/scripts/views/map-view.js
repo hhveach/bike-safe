@@ -2,8 +2,7 @@ import React from 'react';
 import GoogleMap from 'google-map-react';
 import {ACTIONS} from '../actions.js'
 import {STORE} from '../store.js'
-import {getViewCorners} from '../utils/utils-map.js'
-import {STORE} from '../store.js';
+import {getViewCorners} from '../utils/utils-map.js';
 import Autocomplete from '@google/maps';
 
 

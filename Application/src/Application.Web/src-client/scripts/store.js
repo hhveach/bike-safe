@@ -6,7 +6,7 @@ export const STORE = {
     hazardsToSave: {},
     savedRides: [],
     directionsResult: {},
-    viewCorners: {}
+    viewCorners: {},
     mapEl: {}
     // directionsResult: {}
     // duration: '',
