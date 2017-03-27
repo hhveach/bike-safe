@@ -114,18 +114,24 @@ export const ACTIONS = {
   },
 
   autoType: function(mapObj, elementOne, elementTwo){
-    navigator.geolocation.getCurrentPosition(function(position){
-    let pos = {lat: position.coords.latitude, lng: position.coords.longitude};
-    let windo = new mapObj.maps.InfoWindow({map: mapObj.map});
-    windo.setContent("<i class='fa fa-location-arrow' aria-hidden='true'></i>");
-
-    windo.setPosition(pos);
-    windo.open(mapObj.map);
-
-  });
     let options = {types: []}
     let autoOne = new mapObj.maps.places.Autocomplete(elementOne, options);
     let autoTwo = new mapObj.maps.places.Autocomplete(elementTwo, options);
+  },
+
+  getLocation: function(mapObj){
+    let geo = new mapObj.maps.Geocoder();
+    navigator.geolocation.getCurrentPosition(function(position){
+    let pos = {lat: position.coords.latitude, lng: position.coords.longitude};
+    geo.geocode({'location': pos}, function(results, status){
+      STORE.setStore('currentLocation', results[0].formatted_address);
+    });
+    let windo = new mapObj.maps.Marker({
+      position: pos,
+      animation: mapObj.maps.Animation.DROP
+    });
+      windo.setMap(mapObj.map);
+    });
   },
 
   // getPlaces: function(map, maps){
@@ -160,21 +166,6 @@ export const ACTIONS = {
             directionsDisplay.setDirections(result);
             directionsDisplay.setMap(mapObj.map);
       };
-      // navigator.geolocation.getCurrentPosition(function(position) {
-      //   var pos = {
-      //     lat: position.coords.latitude,
-      //     lng: position.coords.longitude
-      //   };
-      // }),
-      //wind.setPosition(pos);
-      // let renderArray = [];
-      // let requestArray = [];
-      // STORE.setStore('directionsResult', result);
-      // let mapIt = result.routes.map(function(listEl){
-      //   console.log(listEl);
-      //   let directionsDisplay = new mapObj.maps.DirectionsRenderer();
-      //   renderArray.push(directionsDisplay);
-      // });
   });
 },
 
@@ -190,5 +181,4 @@ export const ACTIONS = {
   goOnRide: function(){
     STORE.setStore('viewReminders', false);
   }
-
 };

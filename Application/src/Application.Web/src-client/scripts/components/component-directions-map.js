@@ -1,8 +1,6 @@
 import React from 'react';
 import GoogleMap from 'google-map-react';
 import {DirFormComponent} from './component-form.js';
-import DirectionsRenderer from '@google/maps';
-import { maps } from '@google/maps';
 import {ACTIONS} from '../actions.js';
 import {STORE} from '../store.js'
 
@@ -12,27 +10,13 @@ export const DirectionsMapView = React.createClass({
   return  {
           center: {lat: 32.7846418, lng: -79.940918},
           zoom: 14
-
-          // navigator.geolocation.getCurrentPosition(function(position) {
-          //   let center = {
-          //     lat: position.coords.latitude,
-          //     lng: position.coords.longitude
-          //   };
-          // }),
           };
   },
 
   _setMapToStore: function(map, maps){
     STORE.setStore("mapEl", {map, maps});
-    // ACTIONS.getPlaces(map, maps);
+    ACTIONS.getLocation(this.props.mapEl);
   },
-
-  // navigator.geolocation.getCurrentPosition(function(position) {
-  //   var pos = {
-  //     lat: position.coords.latitude,
-  //     lng: position.coords.longitude
-  //   };
-  // }),
 
   render: function() {
     return (
@@ -40,7 +24,7 @@ export const DirectionsMapView = React.createClass({
                 <GoogleMap
                   defaultCenter={this.state.center}
                   defaultZoom={this.state.zoom}
-                  bootstrapURLKeys={{key: 'AIzaSyBGmL06icW_4nOifeu4rxUuEuFzOj2HBjY'}}
+                  bootstrapURLKeys={{key: 'AIzaSyBx7EjgwkDfaGFJ0JhbRa_l4jkEPXloFuU'}}
                   layerTypes={['BicyclingLayer']}
                   onGoogleApiLoaded={({ map, maps }) => this._setMapToStore(map, maps)}
                   yesIWantToUseGoogleMapApiInternals
@@ -50,13 +34,3 @@ export const DirectionsMapView = React.createClass({
     );
   }
 });
-
-// const TravelInfo = React.createClass({
-//   render: function(){
-//     return (
-//       <div><h1>{this.props.dist}</h1>
-//                               <h1>{this.props.dur}</h1>
-//                             </div>
-//     )
-//   }
-// });
