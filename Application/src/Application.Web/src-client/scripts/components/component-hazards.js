@@ -12,16 +12,21 @@ export const HazardsComponent = React.createClass({
           };
     },
 
-    // getDefaultProps: function(){
-    //   return
-    // }
+    _setMapToStore: function(map, maps){
+      STORE.setStore("mapEl", {map, maps})
+    },
+
+    _showInfoWindow: function(evt){
+      let haz = this.props.mapHazards;
+      ACTIONS.createInfoWindow(this.props.mapEl, this.props.mapHazards)
+    },
 
     _mapRender: function(haz){
       // ACTIONS.getAllHazards(this.props.viewCorners)
       // let haz = this.props.mapHazards;
-      console.log(haz)
+      // console.log(haz)
       let hazardsMap = haz.map(function(listEl, i){
-        return <MapMarker key={i} lat={listEl.latitude} lng={listEl.longitude}/>
+        return <MapMarker key={i} lat={listEl.latitude} lng={listEl.longitude} type={listEl.type}/>
       });
       return hazardsMap;
     },
@@ -65,7 +70,7 @@ export const HazardsComponent = React.createClass({
 
     render: function() {
       let allHazards = this.props.mapHazards
-      console.log(allHazards)
+      // console.log(allHazards)
       // console.log(this.props.hazardsToSave, 'lat n long')
       return (<div className="first-map">
         <GoogleMap
@@ -73,10 +78,14 @@ export const HazardsComponent = React.createClass({
           defaultZoom={this.state.zoom}
           bootstrapURLKeys={{key: 'AIzaSyBGmL06icW_4nOifeu4rxUuEuFzOj2HBjY'}}
           layerTypes={['BicyclingLayer']}
+          yesIWantToUseGoogleMapApiInternals={true}
+          onGoogleApiLoaded={({ map, maps }) => this._setMapToStore(map, maps)}
           // onClick={this._onMapClick}
         >
           {this._mapRender(this.props.mapHazards)}
-          <MapMarker lat={this.props.lat} lng={this.props.lng}/>
+          <MapMarker lat={this.props.lat} lng={this.props.lng}
+          onHover={this._showInfoWindow()}
+          />
           {/* {this.state.markers} */}
           {/* {this._makeSavedHazards(allHazards)} */}
           {/* <HazardItem/> */}

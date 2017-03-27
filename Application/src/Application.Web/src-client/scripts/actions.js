@@ -62,11 +62,10 @@ export const ACTIONS = {
   // ACTIONS.getAllHazards(this.state.viewCorners)
 
   getAllHazards: function(currentViewCorners){
-    console.log(currentViewCorners)
+    // console.log(currentViewCorners)
 
     let hazards = new AllHazards(currentViewCorners); //
-    console.log(hazards.url)
-
+    // console.log(hazards.url)
     hazards.fetch().then(function(serverRes){
       // console.log(serverRes)
       STORE.setStore('hazardsToSave', {})
@@ -113,6 +112,7 @@ export const ACTIONS = {
   },
 
   getDirections: function(mapObj, directionsRequestObj){
+    console.log(mapObj, 'mapObj2')
      let directions = new mapObj.maps.DirectionsService();
        directions.route(directionsRequestObj, function(result, status){
       if(status === 'OK'){

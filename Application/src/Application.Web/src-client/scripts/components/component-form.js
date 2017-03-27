@@ -24,11 +24,7 @@ export const FormComponent = React.createClass({
           latitude: this.props.hazardsToSave.lat,
           longitude: this.props.hazardsToSave.lng
         }
-        console.log(hazardObj)
-        
-        
-        
-        
+        console.log(hazardObj)      
         ACTIONS.saveHazard(hazardObj)
       }
 

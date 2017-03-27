@@ -2,12 +2,10 @@ import React from 'react';
 import GoogleMap from 'google-map-react';
 import {ACTIONS} from '../actions.js'
 import {STORE} from '../store.js'
-<<<<<<< HEAD
 import {getViewCorners} from '../utils/utils-map.js'
-=======
-import {getViewCorners} from '../utils/utils-map.js';
->>>>>>> 22ab4bfe044f8195312076ced4f9ac1e3bce2e5f
 import Autocomplete from '@google/maps';
+import { maps } from '@google/maps';
+
 
 
 export const BasicMapView = React.createClass({
@@ -15,22 +13,18 @@ export const BasicMapView = React.createClass({
   return  {
           center: {lat: 32.7846418, lng: -79.940918},
           zoom: 14,
-          markers: []
+          markers: [],
+          mapObj: {}
         };
 
   },
 
-  componentDidMount: function(){
-
-  },
-
-  _handleMapLoaded: function({map, maps} ) {
+  _handleMapLoaded: function(map, maps) {
     console.log(map)
     let cornerCoords = getViewCorners(map)
-    console.log(cornerCoords)
     ACTIONS.getAllHazards(cornerCoords);
+    STORE.setStore('mapEl', {map, maps})
   },
-
 
   _renderMapMarker: function(){
     if(this.props.hazardsToSave.lat === undefined && this.props.hazardsToSave.lng === undefined){
@@ -41,10 +35,18 @@ export const BasicMapView = React.createClass({
         <MapMarker
           lat={this.props.hazardsToSave.lat}
           lng={this.props.hazardsToSave.lng}
-          type={this.props.hazardsToSave.type}
+          type={this.props.mapHazards.type}
         />
       )
     }
+  },
+
+  _mapRender: function(haz){
+    console.log(haz)
+    let hazardsMap = haz.map(function(listEl, i){
+      return <MapMarker key={i} lat={listEl.latitude} lng={listEl.longitude} text={listEl.type} />
+    });
+    return hazardsMap;
   },
 
   _onMapClick: function(map){
@@ -59,23 +61,45 @@ export const BasicMapView = React.createClass({
 
   },
 
+  _onMarkerHover: function(hazType){
+    let currentSelected = this.props.mapHazards[hazType]
+    this.setState({ currentSelected: currentSelected})
+  },
+
+  _onMarkerLeave: function(index, hazType){
+    let currentSelected = this.props.mapHazards[hazType]
+    this.setState({ currentSelected: -1})
+  },
+
   render: function() {
     // console.log(this.props.mapHazards, 'lat n long')
-    return (<div className="first-map">
+    return (<div className="first-map" style={{position: 'relative'}}>
       <GoogleMap
         defaultCenter={this.state.center}
         defaultZoom={this.state.zoom}
         bootstrapURLKeys={{key: 'AIzaSyBGmL06icW_4nOifeu4rxUuEuFzOj2HBjY'}}
         layerTypes={['BicyclingLayer']}
         onClick={this._onMapClick}
-        onGoogleApiLoaded={this._handleMapLoaded}
+        onGoogleApiLoaded={({ map, maps }) => this._handleMapLoaded(map, maps)}
+        // onGoogleApiLoaded={this._handleMapLoaded}
         yesIWantToUseGoogleMapApiInternals={true}
-      >
+        onChildMouseEnter={this._onMarkerHover}
+        onChildMouseLeave={this._onMarkerLeave}
+        >
+        {this._mapRender(this.props.mapHazards)}
         {this._renderMapMarker()}
-        <MapMarker lat={this.props.lat} lng={this.props.lng}/>
+        <MapMarker
+          lat={this.props.lat}
+          lng={this.props.lng}
+          text={this.props.type}
+        />
         {this.state.markers}
-      </GoogleMap>
 
+
+      </GoogleMap>
+      <div className="info-box" style={{position: 'absolute', bottom: 0, right: 0, background: 'lightyellow', padding: '10px'}}>
+        {typeof this.state.currentSelected === 'undefined' ?   '---' : this.state.currentSelected.type }
+      </div>
       </div>
     );
   }

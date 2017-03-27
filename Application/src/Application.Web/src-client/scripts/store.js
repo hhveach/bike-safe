@@ -7,7 +7,7 @@ export const STORE = {
     savedRides: [],
     directionsResult: {},
     viewCorners: {},
-    mapEl: {}
+    mapEl: {},
     // directionsResult: {}
     // duration: '',
     // distance: ''

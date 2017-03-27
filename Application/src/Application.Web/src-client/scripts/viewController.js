@@ -3,7 +3,6 @@ import {HomeView} from './views/home-view.js';
 import {LoginView} from './views/login-view.js';
 import {RegisterView} from './views/register-view.js';
 import {ProfileView} from './views/profile-view.js';
-import {RemindersView} from './views/reminders-view.js';
 import {RidesView} from './views/rides-view.js';
 import {HazardsView} from './views/hazards-view.js';
 import {NavComponent} from './components/component-nav.js';
@@ -24,7 +23,7 @@ export const ViewController = React.createClass({
       let newStoreObj = STORE.getStore();
       comp.setState(newStoreObj);
     });
-    // ACTIONS.getAllHazards(this.state.viewCorners)
+
   },
 
   render: function(){
@@ -42,9 +41,6 @@ export const ViewController = React.createClass({
           break;
         case 'profile':
           renderComponent = <ProfileView {...this.state}/>;
-          break;
-        case 'reminders':
-          renderComponent = <RemindersView {...this.state}/>;
           break;
         case 'rides':
           renderComponent = <RidesView {...this.state}/>;
