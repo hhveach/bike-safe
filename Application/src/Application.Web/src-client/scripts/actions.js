@@ -24,6 +24,21 @@ export const ACTIONS = {
     });
   },
 
+  deleteHaz: function(hazardId){
+    let delHaz = new SingleHazard();
+    delHaz.set({id: hazardId})
+    console.log('destroying hazard???')
+    console.log(delHaz)
+    delHaz.destroy().then( function(deletedRecord){
+      console.log(STORE.getStore().mapHazards)
+      let newMapHazards = STORE.getStore().mapHazards
+      let filteredMapHazards = newMapHazards.filter( function(hazard){
+        return hazard.id !== deletedRecord.id
+      })
+      STORE.setStore('mapHazards', filteredMapHazards)
+    })
+  },
+
   saveRide: function(newRideEntry){
     let ride = new SingleRide();
       ride.set(newRideEntry);
@@ -71,7 +86,6 @@ export const ACTIONS = {
 
   getAllHazards: function(currentViewCorners){
     // console.log(currentViewCorners)
-
     let hazards = new AllHazards(currentViewCorners); //
     // console.log(hazards.url)
     hazards.fetch().then(function(serverRes){

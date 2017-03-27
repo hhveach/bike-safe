@@ -40,7 +40,7 @@ export const DirectionsMapView = React.createClass({
                 <GoogleMap
                   defaultCenter={this.state.center}
                   defaultZoom={this.state.zoom}
-                  bootstrapURLKeys={{key: 'AIzaSyBGmL06icW_4nOifeu4rxUuEuFzOj2HBjY'}}
+                  bootstrapURLKeys={{key: 'AIzaSyBx7EjgwkDfaGFJ0JhbRa_l4jkEPXloFuU'}}
                   layerTypes={['BicyclingLayer']}
                   onGoogleApiLoaded={({ map, maps }) => this._setMapToStore(map, maps)}
                   yesIWantToUseGoogleMapApiInternals
