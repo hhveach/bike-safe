@@ -23,7 +23,7 @@ export const ViewController = React.createClass({
       let newStoreObj = STORE.getStore();
       comp.setState(newStoreObj);
     });
-    // ACTIONS.getAllHazards(this.state.viewCorners)
+
   },
 
   render: function(){

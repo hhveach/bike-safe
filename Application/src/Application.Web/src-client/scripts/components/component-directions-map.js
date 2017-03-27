@@ -5,6 +5,7 @@ import DirectionsRenderer from '@google/maps';
 import { maps } from '@google/maps';
 import {ACTIONS} from '../actions.js';
 import {STORE} from '../store.js'
+
 export const DirectionsMapView = React.createClass({
 
   getInitialState: function(){

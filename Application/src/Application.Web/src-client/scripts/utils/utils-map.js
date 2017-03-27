@@ -1,3 +1,5 @@
+import {STORE} from '../store.js'
+
 export const getViewCorners = function(mapObj){
   let map = mapObj;
   let bounds = map.getBounds();

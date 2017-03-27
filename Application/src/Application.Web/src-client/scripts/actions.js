@@ -70,13 +70,12 @@ export const ACTIONS = {
   // ACTIONS.getAllHazards(this.state.viewCorners)
 
   getAllHazards: function(currentViewCorners){
-    console.log(currentViewCorners)
+    // console.log(currentViewCorners)
 
     let hazards = new AllHazards(currentViewCorners); //
-    console.log(hazards.url)
-
+    // console.log(hazards.url)
     hazards.fetch().then(function(serverRes){
-      console.log(serverRes)
+      // console.log(serverRes)
       STORE.setStore('hazardsToSave', {})
       STORE.setStore('mapHazards', serverRes);
     })
@@ -152,14 +151,33 @@ export const ACTIONS = {
   getDirections: function(mapObj, directionsRequestObj){
        let directions = new mapObj.maps.DirectionsService();
        let directionsDisplay = new mapObj.maps.DirectionsRenderer();
-      //   navigator.geolocation.getCurrentPosition(function(position){
-      //   let pos = {lat: position.coords.latitude, lng: position.coords.longitude};
-      //   let windo = new mapObj.maps.InfoWindow({map: mapObj.map});
-      //   windo.setContent("<i class='fa fa-location-arrow' aria-hidden='true'></i>");
-      //
-      //   windo.setPosition(pos);
-      //   windo.open(mapObj.map);
-      //
+    console.log(mapObj, 'mapObj2')
+     let directions = new mapObj.maps.DirectionsService();
+       directions.route(directionsRequestObj, function(result, status){
+      if(status === 'OK'){
+        // console.log(result.routes[0].overview_polyline.length)
+        let wind = new mapObj.maps.InfoWindow();
+        let directionsDisplay = new mapObj.maps.DirectionsRenderer();
+        wind.setContent("<i class='fa fa-bicycle' aria-hidden='true'></i>" + " " + result.routes[0].legs[0].distance.text + "<br>" + result.routes[0].legs[0].duration.text + " ");
+        wind.setPosition(result.routes[0].legs[0].steps[0].end_location);
+        wind.open(mapObj.map);
+            directionsDisplay.setDirections(result);
+            directionsDisplay.setMap(mapObj.map);
+      }
+      // navigator.geolocation.getCurrentPosition(function(position) {
+      //   var pos = {
+      //     lat: position.coords.latitude,
+      //     lng: position.coords.longitude
+      //   };
+      // }),
+      //wind.setPosition(pos);
+      // let renderArray = [];
+      // let requestArray = [];
+      // STORE.setStore('directionsResult', result);
+      // let mapIt = result.routes.map(function(listEl){
+      //   console.log(listEl);
+      //   let directionsDisplay = new mapObj.maps.DirectionsRenderer();
+      //   renderArray.push(directionsDisplay);
       // });
        directions.route(directionsRequestObj, function(result, status){
 
