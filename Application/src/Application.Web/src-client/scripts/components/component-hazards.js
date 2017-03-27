@@ -2,23 +2,50 @@ import React from 'react';
 import GoogleMap from 'google-map-react';
 import {ACTIONS} from '../actions.js';
 import {STORE} from '../store.js';
+import {getViewCorners} from '../utils/utils-map.js'
+import { maps } from '@google/maps';
 
 export const HazardsComponent = React.createClass({
 
     getInitialState: function(){
     return  {
             center: {lat: 32.7846418, lng: -79.940918},
-            zoom: 14
+            zoom: 14,
+            markers: [],
+            mapObj: {}
           };
     },
 
-    _setMapToStore: function(map, maps){
-      STORE.setStore("mapEl", {map, maps})
+    _handleMapLoaded: function(map, maps) {
+      console.log(map)
+      let cornerCoords = getViewCorners(map)
+      ACTIONS.getAllHazards(cornerCoords);
+      STORE.setStore('mapEl', {map, maps})
     },
 
-    _showInfoWindow: function(evt){
-      let haz = this.props.mapHazards;
-      ACTIONS.createInfoWindow(this.props.mapEl, this.props.mapHazards)
+    _renderMapMarker: function(){
+      if(this.props.hazardsToSave.lat === undefined && this.props.hazardsToSave.lng === undefined){
+        return
+      }else{
+        // console.log(this.props)
+        return(
+          <MapMarker
+            lat={this.props.hazardsToSave.lat}
+            lng={this.props.hazardsToSave.lng}
+            type={this.props.mapHazards.type}
+          />
+        )
+      }
+    },
+
+    _onMarkerHover: function(hazType){
+      let currentSelected = this.props.mapHazards[hazType]
+      this.setState({ currentSelected: currentSelected})
+    },
+
+    _onMarkerLeave: function(index, hazType){
+      let currentSelected = this.props.mapHazards[hazType]
+      this.setState({ currentSelected: -1})
     },
 
     _mapRender: function(haz){
@@ -26,7 +53,7 @@ export const HazardsComponent = React.createClass({
       // let haz = this.props.mapHazards;
       // console.log(haz)
       let hazardsMap = haz.map(function(listEl, i){
-        return <MapMarker key={i} lat={listEl.latitude} lng={listEl.longitude} type={listEl.type}/>
+        return <MapMarker key={i} lat={listEl.latitude} lng={listEl.longitude} text={listEl.type}/>
       });
       return hazardsMap;
     },
@@ -39,20 +66,27 @@ export const HazardsComponent = React.createClass({
         <GoogleMap
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
-          bootstrapURLKeys={{key: 'AIzaSyBGmL06icW_4nOifeu4rxUuEuFzOj2HBjY'}}
+          bootstrapURLKeys={{key: 'AIzaSyBx7EjgwkDfaGFJ0JhbRa_l4jkEPXloFuU'}}
           layerTypes={['BicyclingLayer']}
           yesIWantToUseGoogleMapApiInternals={true}
-          onGoogleApiLoaded={({ map, maps }) => this._setMapToStore(map, maps)}
-            // onClick={this._onMapClick}
+          onGoogleApiLoaded={({ map, maps }) => this._handleMapLoaded(map, maps)}
+          onChildMouseEnter={this._onMarkerHover}
+          onChildMouseLeave={this._onMarkerLeave}
         >
           {this._mapRender(this.props.mapHazards)}
-          <MapMarker lat={this.props.lat} lng={this.props.lng}
-          onHover={this._showInfoWindow()}
+          {this._renderMapMarker()}
+          <MapMarker
+            lat={this.props.lat}
+            lng={this.props.lng}
+            text={this.props.type}
           />
-          {/* {this.state.markers} */}
-          {/* {this._makeSavedHazards(allHazards)} */}
-          {/* <HazardItem/> */}
+          {this.state.markers}
+
+
         </GoogleMap>
+        <div style={{position: 'absolute', bottom: 0, right: 0, background: 'lightyellow', padding: '10px'}}>
+          {typeof this.state.currentSelected === 'undefined' ?   '---' : this.state.currentSelected.type }
+        </div>
         </div>
       );
     }
