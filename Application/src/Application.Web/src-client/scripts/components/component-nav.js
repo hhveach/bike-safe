@@ -20,7 +20,8 @@ export const NavComponent = React.createClass({
         {appRouteName: 'rides', showText: 'rides', hashRoute: 'rides'},
         {appRouteName: 'hazards', showText: 'hazards', hashRoute: 'hazards'},
         {appRouteName: 'login', showText: 'logout', hashRoute: 'login'},
-        {appRouteName: 'map', showText: 'map', hashRoute: 'map'}
+        {appRouteName: 'map', showText: 'map', hashRoute: 'map'},
+        {appRouteName: 'reminders', showText: 'reminders', hashRoute: 'reminders'}
       ]
     }
     return routeList;

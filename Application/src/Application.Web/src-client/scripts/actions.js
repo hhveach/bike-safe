@@ -1,10 +1,11 @@
 import {STORE} from './store.js';
 import {SingleRide, AllRides, SingleHazard, AllHazards} from './models/models.js';
 import {UserModel} from './models/model-user.js';
-import DirectionsService from '@google/maps';
-import DirectionsRenderer from '@google/maps';
-import GoogleMap from 'google-map-react';
+// import DirectionsService from '@google/maps';
+// import DirectionsRenderer from '@google/maps';
+// import GoogleMap from 'google-map-react';
 import React from 'react';
+import moment from 'moment';
 
 
 export const ACTIONS = {
@@ -15,11 +16,18 @@ export const ACTIONS = {
     window.location.hash = urlHash;
   },
 
+  deleteRide: function(rideId){
+    let delRide = new SingleRide();
+    delRide.set({id: rideId});
+    delRide.destroy().then(function(){
+      ACTIONS.getAllSavedRides();
+    });
+  },
+
   saveRide: function(newRideEntry){
     let ride = new SingleRide();
       ride.set(newRideEntry);
       ride.save().then(function(serverRes){
-        console.log(serverRes)
         ACTIONS.getAllSavedRides();
       });
   },
@@ -107,47 +115,79 @@ export const ACTIONS = {
   },
 
   autoType: function(mapObj, elementOne, elementTwo){
+    navigator.geolocation.getCurrentPosition(function(position){
+    let pos = {lat: position.coords.latitude, lng: position.coords.longitude};
+    let windo = new mapObj.maps.InfoWindow({map: mapObj.map});
+    windo.setContent("<i class='fa fa-location-arrow' aria-hidden='true'></i>");
+
+    windo.setPosition(pos);
+    windo.open(mapObj.map);
+
+  });
     let options = {types: []}
     let autoOne = new mapObj.maps.places.Autocomplete(elementOne, options);
     let autoTwo = new mapObj.maps.places.Autocomplete(elementTwo, options);
   },
 
+  // getPlaces: function(map, maps){
+  //   let service = new google.maps.places.PlacesService(map);
+  //
+  //   service.PlacesDetailsRequest();
+  //
+  //
+  // let request = {bounds: mapObj.map.getBounds(), keyword: 'best view'};
+  // service.radarSearch(place, function(results, status){
+  //   console.log(results)
+  // });
+  //
+  //   // service.radarSearch(request, callback);
+  // },
+
+  getTime: function(){
+    let time = moment().format("HH");
+    let day = moment().format("e");
+    STORE.setStore('rideTime', {time: time, day: day});
+  },
+
   getDirections: function(mapObj, directionsRequestObj){
-     let directions = new mapObj.maps.DirectionsService();
-       directions.route(directionsRequestObj, function(result, status){
-      if(status === 'OK'){
-        // console.log(result.routes[0].overview_polyline.length)
-        let wind = new mapObj.maps.InfoWindow();
-        let directionsDisplay = new mapObj.maps.DirectionsRenderer();
-        wind.setContent("<i class='fa fa-bicycle' aria-hidden='true'></i>" + " " + result.routes[0].legs[0].distance.text + "<br>" + result.routes[0].legs[0].duration.text + " ");
-        wind.setPosition(result.routes[0].legs[0].steps[0].end_location);
-        wind.open(mapObj.map);
-            directionsDisplay.setDirections(result);
-            directionsDisplay.setMap(mapObj.map);
-      }
-      // navigator.geolocation.getCurrentPosition(function(position) {
-      //   var pos = {
-      //     lat: position.coords.latitude,
-      //     lng: position.coords.longitude
-      //   };
-      // }),
-      //wind.setPosition(pos);
-      // let renderArray = [];
-      // let requestArray = [];
-      // STORE.setStore('directionsResult', result);
-      // let mapIt = result.routes.map(function(listEl){
-      //   console.log(listEl);
-      //   let directionsDisplay = new mapObj.maps.DirectionsRenderer();
-      //   renderArray.push(directionsDisplay);
+       let directions = new mapObj.maps.DirectionsService();
+       let directionsDisplay = new mapObj.maps.DirectionsRenderer();
+      //   navigator.geolocation.getCurrentPosition(function(position){
+      //   let pos = {lat: position.coords.latitude, lng: position.coords.longitude};
+      //   let windo = new mapObj.maps.InfoWindow({map: mapObj.map});
+      //   windo.setContent("<i class='fa fa-location-arrow' aria-hidden='true'></i>");
+      //
+      //   windo.setPosition(pos);
+      //   windo.open(mapObj.map);
+      //
       // });
-      // directionsDisplay.setDirections(listEl);
-      // directionsDisplay.setMap(mapObj.map);
-     });
+       directions.route(directionsRequestObj, function(result, status){
+
+        if(status === 'OK'){
+          console.log(result)
+          // console.log(result.routes[0].overview_polyline.length)
+          let wind = new mapObj.maps.InfoWindow();
+          // let directionsDisplay = new mapObj.maps.DirectionsRenderer();
+          wind.setContent("<i class='fa fa-bicycle' aria-hidden='true'></i>" + " " + result.routes[0].legs[0].distance.text + "<br>" + result.routes[0].legs[0].duration.text + " ");
+          wind.setPosition(result.routes[0].legs[0].steps[0].end_location);
+          wind.open(mapObj.map);
+              directionsDisplay.setDirections(result);
+              directionsDisplay.setMap(mapObj.map);
+        };
+      });
   },
 
   goToRide: function(org, dest){
     STORE.setStore('inputRide', {origin: org, destination: dest});
     ACTIONS.changeNav('map', 'map');
+  },
+
+  goToReminders: function(){
+    STORE.setStore('viewReminders', true)
+  },
+
+  goOnRide: function(){
+    STORE.setStore('viewReminders', false);
   }
 
 };

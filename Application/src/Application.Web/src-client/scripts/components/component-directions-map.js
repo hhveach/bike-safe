@@ -22,17 +22,9 @@ export const DirectionsMapView = React.createClass({
   },
 
   _setMapToStore: function(map, maps){
-    STORE.setStore("mapEl", {map, maps})
-    // let service = new maps.places.PlacesService(map);
-    // console.log(service)
+    STORE.setStore("mapEl", {map, maps});
+    // ACTIONS.getPlaces(map, maps);
   },
-
-  // _renderTime: function(){
-  //   console.log(this.props.duration, this.props.distance);
-  //   return (
-  //   <TravelInfo time={this.props.duration} length={this.props.distance}  />
-  // )
-  // },
 
   // navigator.geolocation.getCurrentPosition(function(position) {
   //   var pos = {
@@ -52,8 +44,6 @@ export const DirectionsMapView = React.createClass({
                   onGoogleApiLoaded={({ map, maps }) => this._setMapToStore(map, maps)}
                   yesIWantToUseGoogleMapApiInternals
                 >
-                  {/* {this._renderTime()}
-                  <TravelInfo dist={this.props.length} dur={this.props.time} LatLng={this.state.center}/> */}
                 </GoogleMap>
               </div>
     );

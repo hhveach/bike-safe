@@ -4,7 +4,13 @@ import React from 'react';
 
 export const SingleRide = Backbone.Model.extend({
   urlRoot: '/api/consumer/rides',
-  idAttribute: 'id'
+  idAttribute: 'id',
+
+  initialize: function(id){
+    if(id !== undefined){
+      this.url = `/api/consumer/rides/${id}`;
+    }
+  }
 });
 
 export const AllRides = Backbone.Collection.extend({

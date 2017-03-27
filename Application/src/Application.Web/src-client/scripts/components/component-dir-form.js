@@ -20,7 +20,9 @@ export const DirFormComponent = React.createClass({
          travelMode: 'BICYCLING',
          provideRouteAlternatives: true
       };
+    ACTIONS.goToReminders();
     ACTIONS.getDirections(this.props.mapEl, directionsRequest);
+    ACTIONS.getTime();
   },
 
   _handleSave: function(evt){
@@ -29,7 +31,6 @@ export const DirFormComponent = React.createClass({
       source: this.refs.search.value,
       destination: this.refs.searchTwo.value
     };
-
     ACTIONS.saveRide(rideObj);
   },
 
@@ -47,13 +48,10 @@ export const DirFormComponent = React.createClass({
           <input onKeyDown={(evt) => this._handleAuto(evt, this.props.mapEl)}
                  ref="searchTwo" type="text" placeholder="destination address" name="dest"></input>
           <input ref="rideName" type="text" placeholder="ride description" name="desc"></input>
-          <button type="submit">Ride!</button>
-          {/* <button type="click" onClick={this._handleSave}>Save Ride</button> */}
+          <button className="dir-btn" type="submit">Ride!</button>
         </form>
-        <button type="click" onClick={this._handleSave}>Save This Ride?</button>
-
+        <button className="dir-btn" type="click" onClick={this._handleSave}>Save This Ride?</button>
       </div>
     )
   }
-
 })

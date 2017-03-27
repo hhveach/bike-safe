@@ -19,7 +19,6 @@ const AppRouter = Backbone.Router.extend({
     	'login' : 'showLoginComponent',
     	'register' : 'showRegisterComponent',
     	'profile' : 'showProfileComponent',
-    	'reminders' : 'showRemindersComponent',
     	'hazards' : 'showHazardsComponent',
     	'hazards/:id' : 'showHazardsComponent',
     	'rides' : 'showRidesComponent',
@@ -42,10 +41,6 @@ const AppRouter = Backbone.Router.extend({
 
     showRegisterComponent: function(){
       ReactDOM.render(<ViewController route={'register'}/>, document.querySelector('#app-container'));
-    },
-
-    showRemindersComponent: function(){
-      ReactDOM.render(<ViewController route={'reminders'}/>, document.querySelector('#app-container'));
     },
 
     showProfileComponent: function(){
