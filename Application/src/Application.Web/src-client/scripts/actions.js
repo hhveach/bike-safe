@@ -151,19 +151,15 @@ export const ACTIONS = {
   getDirections: function(mapObj, directionsRequestObj){
        let directions = new mapObj.maps.DirectionsService();
        let directionsDisplay = new mapObj.maps.DirectionsRenderer();
-    console.log(mapObj, 'mapObj2')
-     let directions = new mapObj.maps.DirectionsService();
        directions.route(directionsRequestObj, function(result, status){
       if(status === 'OK'){
-        // console.log(result.routes[0].overview_polyline.length)
         let wind = new mapObj.maps.InfoWindow();
-        let directionsDisplay = new mapObj.maps.DirectionsRenderer();
         wind.setContent("<i class='fa fa-bicycle' aria-hidden='true'></i>" + " " + result.routes[0].legs[0].distance.text + "<br>" + result.routes[0].legs[0].duration.text + " ");
         wind.setPosition(result.routes[0].legs[0].steps[0].end_location);
         wind.open(mapObj.map);
             directionsDisplay.setDirections(result);
             directionsDisplay.setMap(mapObj.map);
-      }
+      };
       // navigator.geolocation.getCurrentPosition(function(position) {
       //   var pos = {
       //     lat: position.coords.latitude,
@@ -179,21 +175,8 @@ export const ACTIONS = {
       //   let directionsDisplay = new mapObj.maps.DirectionsRenderer();
       //   renderArray.push(directionsDisplay);
       // });
-       directions.route(directionsRequestObj, function(result, status){
-
-        if(status === 'OK'){
-          console.log(result)
-          // console.log(result.routes[0].overview_polyline.length)
-          let wind = new mapObj.maps.InfoWindow();
-          // let directionsDisplay = new mapObj.maps.DirectionsRenderer();
-          wind.setContent("<i class='fa fa-bicycle' aria-hidden='true'></i>" + " " + result.routes[0].legs[0].distance.text + "<br>" + result.routes[0].legs[0].duration.text + " ");
-          wind.setPosition(result.routes[0].legs[0].steps[0].end_location);
-          wind.open(mapObj.map);
-              directionsDisplay.setDirections(result);
-              directionsDisplay.setMap(mapObj.map);
-        };
-      });
-  },
+  });
+},
 
   goToRide: function(org, dest){
     STORE.setStore('inputRide', {origin: org, destination: dest});
