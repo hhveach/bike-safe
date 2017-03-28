@@ -25,6 +25,10 @@ module.exports = {
 		    test: /\.scss$/,
 				 loader: ExtractTextPlugin.extract({fallbackLoader: "style-loader", loader: "css-loader!sass-loader!resolve-url-loader"})
 		 },
+     {
+       test: /\.(jpe?g|png|gif|svg)/i,
+       loader: 'file-loader?name=[name].[ext]&outputPath=images&publicPath=../images&context=./src-client/images'
+     }
 	 ]
   },
   plugins: [

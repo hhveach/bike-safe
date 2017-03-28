@@ -9,7 +9,8 @@ export const STORE = {
     viewCorners: {},
     mapEl: {},
     rideTime: {},
-    viewReminders: false
+    viewReminders: false,
+    currentLocation: ''
     // directionsResult: {}
     // duration: '',
     // distance: ''
