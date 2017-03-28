@@ -39,10 +39,12 @@ const HazItems = React.createClass({
     // console.log(this.props.mapEl)
     let hazMap = haz.map( function(listEl, ind){
       return (
+            <div className="haz-list">
               <li key={ind}>
                 <p>{listEl.type}</p>
                 <i onClick={comp._handleHazDelete} data-hazid={listEl.id} className="fa fa-trash-o" aria-hidden="true"/>
               </li>
+            </div>
       )
     })
     return hazMap
@@ -51,7 +53,8 @@ const HazItems = React.createClass({
 
   render: function(){
     return (
-          <div className="haz-list">
+          <div>
+            <h1>Your hazard contributions</h1>
             <ul>
               {this._createHazardsList(this.props.hazItems)}
             </ul>
