@@ -4,11 +4,8 @@ import {STORE} from '../store.js';
 
 export const RideComponent = React.createClass({
 
-  getDefaultProps: function(){
-    return ACTIONS.getAllSavedRides();
-  },
-
   render: function(){
+    ACTIONS.getAllSavedRides();
     return (
             <div className="rides-list">
               <h1>My Rides</h1>

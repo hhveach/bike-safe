@@ -9,12 +9,12 @@ export const RemindersComponent = React.createClass({
 
   _createReminder: function(info){
     let safetyArr = [];
-    if(info.time >= 17 && info.time <= 7)
+    if(info.time >= 17 ||  info.time <= 7)
       {safetyArr.push('EVENING: Turn your lights on')};
     if(info.day > 0 && info.day < 6 && info.time <= 19 && info.time >= 6)
       {safetyArr.push('WEEKDAY: Be aware of commuters')};
     if(info.day > 0 && info.day < 6 && info.time >= 15 && info.time <= 19)
-      {safetyArr.push('RUSH HOUR (EVENING): Be aware of traffic')};
+      {safetyArr.push('RUSH HOUR (EVENING): Be aware of extra traffic')};
     if(info.day > 0 && info.day < 6 && info.time >= 6 && info.time <= 9)
       {safetyArr.push('RUSH HOUR (MORNING): Be aware of traffic')};
     if(info.day < 1 && info.day > 4)

@@ -13,9 +13,13 @@ export const ProfileComponent = React.createClass({
     }
 
       return (  <div className="profile">
-                  <img src={image}/>
+                  <div className="profile-img">
+                    <img src={image}/>
+                  </div>
+                  <div className="profile-info">
                   <h1>{userObject.email}</h1>
                   <h1>{userObject.name}</h1>
+                  </div>
                 </div>
       )
   },
