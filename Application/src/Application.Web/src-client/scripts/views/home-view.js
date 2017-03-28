@@ -9,9 +9,13 @@ export const HomeView = React.createClass({
     return(
     <div>
       <div className="home-view-container">
-        <BasicMapView {...this.props}/>
-        <h1>Ride It Out</h1>
-        <FormComponent {...this.props}/>
+        <div className="map-view-container">
+          <BasicMapView {...this.props}/>
+        </div>
+        <div className="map-form-container">
+          <h1>Ride It Out</h1>
+          <FormComponent {...this.props}/>
+        </div>
       </div>
     </div>
   )

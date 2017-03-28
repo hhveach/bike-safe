@@ -20,16 +20,18 @@ export const RegisterComponent = React.createClass({
 
   render: function(){
     return (
-      <div className="input-form">
-        <form onSubmit={this._handleSubmit}>
-          <input type="text" name="name" placeholder="Username *"></input>
-          <input type="text" name="email" placeholder="Email Address *"></input>
-          <input type="text" name="password" placeholder="Password *"></input>
-          {/* <input type="text" placeholder="Confirm Password"></input> */}
-          <input type="text" name="profileImage" placeholder="Profile Image"></input>
-          <input type="text" name="bikeName" placeholder="Your Bike"></input>
-          <button>Start Riding!</button>
-        </form>
+      <div className="register-container">
+        <div className="input-form">
+          <form onSubmit={this._handleSubmit}>
+            <input type="text" name="name" placeholder="Username *"></input>
+            <input type="text" name="email" placeholder="Email Address *"></input>
+            <input type="text" name="password" placeholder="Password *"></input>
+            {/* <input type="text" placeholder="Confirm Password"></input> */}
+            <input type="text" name="profileImage" placeholder="Profile Image"></input>
+            <input type="text" name="bikeName" placeholder="Your Bike"></input>
+            <button>Start Riding!</button>
+          </form>
+        </div>
       </div>
     )
   }
