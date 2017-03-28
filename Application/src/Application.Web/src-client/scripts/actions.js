@@ -173,7 +173,7 @@ export const ACTIONS = {
 
   goToRide: function(org, dest){
     STORE.setStore('inputRide', {origin: org, destination: dest});
-    ACTIONS.changeNav('map', 'map');
+    ACTIONS.changeNav('home', '');
   },
 
   goToReminders: function(){
