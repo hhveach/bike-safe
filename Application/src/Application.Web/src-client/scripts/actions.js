@@ -162,14 +162,16 @@ export const ACTIONS = {
       if(status === 'OK'){
         console.log(result)
         let wind = new mapObj.maps.InfoWindow();
-        wind.setContent("<i class='fa fa-bicycle' aria-hidden='true'></i>" + " " + result.routes[0].legs[0].distance.text + "<br>" + result.routes[0].legs[0].duration.text + " ");
+        wind.setContent("<div class='window'><i class='fa fa-bicycle' aria-hidden='true'></i>"
+        + " " + result.routes[0].legs[0].distance.text + "<br>" + "<i class='fa fa-clock-o' aria-hidden='true'></i>"
+        + " " + result.routes[0].legs[0].duration.text + "</div> ");
         wind.setPosition(result.routes[0].legs[0].end_location);
         wind.open(mapObj.map);
             directionsDisplay.setDirections(result);
             directionsDisplay.setMap(mapObj.map);
       };
-  });
-},
+    });
+  },
 
   goToRide: function(org, dest){
     STORE.setStore('inputRide', {origin: org, destination: dest});

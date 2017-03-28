@@ -43,6 +43,15 @@ p {
 
 button {outline: none;}
 
+.window {
+	color: #D53C2C;
+	font-weight: 200;
+}
+
+.window i {
+	color: #000;
+}
+
 .home-view-container >* {
 	display: inline-block;
 	vertical-align: top;
@@ -290,14 +299,29 @@ button {outline: none;}
 }
 
 .profile {
-	width: 65%;
-	margin: 0 auto;
+	width: 100%;
 }
 
-.profile img {
-	width: 25%;
-	margin: 25px auto;
+.profile > * {
+	display: inline-block;
+	font-size: 0;
+	vertical-align: top;
+}
+
+.profile-img {
+	font-size: medium;
+	width: 50%;
+}
+
+.profile-img img {
+	width: 65%;
+	margin: 10px auto;
 	border: 2px solid #D53C2C;
+}
+
+.profile-info {
+	font-size: medium;
+	width: 50%;
 }
 
 .rides-list {
@@ -343,7 +367,7 @@ button {outline: none;}
 
 .rides-list i {
 	margin: 0 8px;
-	color: #fff;
+	color: #000;
 }
 
 .ride-btn {
