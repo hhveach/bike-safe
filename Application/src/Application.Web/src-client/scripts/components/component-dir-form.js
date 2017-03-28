@@ -5,16 +5,16 @@ export const DirFormComponent = React.createClass({
 
   componentWillUpdate: function(){
     let oldRide = this.props.inputRide;
-    // let current = this.props.currentLocation;
 
-    if(oldRide !== undefined){
+    if(oldRide.origin !== undefined && oldRide.destination !== undefined){
       this.refs.search.value = oldRide.origin;
       this.refs.searchTwo.value = oldRide.destination;
       }
   },
 
   componentWillReceiveProps: function(props){
-    if(props.currentLocation && !props.inputRide){
+    let saved = props.inputRide.origin;
+    if(props.currentLocation && saved === undefined){
       this.refs.search.value = props.currentLocation;
     }
   },

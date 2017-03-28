@@ -10,7 +10,8 @@ export const STORE = {
     mapEl: {},
     rideTime: {},
     viewReminders: false,
-    currentLocation: ''
+    currentLocation: '',
+    inputRide: {}
     // directionsResult: {}
     // duration: '',
     // distance: ''

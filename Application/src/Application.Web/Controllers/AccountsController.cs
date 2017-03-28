@@ -58,7 +58,8 @@ namespace Application.Web.Controllers
         public async Task<IActionResult> Register([FromBody]RegisterRequest model)
         {
             var user = new User();
-            user.UserName = user.Email = model.Email;
+            user.Email = model.Email;
+            user.UserName = user.Name = model.Name;
 
             var result = await _UserManager.CreateAsync(user, model.Password);
 
@@ -89,7 +90,7 @@ namespace Application.Web.Controllers
                 {
                     IsAuthenticated = User.Identity.IsAuthenticated,
                     Email = User.Identity.Name,
-                    Name = user.UserName,
+                    Name = user.Name,
                     Image = user.Image,
                     Bike = user.Bike
                 };

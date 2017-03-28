@@ -15,7 +15,6 @@ export const ProfileComponent = React.createClass({
       return (  <div className="profile">
                   <img src={image}/>
                   <h1>{userObject.email}</h1>
-                  <h1>{userObject.bike}</h1>
                   <h1>{userObject.name}</h1>
                 </div>
       )
