@@ -8,28 +8,12 @@ export const RideComponent = React.createClass({
     return ACTIONS.getAllSavedRides();
   },
 
-  // _createRidesList: function(ridesArr){
-  //   let mapIt = ridesArr.map(function(listEl, i){
-  //     return <BuildRidesList {...listEl} key={i}/>
-  //   });
-  //   return mapIt;
-  // },
-
-  // remove: function(rideList, index){
-  //   //rideList = this.props.savedRides;
-  //   let deleteRide = rideList.filter(function(listEl, ind){
-  //     return index !== ind;
-  //   });
-  //   STORE.setStore('savedRides', deleteRide);
-  // },
-
   render: function(){
     return (
             <div className="rides-list">
-              {/* <ul> */}
-              {/* {this._createRidesList(this.props.savedRides)} */}
+              <h1>My Rides</h1>
+              <h2>{this.props.currentUser.name}</h2>
               <BuildRidesList rides={this.props.savedRides}/>
-              {/* </ul> */}
             </div>
     )
   }
@@ -40,30 +24,31 @@ const BuildRidesList = React.createClass({
   _createRidesList: function(ridesArr){
     let comp = this;
     let mapIt = ridesArr.map(function(listEl, index){
-      return (<li key={index}>
-              <p onClick={(evt) => comp._handleClick(evt, listEl.source, listEl.destination)}>{listEl.source}
-              <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
-                 {listEl.destination}
-              </p>
-              <i onClick={(evt) => comp._handleDelete(evt, listEl.id, comp.props.rides)}
-                 className="fa fa-trash-o" aria-hidden="true"></i>
+      if(listEl.name === ""){listEl.name = 'Ride'}
+      return (
+            <li key={index}>
+              <h4>&middot; {listEl.name} &middot;</h4>
+              <p><i className="fa fa-bicycle" aria-hidden="true"></i> {listEl.source}</p>
+              <p><i className="fa fa-long-arrow-right" aria-hidden="true"></i> {listEl.destination}</p>
+
+              <button className="ride-btn" onClick={() => comp._handleClick(listEl.source, listEl.destination)}>
+                <i className="fa fa-arrow-circle-right" aria-hidden="true"></i>
+              </button>
+              <button className="ride-btn" onClick={() => comp._handleDelete(listEl.id)}>
+                <i className="fa fa-trash-o" aria-hidden="true"></i>
+              </button>
             </li>
           )
     });
     return mapIt;
   },
 
-  _handleClick: function(evt, org, dest){
+  _handleClick: function(org, dest){
     ACTIONS.goToRide(org, dest);
   },
 
-  _handleDelete: function(evt, id, rideList){
-    // console.log(ind)
+  _handleDelete: function(id){
     ACTIONS.deleteRide(id);
-      // let deleteRide = rideList.filter(function(listEl, index){
-      //   return ind !== index;
-      // });
-      // STORE.setStore('savedRides', deleteRide);
   },
 
   render: function(){

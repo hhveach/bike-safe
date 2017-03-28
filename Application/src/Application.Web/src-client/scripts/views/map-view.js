@@ -23,7 +23,8 @@ export const BasicMapView = React.createClass({
     console.log(map)
     let cornerCoords = getViewCorners(map)
     ACTIONS.getAllHazards(cornerCoords);
-    STORE.setStore('mapEl', {map, maps})
+    STORE.setStore('mapEl', {map, maps});
+    ACTIONS.getLocation(this.props.mapEl);
   },
 
   _renderMapMarker: function(){

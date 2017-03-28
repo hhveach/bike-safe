@@ -138,32 +138,21 @@ export const ACTIONS = {
     geo.geocode({'location': pos}, function(results, status){
       STORE.setStore('currentLocation', results[0].formatted_address);
     });
+    let location = 'http://images.clipartpanda.com/google-location-icon-519580-076_LocationArrow-512.png';
     let windo = new mapObj.maps.Marker({
       position: pos,
-      animation: mapObj.maps.Animation.DROP
-    });
-      windo.setMap(mapObj.map);
+      animation: mapObj.maps.Animation.DROP,
+      icon: {path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW, scale: 3, strokeColor: 'blue'},
+      map: mapObj.map
+      });
     });
   },
-
-  // getPlaces: function(map, maps){
-  //   let service = new google.maps.places.PlacesService(map);
-  //
-  //   service.PlacesDetailsRequest();
-  //
-  //
-  // let request = {bounds: mapObj.map.getBounds(), keyword: 'best view'};
-  // service.radarSearch(place, function(results, status){
-  //   console.log(results)
-  // });
-  //
-  //   // service.radarSearch(request, callback);
-  // },
 
   getTime: function(){
     let time = moment().format("HH");
     let day = moment().format("e");
-    STORE.setStore('rideTime', {time: time, day: day});
+    let actual = moment();
+    STORE.setStore('rideTime', {time: time, day: day, date: actual});
   },
 
   getDirections: function(mapObj, directionsRequestObj){
@@ -171,9 +160,10 @@ export const ACTIONS = {
        let directionsDisplay = new mapObj.maps.DirectionsRenderer();
        directions.route(directionsRequestObj, function(result, status){
       if(status === 'OK'){
+        console.log(result)
         let wind = new mapObj.maps.InfoWindow();
         wind.setContent("<i class='fa fa-bicycle' aria-hidden='true'></i>" + " " + result.routes[0].legs[0].distance.text + "<br>" + result.routes[0].legs[0].duration.text + " ");
-        wind.setPosition(result.routes[0].legs[0].steps[0].end_location);
+        wind.setPosition(result.routes[0].legs[0].end_location);
         wind.open(mapObj.map);
             directionsDisplay.setDirections(result);
             directionsDisplay.setMap(mapObj.map);
@@ -183,7 +173,7 @@ export const ACTIONS = {
 
   goToRide: function(org, dest){
     STORE.setStore('inputRide', {origin: org, destination: dest});
-    ACTIONS.changeNav('map', 'map');
+    ACTIONS.changeNav('home', '');
   },
 
   goToReminders: function(){

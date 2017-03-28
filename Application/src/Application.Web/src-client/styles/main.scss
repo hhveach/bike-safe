@@ -295,14 +295,35 @@ button {outline: none;}
 }
 
 .profile img {
-	width: 50%;
+	width: 25%;
 	margin: 25px auto;
-	border: 2px solid #fff;
+	border: 2px solid #D53C2C;
 }
 
 .rides-list {
 	width: 75%;
 	margin: 0 auto;
+}
+
+.rides-list h1 {
+	text-align: center;
+	color:  #D53C2C;
+	font-size: 52px;
+}
+
+.rides-list h2 {
+	text-align: left;
+	margin-left: 0;
+	margin-bottom: 30px;
+	color:  #D53C2C;
+	font-size: 28px;
+}
+
+.rides-list h4 {
+	color:  #D53C2C;
+	font-weight: 200;
+	font-size: 20px;
+	margin-bottom: 5px;
 }
 
 .rides-list ul {
@@ -311,16 +332,38 @@ button {outline: none;}
 	color: white;
 }
 
-.rides-list li:hover {
-	cursor: default;
+.rides-list p {
+	text-align: left;
+	margin-right: 0;
+	margin-bottom: 10px;
+	font-size: 18px;
 }
-
-.rides-list p {text-align: left;}
 
 .rides-list i {
 	margin: 0 8px;
-	font-size: 16px;
 	color: #fff;
+}
+
+.ride-btn {
+	background-color: #D53C2C;
+	border-style: none;
+	border-radius: 2px;
+	border: 1px solid #b33223;
+	margin-right: 5px;
+}
+
+.ride-btn:hover {cursor: pointer;}
+
+.ride-btn .fa-trash-o {
+	color: #fff;
+	font-size: 18px;
+	margin: 0 4px;
+}
+
+.ride-btn .fa-arrow-circle-right {
+	margin: 0 3px;
+	color: #fff;
+	font-size: 18px;
 }
 
 .reminder-container {
@@ -338,14 +381,25 @@ button {outline: none;}
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
-	width: 35%;
+	width: 45%;
 	text-align: center;
-	background-color: #fff;
+	background-color: #CE5C82;
 }
 
 .reminder li {
 	list-style: none;
 	text-align: left;
+	margin-bottom: 8px;
+	font-size: 20px;
+	font-weight: 200;
+}
+
+.reminder .fa {
+	margin-right: 5px;
+}
+
+.reminder .fa-lock {
+	margin-right: 7px;
 }
 
 .reminder button {
@@ -353,7 +407,7 @@ button {outline: none;}
 	margin-bottom: 15px;
 	padding: 10px;
 	color: #fff;
-	background-color: darkblue;
+	background-color: #000;
 	font-size: 20px;
 	border-style: none;
 	z-index: 101;
