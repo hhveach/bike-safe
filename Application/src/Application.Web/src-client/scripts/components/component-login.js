@@ -21,17 +21,18 @@ export const LogInComponent = React.createClass({
   render: function(){
     return (
       <div className="log-in-container">
-        <h1>Bike Safe</h1>
-        <div className="login-form">
-          <form onSubmit={this._handleSubmit}>
-            <input type="text" placeholder="email" name="emailfield"></input>
-            <input type="text" placeholder="password" name="passwordfield"></input>
-            <button type="submit">Ride!</button>
-          </form>
-        </div>
-        <h2>or</h2>
-        <div className="login-form">
-          <button data-route="register" onClick={this._handleRegisterClick}>Sign Up</button>
+        <div className="login-form-container">
+          <div className="login-form">
+            <form onSubmit={this._handleSubmit}>
+              <input type="text" placeholder="email" name="emailfield"></input>
+              <input type="text" placeholder="password" name="passwordfield"></input>
+              <button type="submit">Ride!</button>
+            </form>
+          </div>
+          <h2>or</h2>
+          <div className="login-form">
+            <button data-route="register" onClick={this._handleRegisterClick}>Sign Up</button>
+          </div>
         </div>
       </div>
     )

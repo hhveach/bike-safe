@@ -3,6 +3,27 @@ import {ACTIONS} from '../actions.js'
 import {STORE} from '../store.js'
 
 export const NavComponent = React.createClass({
+  getInitialState: function(){
+      return {
+        animatorAtStart : true
+      }
+  },
+
+  _handleAnimation: function(){
+    let component = this
+
+    setTimeout(function(){
+      component.setState({
+        animatorAtStart: true
+      })
+    }, 500)
+
+    this.setState({
+      animatorAtStart: false
+    })
+
+
+  },
 
   _getMenuOptions: function(currentUserOnStore){
     // console.log(currentUserOnStore)
@@ -29,8 +50,9 @@ export const NavComponent = React.createClass({
 
   _showNavBarJSX: function(currentNavRoute, currentUser){
     let menuOptions = this._getMenuOptions(currentUser)
+    let component = this
     let componentsList = menuOptions.map(function(routeObj, i){
-      return <RouteOption {...routeObj} key={i} currentRoute={currentNavRoute}/>
+      return <RouteOption {...routeObj} key={i} currentRoute={currentNavRoute} _animateNav={component._handleAnimation}/>
     })
     return componentsList
   },
@@ -57,9 +79,13 @@ export const NavComponent = React.createClass({
       <div className="nav-comp">
         <div className="top-nav">
           <i onClick={this._showSideNav} className="fa fa-bars fa-4x drop-btn" aria-hidden="true"></i>
+          <h1>Bike Safe</h1>
           <div id="side-nav-bar" className="side-nav-content">
           {this._showNavBarJSX(this.props.currentRoute, this.props.currentUser)}
           </div>
+        </div>
+        <div className={`nav-animator position-${this.state.animatorAtStart ? 'start not-visible' : 'end'}`}>
+          <i className="fa fa-bicycle fa-4x" aria-hidden="true"></i>
         </div>
       </div>
     )
@@ -76,6 +102,7 @@ const RouteOption = React.createClass({
     else {
       ACTIONS.changeNav(this.props.appRouteName, this.props.hashRoute);
     }
+    this.props._animateNav()
   },
 
   render: function(){
