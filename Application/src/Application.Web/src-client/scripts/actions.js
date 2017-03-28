@@ -27,8 +27,6 @@ export const ACTIONS = {
   deleteHaz: function(hazardId){
     let delHaz = new SingleHazard();
     delHaz.set({id: hazardId})
-    console.log('destroying hazard???')
-    console.log(delHaz)
     delHaz.destroy().then( function(deletedRecord){
       console.log(STORE.getStore().mapHazards)
       let newMapHazards = STORE.getStore().mapHazards

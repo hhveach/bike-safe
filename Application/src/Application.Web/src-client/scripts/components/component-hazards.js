@@ -94,6 +94,7 @@ export const HazardsComponent = React.createClass({
 
   const MapMarker = React.createClass({
     render: function(){
-      return <div>&#8671;</div>
+      return <i className="fa fa-exclamation-circle fa-2x" aria-hidden="true"></i>
+
     }
   })
