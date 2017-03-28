@@ -23,6 +23,7 @@
 
 body{
 	background-color: #BCEDFB;
+	margin: 0;
 }
 
 #app-container {
@@ -360,4 +361,19 @@ button {outline: none;}
 
 .info-box__hidden {
 	display: none;
+}
+
+.hazard-list-container {
+	width: 50%;
+}
+
+.haz-list >* {
+	display: inline-block;
+	vertical-align: top;
+	font-size: 0;
+}
+
+.haz-list li {
+	list-style-type: none;
+	font-size: 16px;
 }

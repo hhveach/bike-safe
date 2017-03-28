@@ -51,7 +51,7 @@ const HazItems = React.createClass({
 
   render: function(){
     return (
-          <div>
+          <div className="haz-list">
             <ul>
               {this._createHazardsList(this.props.hazItems)}
             </ul>

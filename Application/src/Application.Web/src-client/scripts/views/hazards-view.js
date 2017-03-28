@@ -11,8 +11,12 @@ export const HazardsView = React.createClass({
   render: function(){
     return (
       <div className="hazards-view-container">
-        <HazardsComponent {...this.props}/>
-        <HazListComponent {...this.props}/>
+        <div className= "map-view-container">
+          <HazardsComponent {...this.props}/>
+        </div>
+        <div className="hazard-list-container">
+          <HazListComponent {...this.props}/>
+        </div>
       </div>
     )
   }
