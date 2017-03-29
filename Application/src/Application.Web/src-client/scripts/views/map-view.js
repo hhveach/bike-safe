@@ -108,16 +108,9 @@ export const BasicMapView = React.createClass({
 const MapMarker = React.createClass({
   render: function(){
     return (
-<<<<<<< HEAD
-          <div className="marker">
-            <i className="fa fa-exclamation-circle fa-2x" aria-hidden="true"></i>
-          </div>
-      )
-=======
       <div className="marker">
         <i className="fa fa-exclamation-circle fa-2x" aria-hidden="true"></i>
       </div>
     )
->>>>>>> 910fa216accc2e2cacb41a4aa194081b46ecc74c
   }
 })

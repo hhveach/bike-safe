@@ -342,12 +342,17 @@ button {outline: none;}
 }
 
 .profile-img h1 {
+	font-family: 'Slabo 27px', serif;
 	text-align: center;
-	color:  #D53C2C;
+	color:  #22313f;
+	background-color: #fff;
+	width: 50%;
+	margin: auto;
+	opacity: 0.9;
+	border-radius: 10px;
 }
 
 .profile-img img {
-	background-color: #BCEDFB;
 	width: 65%;
 	margin: 10px auto;
 	border: thick solid #D53C2C;
@@ -356,6 +361,7 @@ button {outline: none;}
 
 .profile-info h1 {
 	color: #D53C2C;
+	font-family: 'Slabo 27px', serif;
 }
 
 .profile-info i {
@@ -584,7 +590,6 @@ button {outline: none;}
 	font-family: 'Bitter', serif;
 }
 
-<<<<<<< HEAD
 .saved {
 	position: absolute;
 	right: 4%;
@@ -592,21 +597,28 @@ button {outline: none;}
 	transform: translate(-50%, -50%);
 	width: 20%;
 	text-align: center;
-	background-color: rgba(255, 255, 255, 0.1);
+	background-color:  #BCEDFB;
+	opacity: 0.9;
+	border-radius: 5px;
 	z-index: 100;
 }
 
+.saved h1 {
+	font-family: 'Slabo 27px', serif;
+}
+
 .saved button {
-	width: 45%;
+	width: 35%;
 	margin-bottom: 8px;
 	padding: 10px;
 	color: #fff;
-	background-color: #000;
+	background-color: #D53C2C;
 	font-size: 16px;
 	border-style: none;
+	border-radius: 5px;
 	z-index: 101;
-=======
+}
+
 .marker i {
 	color: #D53C2C;
->>>>>>> 910fa216accc2e2cacb41a4aa194081b46ecc74c
 }

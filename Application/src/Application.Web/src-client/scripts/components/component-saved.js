@@ -12,7 +12,7 @@ export const SavedComponent = React.createClass({
     else{
       return (
           <div className="saved">
-            <h1>Hazard Saved!</h1>
+            <h1>Saved!</h1>
             <button onClick={this._handleClick}>OK</button>
           </div>
       )
