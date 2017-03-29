@@ -357,10 +357,10 @@ button {outline: none;}
 	margin-left: auto;
 	margin-right: auto;
 	width: 100%;
-	padding-top: 150px;
+	padding-top: 100px;
 	padding-bottom: 300px;
-	background-image: url("../images/sunset.jpg");
-	background-size: contain;
+	background-image: url("../images/bike-flag.jpg");
+	background-size: 80%;
 	background-size: cover;
 	background-position: center bottom;
 	border: solid thick #fff;
@@ -373,7 +373,7 @@ button {outline: none;}
 	background: #fff;
 	// border: solid thick #BCEDFB;
 	border-radius: 10px;
-	opacity: .5;
+	opacity: .9;
 	padding-bottom: 12px;
 }
 
@@ -407,6 +407,7 @@ button {outline: none;}
 	width: 100%;
 	list-style-type: none;
 	color: white;
+	margin-left: 5%;
 }
 
 .rides-list p {
@@ -494,6 +495,16 @@ button {outline: none;}
 
 .info-box__hidden {
 	display: none;
+}
+
+.info-box {
+	border-radius: 10px;
+	padding: 10px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: #22313f;
+	color: #fff;
 }
 
 .hazards-view-container >* {

@@ -46,6 +46,7 @@ export const HazardsComponent = React.createClass({
     _onMarkerLeave: function(index, hazType){
       let currentSelected = this.props.mapHazards[hazType]
       this.setState({ currentSelected: -1})
+      
     },
 
     _mapRender: function(haz){
@@ -62,7 +63,7 @@ export const HazardsComponent = React.createClass({
       let allHazards = this.props.mapHazards
       // console.log(allHazards)
       // console.log(this.props.hazardsToSave, 'lat n long')
-      return (<div className="first-map">
+      return (<div className="first-map" style={{position: 'relative'}}>
         <GoogleMap
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
@@ -84,7 +85,7 @@ export const HazardsComponent = React.createClass({
 
 
         </GoogleMap>
-        <div style={{position: 'absolute', bottom: 0, right: 0, background: 'lightyellow', padding: '10px'}}>
+        <div className="info-box">
           {typeof this.state.currentSelected === 'undefined' ?   '---' : this.state.currentSelected.type }
         </div>
         </div>
