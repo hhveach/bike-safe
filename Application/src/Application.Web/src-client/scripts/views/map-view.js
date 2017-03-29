@@ -89,11 +89,11 @@ export const BasicMapView = React.createClass({
         >
         {this._mapRender(this.props.mapHazards)}
         {this._renderMapMarker()}
-        <MapMarker
+        {/* <MapMarker
           lat={this.props.lat}
           lng={this.props.lng}
           text={this.props.type}
-        />
+        /> */}
         {this.state.markers}
 
 

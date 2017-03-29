@@ -28,7 +28,6 @@ export const RegisterComponent = React.createClass({
             <input type="text" name="password" placeholder="Password *"></input>
             {/* <input type="text" placeholder="Confirm Password"></input> */}
             <input type="text" name="profileImage" placeholder="Profile Image"></input>
-            <input type="text" name="bikeName" placeholder="Your Bike"></input>
             <button>Start Riding!</button>
           </form>
         </div>
