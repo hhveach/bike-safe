@@ -5,7 +5,6 @@ import {STORE} from '../store.js';
 export const RideComponent = React.createClass({
 
   render: function(){
-    ACTIONS.getAllSavedRides();
     return (
             <div className="rides-list">
               <h1>My Rides</h1>

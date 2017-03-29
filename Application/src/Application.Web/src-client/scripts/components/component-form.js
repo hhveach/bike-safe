@@ -15,8 +15,7 @@ export const FormComponent = React.createClass({
   },
 
   componentWillReceiveProps: function(props){
-    let saved = props.inputRide.origin;
-    if(props.currentLocation && saved === undefined){
+    if(props.currentLocation && props.inputRide.origin === undefined){
       this.refs.search.value = props.currentLocation;
     }
   },
@@ -41,7 +40,9 @@ export const FormComponent = React.createClass({
           longitude: this.props.hazardsToSave.lng
         }
         console.log(hazardObj)
-        ACTIONS.saveHazard(hazardObj)
+        ACTIONS.saveHazard(hazardObj);
+        ACTIONS.goToSaved();
+
       }
 
     },
@@ -53,6 +54,7 @@ export const FormComponent = React.createClass({
         destination: this.refs.searchTwo.value
       };
       ACTIONS.saveRide(rideObj);
+      ACTIONS.goToSaved();
     },
 
     _handleAuto: function(event, mapObj){
@@ -73,7 +75,6 @@ export const FormComponent = React.createClass({
     },
 
     render: function(){
-      // console.log(this.props)
       return (
         <div className="input-form">
           <div className="input-form__ride">
