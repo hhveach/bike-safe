@@ -74,6 +74,8 @@ button {outline: none;}
 	font-size: 60px;
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-weight: lighter;
+	margin-bottom: 25px;
+	margin-top: 30px;
 }
 
 .map-form-container {
@@ -105,6 +107,16 @@ button {outline: none;}
 .input-form input {
 	width: 45%;
 	margin-top: 16px;
+	padding: 12px;
+	border-radius: 10px;
+	font-size: 20px;
+	font-weight: lighter;
+	color: #232D2F;
+}
+
+.dir-form input {
+	width: 90%;
+	margin-top: 8px;
 	padding: 12px;
 	border-radius: 10px;
 	font-size: 20px;
@@ -332,7 +344,7 @@ button {outline: none;}
 	width: 65%;
 	margin: 10px auto;
 	border: thick solid #D53C2C;
-	border-radius: 3px;
+	border-radius: 10px;
 }
 
 .profile-info h1 {
@@ -348,7 +360,7 @@ button {outline: none;}
 	width: 50%;
 	margin-top: 80px;
 	border: solid thick #BCEDFB;
-	border-radius: 3px;
+	border-radius: 10px;
 	background-color: #fff;
 	padding: 15px;
 }
