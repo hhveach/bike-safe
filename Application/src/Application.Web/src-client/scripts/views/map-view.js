@@ -21,8 +21,8 @@ export const BasicMapView = React.createClass({
   },
 
   _handleMapLoaded: function(map, maps) {
-    console.log(map)
-    let cornerCoords = getViewCorners(map)
+    let cornerCoords = getViewCorners(map);
+    ACTIONS.getAllSavedRides();
     ACTIONS.getAllHazards(cornerCoords);
     STORE.setStore('mapEl', {map, maps});
     ACTIONS.getLocation(this.props.mapEl);
@@ -32,7 +32,6 @@ export const BasicMapView = React.createClass({
     if(this.props.hazardsToSave.lat === undefined && this.props.hazardsToSave.lng === undefined){
       return
     }else{
-      // console.log(this.props)
       return(
         <MapMarker
           lat={this.props.hazardsToSave.lat}
@@ -44,7 +43,6 @@ export const BasicMapView = React.createClass({
   },
 
   _mapRender: function(haz){
-    console.log(haz)
     let hazardsMap = haz.map(function(listEl, i){
       return <MapMarker key={i} lat={listEl.latitude} lng={listEl.longitude} text={listEl.type} />
     });
@@ -52,8 +50,6 @@ export const BasicMapView = React.createClass({
   },
 
   _onMapClick: function(map){
-    console.log(map.lat, map.lng,);
-    console.log('wahht')
     let newHazardObj = {
       lat: map.lat,
       lng: map.lng
@@ -65,6 +61,7 @@ export const BasicMapView = React.createClass({
 
   _onMarkerHover: function(hazType){
     let currentSelected = this.props.mapHazards[hazType]
+    console.log(currentSelected)
     this.setState({ currentSelected: currentSelected})
   },
 
@@ -110,6 +107,10 @@ export const BasicMapView = React.createClass({
 
 const MapMarker = React.createClass({
   render: function(){
-    return <i className="fa fa-exclamation-circle fa-2x" aria-hidden="true"></i>
+    return (
+      <div className="marker">
+        <i className="fa fa-exclamation-circle fa-2x" aria-hidden="true"></i>
+      </div>
+    )
   }
 })
