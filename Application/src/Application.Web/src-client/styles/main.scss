@@ -213,8 +213,6 @@ button {outline: none;}
 	position: absolute;
 	width: 80px;
 	height: 80px;
-	// background-color: tomato;
-	background-image: url("../images/cyclist.svg");
 	opacity: .7;
 	transition: left .5s, opacity .001s;
 
@@ -324,9 +322,28 @@ button {outline: none;}
 	width: 50%;
 }
 
+.rides-view-container {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	padding-top: 150px;
+	padding-bottom: 300px;
+	background-image: url("../images/sunset.jpg");
+	background-size: contain;
+	background-size: cover;
+	background-position: center bottom;
+	border: solid thick #fff;
+	border-top: none;
+}
+
 .rides-list {
-	width: 75%;
+	width: 100%;
 	margin: 0 auto;
+	background: #fff;
+	// border: solid thick #BCEDFB;
+	border-radius: 10px;
+	opacity: .5;
+	padding-bottom: 12px;
 }
 
 .rides-list h1 {
@@ -334,12 +351,14 @@ button {outline: none;}
 	text-align: center;
 	color:  #D53C2C;
 	font-size: 52px;
+	opacity: 1;
 }
+
 
 .rides-list h2 {
 	font-family: 'Open Sans Condensed', sans-serif;
 	text-align: left;
-	margin-left: 0;
+	margin-left: 5%;
 	margin-bottom: 30px;
 	color:  #D53C2C;
 	font-size: 28px;
@@ -349,6 +368,7 @@ button {outline: none;}
 	color:  #D53C2C;
 	font-weight: 200;
 	font-size: 20px;
+	font-family: 'Open Sans Condensed', sans-serif;
 	margin-bottom: 5px;
 }
 
@@ -359,10 +379,12 @@ button {outline: none;}
 }
 
 .rides-list p {
+	font-family: 'Bitter', serif;
+	color: #22313F;
 	text-align: left;
 	margin-right: 0;
 	margin-bottom: 10px;
-	font-size: 18px;
+	font-size: 16px;
 }
 
 .rides-list i {

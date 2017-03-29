@@ -4,7 +4,7 @@ import {RideComponent} from '../components/component-rides.js';
 export const RidesView = React.createClass({
   render: function(){
     return (
-            <div>
+            <div className="rides-view-container">
               <RideComponent {...this.props}/>
             </div>
          )
