@@ -1,9 +1,6 @@
 import {STORE} from './store.js';
 import {SingleRide, AllRides, SingleHazard, AllHazards} from './models/models.js';
 import {UserModel} from './models/model-user.js';
-// import DirectionsService from '@google/maps';
-// import DirectionsRenderer from '@google/maps';
-// import GoogleMap from 'google-map-react';
 import React from 'react';
 import moment from 'moment';
 
@@ -28,7 +25,6 @@ export const ACTIONS = {
     let delHaz = new SingleHazard();
     delHaz.set({id: hazardId})
     delHaz.destroy().then( function(deletedRecord){
-      console.log(STORE.getStore().mapHazards)
       let newMapHazards = STORE.getStore().mapHazards
       let filteredMapHazards = newMapHazards.filter( function(hazard){
         return hazard.id !== deletedRecord.id
@@ -41,7 +37,6 @@ export const ACTIONS = {
     let ride = new SingleRide();
       ride.set(newRideEntry);
       ride.save().then(function(serverRes){
-        console.log(serverRes)
         ACTIONS.getAllSavedRides();
       });
   },
@@ -62,14 +57,10 @@ export const ACTIONS = {
   },
 
   saveHazard: function(mapHazards){
-    console.log('saving hazard')
       let bad = new SingleHazard();
       bad.set(mapHazards);
       bad.save().then(function(serverRes){
-        console.log('saved hazard:', serverRes)
-          // ACTIONS.getAllHazards(this.props.viewCorners)
     }).fail(function(err){
-      console.log('err : ', err.responseText)
     })
 
   },
@@ -81,14 +72,10 @@ export const ACTIONS = {
     })
     return correctHazard;
   },
-  // ACTIONS.getAllHazards(this.state.viewCorners)
 
   getAllHazards: function(currentViewCorners){
-    // console.log(currentViewCorners)
-    let hazards = new AllHazards(currentViewCorners); //
-    // console.log(hazards.url)
+    let hazards = new AllHazards(currentViewCorners);
     hazards.fetch().then(function(serverRes){
-      // console.log(serverRes)
       STORE.setStore('hazardsToSave', {})
       STORE.setStore('mapHazards', serverRes);
     })
@@ -100,8 +87,6 @@ export const ACTIONS = {
 
   userLogin: function(username, password){
     UserModel.logIn(username, password).then(function(serverRes){
-      // localStorage.setItem("user", JSON.stringify(serverRes))
-      // STORE.setStore('currentUser', serverRes);
       ACTIONS.getUser();
       ACTIONS.changeNav('home', '')
     })
@@ -161,7 +146,6 @@ export const ACTIONS = {
        let directionsDisplay = new mapObj.maps.DirectionsRenderer();
        directions.route(directionsRequestObj, function(result, status){
       if(status === 'OK'){
-        console.log(result)
         let wind = new mapObj.maps.InfoWindow();
         wind.setContent("<div class='window'><i class='fa fa-bicycle' aria-hidden='true'></i>"
         + " " + result.routes[0].legs[0].distance.text + "<br>" + "<i class='fa fa-clock-o' aria-hidden='true'></i>"
@@ -185,5 +169,13 @@ export const ACTIONS = {
 
   goOnRide: function(){
     STORE.setStore('viewReminders', false);
+  },
+
+  goToSaved: function(){
+    STORE.setStore('viewSaved', true);
+  },
+
+  goBackToHomeView: function(){
+    STORE.setStore('viewSaved', false);
   }
 };

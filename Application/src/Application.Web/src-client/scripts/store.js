@@ -5,16 +5,13 @@ export const STORE = {
     mapHazards: [],
     hazardsToSave: {},
     savedRides: [],
-    directionsResult: {},
     viewCorners: {},
     mapEl: {},
     rideTime: {},
     viewReminders: false,
     currentLocation: '',
-    inputRide: {}
-    // directionsResult: {}
-    // duration: '',
-    // distance: ''
+    inputRide: {},
+    viewSaved: false
   },
 
   getStore: function(){

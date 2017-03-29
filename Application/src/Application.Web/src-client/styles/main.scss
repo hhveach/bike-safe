@@ -353,6 +353,7 @@ button {outline: none;}
 
 .profile-info i {
 	color: #000;
+	margin-right: 12px;
 }
 
 .profile-info {
@@ -513,6 +514,7 @@ button {outline: none;}
 	border-radius: 10px;
 	padding: 10px;
 	position: absolute;
+	font-family: 'Bitter', serif;
 	top: 0;
 	right: 0;
 	background: #22313f;
@@ -572,4 +574,26 @@ button {outline: none;}
 	font-size: 16px;
 	color: #22313F;
 	font-family: 'Bitter', serif;
+}
+
+.saved {
+	position: absolute;
+	right: 4%;
+	top: 55%;
+	transform: translate(-50%, -50%);
+	width: 20%;
+	text-align: center;
+	background-color: rgba(255, 255, 255, 0.1);
+	z-index: 100;
+}
+
+.saved button {
+	width: 45%;
+	margin-bottom: 8px;
+	padding: 10px;
+	color: #fff;
+	background-color: #000;
+	font-size: 16px;
+	border-style: none;
+	z-index: 101;
 }

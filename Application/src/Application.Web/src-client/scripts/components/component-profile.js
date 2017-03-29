@@ -6,7 +6,6 @@ import $ from 'jquery';
 export const ProfileComponent = React.createClass({
 
   _handleProfileBuild: function(userObject){
-    ACTIONS.getAllSavedRides();
     let image = userObject.image;
     let nm = userObject.name;
     if(image === null){

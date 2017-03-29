@@ -38,7 +38,7 @@ export const RemindersComponent = React.createClass({
                 <li><i className="fa fa-lock fa-lg" aria-hidden="true"></i>ALWAYS: Lock up your bike</li>
                 <li><i className="fa fa-glass" aria-hidden="true"></i>ALWAYS: If you've been drinking, CALL A CAB!</li>
                 <li><i className="fa fa-ambulance" aria-hidden="true"></i>
-                    ACCIDENT? 911, then: <a href={"https://www.bikelaw.com/"}>https://www.bikelaw.com/</a></li>
+                    ACCIDENT? 911, then: <a target="_blank" href={"https://www.bikelaw.com/"}>https://www.bikelaw.com/</a></li>
               </ul>
               <button onClick={(evt) => this._handleClick(evt)} type="click">Go On Your Ride!</button>
               </div>

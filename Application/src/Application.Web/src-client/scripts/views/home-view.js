@@ -2,13 +2,17 @@ import React from 'react';
 import {NavComponent} from '../components/component-nav.js'
 import {FormComponent} from '../components/component-form.js'
 import {RemindersComponent} from '../components/component-reminder.js';
-import {BasicMapView} from './map-view.js'
+import {BasicMapView} from './map-view.js';
+import {SavedComponent} from '../components/component-saved.js';
+
 
 export const HomeView = React.createClass({
   render: function(){
 
     return(
     <div>
+      <SavedComponent {...this.props}/>
+
       <RemindersComponent {...this.props}/>
       <div className="home-view-container">
         <div className="map-view-container">
