@@ -41,6 +41,7 @@ export const ACTIONS = {
     let ride = new SingleRide();
       ride.set(newRideEntry);
       ride.save().then(function(serverRes){
+        console.log(serverRes)
         ACTIONS.getAllSavedRides();
       });
   },
