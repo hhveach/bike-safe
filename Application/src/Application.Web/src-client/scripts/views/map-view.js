@@ -5,6 +5,7 @@ import {STORE} from '../store.js'
 import {getViewCorners} from '../utils/utils-map.js'
 import Autocomplete from '@google/maps';
 import { maps } from '@google/maps';
+import {SnazzyMapOptions} from '../utils/custom-map-build.js';
 
 
 
@@ -76,6 +77,7 @@ export const BasicMapView = React.createClass({
     // console.log(this.props.mapHazards, 'lat n long')
     return (<div className="first-map" style={{position: 'relative'}}>
       <GoogleMap
+        options={{styles: SnazzyMapOptions}}
         defaultCenter={this.state.center}
         defaultZoom={this.state.zoom}
         bootstrapURLKeys={{key: 'AIzaSyBGmL06icW_4nOifeu4rxUuEuFzOj2HBjY'}}

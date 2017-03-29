@@ -4,6 +4,7 @@ import {ACTIONS} from '../actions.js';
 import {STORE} from '../store.js';
 import {getViewCorners} from '../utils/utils-map.js'
 import { maps } from '@google/maps';
+import {SnazzyMapOptions} from '../utils/custom-map-build.js';
 
 export const HazardsComponent = React.createClass({
 
@@ -64,6 +65,7 @@ export const HazardsComponent = React.createClass({
       // console.log(this.props.hazardsToSave, 'lat n long')
       return (<div className="first-map">
         <GoogleMap
+          options={{styles: SnazzyMapOptions}}
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
           bootstrapURLKeys={{key: 'AIzaSyBx7EjgwkDfaGFJ0JhbRa_l4jkEPXloFuU'}}

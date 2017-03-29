@@ -77,11 +77,11 @@ export const FormComponent = React.createClass({
       return (
         <div className="input-form">
           <div className="input-form__ride">
-            <form onSubmit={this._handleSubmit}>
+            <form className="dir-form" onSubmit={this._handleSubmit}>
             <input onClick={(evt) => this._handleAuto(evt, this.props.mapEl)}
                    ref="search" type="text" placeholder="origin address" name="origin"></input>
             <input onClick={(evt) => this._handleAuto(evt, this.props.mapEl)}
-                   ref="searchTwo" className="destination" type="text" placeholder="destination address" name="dest"></input>
+                   ref="searchTwo" type="text" placeholder="destination address" name="dest"></input>
             <button type="submit" name="ridefield">Ride!</button>
           </form>
           </div>
