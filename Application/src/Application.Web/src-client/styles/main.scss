@@ -55,6 +55,7 @@ button {outline: none;}
 .home-view-container >* {
 	display: inline-block;
 	vertical-align: top;
+	font-size: 0;
 }
 
 .home-view-container {
@@ -79,11 +80,12 @@ button {outline: none;}
 }
 
 .map-form-container {
-	margin-left: 10%;
+	margin-left: 5%;
 	background-color: #fff;
 	border: solid thick #D53C2C;
 	border-radius: 10px;
 	padding-bottom: 44px;
+	width: 40%;
 }
 
 .register-container {
@@ -109,8 +111,8 @@ button {outline: none;}
 	margin-top: 16px;
 	padding: 12px;
 	border-radius: 10px;
-	font-size: 20px;
-	font-weight: lighter;
+	font-size: 24px;
+	font-weight: normal;
 	color: #232D2F;
 }
 
@@ -119,8 +121,8 @@ button {outline: none;}
 	margin-top: 8px;
 	padding: 12px;
 	border-radius: 10px;
-	font-size: 20px;
-	font-weight: lighter;
+	font-size: 24px;
+	font-weight: normal;
 	color: #232D2F;
 }
 
@@ -138,7 +140,7 @@ button {outline: none;}
 	border-color: #fff;
 	background-color: #22313f;
 	font-family: 'Slabo 27px', serif;
-	font-size: 20px;
+	font-size: 24px;
 	font-weight: lighter;
 	color: #fff;
 }
@@ -189,11 +191,13 @@ button {outline: none;}
 	padding: 12px;
 	margin-top: 16px;
 	border-radius: 10px;
-	border-color: #fff;
-	background-color: transparent;
+	border-color: #22313F;
+	background-color: #fff;
+	opacity: .9;
 	font-size: 28px;
 	font-weight: normal;
-	color: #fff;
+	font-family: 'Slabo 27px', serif;
+	color: #22313F;
 }
 
 .login-form input {
@@ -201,9 +205,12 @@ button {outline: none;}
 	margin-top: 16px;
 	padding: 12px;
 	border-radius: 10px;
-	font-size: 20px;
-	font-weight: lighter;
-	color: #232D2F;
+	border-color: #22313F;
+	font-size: 28px;
+	font-family: 'Slabo 27px', serif;
+	font-weight: normal;
+	color: #22313F;
+	opacity: .9;
 }
 
 .drop-btn {
@@ -371,7 +378,7 @@ button {outline: none;}
 	margin-right: auto;
 	width: 100%;
 	padding-top: 100px;
-	padding-bottom: 300px;
+	padding-bottom: 200px;
 	background-image: url("../images/bike-flag.jpg");
 	background-size: 80%;
 	background-size: cover;
@@ -476,7 +483,8 @@ button {outline: none;}
 	transform: translate(-50%, -50%);
 	width: 45%;
 	text-align: center;
-	background-color: #BCEDFB;
+	background-color: #F7CA18;
+	color: #D53C2C;
 }
 
 .reminder li {
@@ -500,7 +508,7 @@ button {outline: none;}
 	margin-bottom: 15px;
 	padding: 10px;
 	color: #fff;
-	background-color: #000;
+	background-color: #22313F;
 	font-size: 20px;
 	border-style: none;
 	z-index: 101;
@@ -576,6 +584,7 @@ button {outline: none;}
 	font-family: 'Bitter', serif;
 }
 
+<<<<<<< HEAD
 .saved {
 	position: absolute;
 	right: 4%;
@@ -596,4 +605,8 @@ button {outline: none;}
 	font-size: 16px;
 	border-style: none;
 	z-index: 101;
+=======
+.marker i {
+	color: #D53C2C;
+>>>>>>> 910fa216accc2e2cacb41a4aa194081b46ecc74c
 }

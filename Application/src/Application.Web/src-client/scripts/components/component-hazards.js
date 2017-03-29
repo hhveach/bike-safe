@@ -19,7 +19,7 @@ export const HazardsComponent = React.createClass({
 
     _handleMapLoaded: function(map, maps) {
       console.log(map)
-      let cornerCoords = getViewCorners(map)
+      let cornerCoords = getViewCorners(map);
       ACTIONS.getAllHazards(cornerCoords);
       STORE.setStore('mapEl', {map, maps})
     },
@@ -47,7 +47,7 @@ export const HazardsComponent = React.createClass({
     _onMarkerLeave: function(index, hazType){
       let currentSelected = this.props.mapHazards[hazType]
       this.setState({ currentSelected: -1})
-      
+
     },
 
     _mapRender: function(haz){
@@ -97,7 +97,10 @@ export const HazardsComponent = React.createClass({
 
   const MapMarker = React.createClass({
     render: function(){
-      return <i className="fa fa-exclamation-circle fa-2x" aria-hidden="true"></i>
-
+      return (
+        <div className="marker">
+          <i className="fa fa-exclamation-circle fa-2x" aria-hidden="true"></i>
+        </div>
+      )
     }
   })
