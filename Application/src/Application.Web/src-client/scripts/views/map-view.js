@@ -60,6 +60,7 @@ export const BasicMapView = React.createClass({
   },
 
   _onMarkerHover: function(hazType){
+    // console.log(hazType)
     let currentSelected = this.props.mapHazards[hazType]
     console.log(currentSelected)
     this.setState({ currentSelected: currentSelected})
@@ -77,7 +78,7 @@ export const BasicMapView = React.createClass({
         options={{styles: SnazzyMapOptions}}
         defaultCenter={this.state.center}
         defaultZoom={this.state.zoom}
-        bootstrapURLKeys={{key: 'AIzaSyBGmL06icW_4nOifeu4rxUuEuFzOj2HBjY'}}
+        bootstrapURLKeys={{key: 'AIzaSyBx7EjgwkDfaGFJ0JhbRa_l4jkEPXloFuU'}}
         layerTypes={['BicyclingLayer']}
         onClick={this._onMapClick}
         onGoogleApiLoaded={({ map, maps }) => this._handleMapLoaded(map, maps)}

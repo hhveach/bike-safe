@@ -117,7 +117,7 @@ button {outline: none;}
 }
 
 .dir-form input {
-	width: 90%;
+	width: 70%;
 	margin-top: 8px;
 	padding: 12px;
 	border-radius: 10px;
@@ -417,7 +417,7 @@ button {outline: none;}
 .rides-list h4 {
 	color:  #D53C2C;
 	font-weight: 200;
-	font-size: 20px;
+	font-size: 24px;
 	font-family: 'Open Sans Condensed', sans-serif;
 	margin-bottom: 5px;
 }
@@ -435,7 +435,7 @@ button {outline: none;}
 	text-align: left;
 	margin-right: 0;
 	margin-bottom: 10px;
-	font-size: 16px;
+	font-size: 24px;
 }
 
 .rides-list i {
@@ -513,9 +513,9 @@ button {outline: none;}
 	z-index: 101;
 }
 
-.info-box__hidden {
-	display: none;
-}
+// .info-box__hidden {
+// 	display: none;
+// }
 
 .info-box {
 	border-radius: 10px;
@@ -545,8 +545,8 @@ button {outline: none;}
 }
 
 .hazard-list-container {
-	width: 35%;
-	margin-left: 10%;
+	width: 40%;
+	margin-left: 5%;
 	border: solid thick #BCEDFB;
 	background-color: #fff;
 	border-radius: 10px;
@@ -557,7 +557,7 @@ button {outline: none;}
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-weight: lighter;
 	color: #D53C2C;
-	font-size: 50px;
+	font-size: 60px;
 }
 
 .haz-list li >* {
@@ -578,7 +578,7 @@ button {outline: none;}
 }
 
 .haz-list p {
-	font-size: 16px;
+	font-size: 20px;
 	color: #22313F;
 	font-family: 'Bitter', serif;
 }
