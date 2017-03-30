@@ -98,7 +98,7 @@ export const BasicMapView = React.createClass({
 
 
       </GoogleMap>
-      <div className="info-box">
+      <div className="info-box" style={{fontSize: '18px'}}>
         {typeof this.state.currentSelected === 'undefined' ?   '---' : this.state.currentSelected.type }
       </div>
       </div>

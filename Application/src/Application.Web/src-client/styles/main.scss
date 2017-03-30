@@ -323,6 +323,7 @@ button {outline: none;}
 	background-position: center;
 	padding-top: 50px;
 	padding-bottom: 100px;
+	border-bottom: thick solid #fff;
 }
 
 .profile {
@@ -517,6 +518,7 @@ button {outline: none;}
 	background-color: #22313F;
 	font-size: 20px;
 	border-style: none;
+	border-radius: 10px;
 	z-index: 101;
 }
 
@@ -529,6 +531,7 @@ button {outline: none;}
 	padding: 10px;
 	position: absolute;
 	font-family: 'Bitter', serif;
+	font-size: 16px;
 	top: 0;
 	right: 0;
 	background: #22313f;
