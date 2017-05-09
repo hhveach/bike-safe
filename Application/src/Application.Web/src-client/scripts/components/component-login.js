@@ -24,8 +24,8 @@ export const LogInComponent = React.createClass({
         <div className="login-form-container">
           <div className="login-form">
             <form onSubmit={this._handleSubmit}>
-              <input type="text" placeholder="email" name="emailfield"></input>
-              <input type="password" placeholder="password" name="passwordfield"></input>
+              <input type="text" placeholder="email" name="emailfield">consumer@bike-safe.com</input>
+              <input type="password" placeholder="password" name="passwordfield">qwer1234</input>
               <button type="submit">Ride!</button>
             </form>
           </div>
