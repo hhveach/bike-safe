@@ -29,3 +29,10 @@
 2. In terminal: `$ npm install`
 3. In terminal `$ npm run go`
 4. Check to see that changes in `src-client` show up in the wwwroot directory
+
+### Step 4 - Remove Andrew from project
+
+1. Navigate to `Andrew`
+2. In life: Tell `Andrew` to go away and never return
+3. If `Andrew` returns, just say `Swiper, NO SWIPING`
+4. Check to see that changes in `src-client` show up in the wwwroot directory
