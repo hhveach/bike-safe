@@ -27,31 +27,31 @@ const AppRouter = Backbone.Router.extend({
       'map' : 'showMapForPractice'
     },
 
-    showMapForPractice: function(){
+    showMapForPractice: () => {
       ReactDOM.render(<ViewController route={'map'}/>, document.querySelector('#app-container'))
     },
 
-    showHomePageComponent: function(){
+    showHomePageComponent: () => {
       ReactDOM.render(<ViewController route={'home'}/>, document.querySelector('#app-container'));
     },
 
-    showLoginComponent: function(){
+    showLoginComponent: () => {
       ReactDOM.render(<ViewController route={'login'}/>, document.querySelector('#app-container'));
     },
 
-    showRegisterComponent: function(){
+    showRegisterComponent: () => {
       ReactDOM.render(<ViewController route={'register'}/>, document.querySelector('#app-container'));
     },
 
-    showProfileComponent: function(){
+    showProfileComponent: () => {
       ReactDOM.render(<ViewController route={'profile'}/>, document.querySelector('#app-container'));
     },
 
-    showRidesComponent: function(){
+    showRidesComponent: () => {
       ReactDOM.render(<ViewController route={'rides'}/>, document.querySelector('#app-container'));
     },
 
-    showHazardsComponent: function(){
+    showHazardsComponent: () => {
       ReactDOM.render(<ViewController route={'hazards'}/>, document.querySelector('#app-container'));
     }
 });

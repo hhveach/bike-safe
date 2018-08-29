@@ -3,7 +3,6 @@ const nodeEnv = process.env.NODE_ENV || 'development'
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
-console.log('loading webpack.config.dev.js')
 module.exports = {
   devtool : 'inline-source-map',
   entry:   { filename: './src-client/index.js' },

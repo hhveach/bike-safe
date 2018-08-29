@@ -1,22 +1,20 @@
 import React from 'react';
-import {ACTIONS} from '../actions.js'
-import {STORE} from '../store.js'
+import {ACTIONS} from '../actions.js';
 
 export const NavComponent = React.createClass({
-  getInitialState: function(){
+  getInitialState: () => {
       return {
         animatorAtStart : true
       }
   },
 
-  _handleAnimation: function(){
-    let component = this
+  _handleAnimation: () => {
 
-    setTimeout(function(){
-      component.setState({
+    setTimeout(() => {
+      this.setState({
         animatorAtStart: true
       })
-    }, 500)
+    }, 500);
 
     this.setState({
       animatorAtStart: false
@@ -25,16 +23,15 @@ export const NavComponent = React.createClass({
 
   },
 
-  _getMenuOptions: function(currentUserOnStore){
-    // console.log(currentUserOnStore)
-    let routeList = []
+  _getMenuOptions: (currentUserOnStore) => {
+    const routeList = [];
     if (typeof currentUserOnStore.id === 'undefined'){
       routeList = [
         {appRouteName: 'login', showText: 'login', hashRoute: 'login'},
         {appRouteName: 'register', showText: 'register', hashRoute: 'register'},
         // {appRouteName: 'map', showText: 'map', hashRoute: 'map'},
-      ]
-    } if (currentUserOnStore.isAuthenticated === true) {
+      ];
+    } if (currentUserOnStore.isAuthenticated) {
       routeList = [
         {appRouteName: 'home', showText: 'home', hashRoute: ''},
         {appRouteName: 'profile', showText: 'profile', hashRoute: 'profile'},
@@ -43,23 +40,22 @@ export const NavComponent = React.createClass({
         {appRouteName: 'login', showText: 'logout', hashRoute: 'login'},
         // {appRouteName: 'map', showText: 'map', hashRoute: 'map'},
         // {appRouteName: 'reminders', showText: 'reminders', hashRoute: 'reminders'}
-      ]
-    }
+      ];
+    };
     return routeList;
   },
 
-  _showNavBarJSX: function(currentNavRoute, currentUser){
-    let menuOptions = this._getMenuOptions(currentUser)
-    let component = this
-    let componentsList = menuOptions.map(function(routeObj, i){
-      return <RouteOption {...routeObj} key={i} currentRoute={currentNavRoute} _animateNav={component._handleAnimation}/>
-    })
-    return componentsList
+  _showNavBarJSX: (currentNavRoute, currentUser) => {
+    const menuOptions = this._getMenuOptions(currentUser);
+    let componentsList = menuOptions.map((routeObj, i) => 
+      <RouteOption {...routeObj} key={i} currentRoute={currentNavRoute} _animateNav={this._handleAnimation}/>
+    );
+    return componentsList;
   },
 
-  _showSideNav: function(){
+  _showSideNav: () => {
     document.getElementById("side-nav-bar").classList.toggle('show');
-      window.onclick = function(evt){
+      window.onclick = (evt) => {
         if(!evt.target.matches('.drop-btn')) {
           let dropsdown = document.getElementsByClassName('side-nav-content');
           let i;
@@ -70,21 +66,22 @@ export const NavComponent = React.createClass({
           }
         }
       }
-    }
+    };
   },
 
-  render: function(){
-    // console.log(this.props.currentUser)
+  render: () => {
+    const { currentRoute, currentUser } = this.props;
+    const { animatorAtStart } = this.state;
     return (
       <div className="nav-comp">
         <div className="top-nav">
           <i onClick={this._showSideNav} className="fa fa-bars fa-4x drop-btn" aria-hidden="true"></i>
           <h1>Bike Safe</h1>
           <div id="side-nav-bar" className="side-nav-content">
-          {this._showNavBarJSX(this.props.currentRoute, this.props.currentUser)}
+          {this._showNavBarJSX(currentRoute, currentUser)}
           </div>
         </div>
-        <div className={`nav-animator position-${this.state.animatorAtStart ? 'start not-visible' : 'end'}`}>
+        <div className={`nav-animator position-${animatorAtStart ? 'start not-visible' : 'end'}`}>
           <i className="fa fa-bicycle fa-4x" aria-hidden="true"></i>
         </div>
       </div>
@@ -94,20 +91,22 @@ export const NavComponent = React.createClass({
 
 const RouteOption = React.createClass({
 
-  _handleNavClick: function(evt){
-    let current = evt.target.dataset.text;
+  _handleNavClick: (evt) => {
+    const current = evt.target.dataset.text;
+    const { appRouteName, hashRoute, _animateNav } = this.props;
     if(current === 'logout'){
       ACTIONS.userLogout();
     }
     else {
-      ACTIONS.changeNav(this.props.appRouteName, this.props.hashRoute);
-    }
-    this.props._animateNav()
+      ACTIONS.changeNav(appRouteName, hashRoute);
+    };
+    _animateNav();
   },
 
-  render: function(){
+  render: () => {
+    const { showText } = this.props;
     return (
-      <a onClick={this._handleNavClick} data-text={this.props.showText}>{this.props.showText}</a>
+      <a onClick={this._handleNavClick} data-text={showText}>{showText}</a>
     )
   }
 })

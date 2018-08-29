@@ -3,11 +3,11 @@ import {ACTIONS} from '../actions.js';
 
 export const RegisterComponent = React.createClass({
 
-  _handleSubmit: function(evt){
+  _handleSubmit: (evt) => {
     evt.preventDefault();
-    let current = evt.target;
+    const current = evt.target;
 
-    let registerObj = {
+    const registerObj = {
       name: current.name.value,
       email: current.email.value,
       password: current.password.value,
@@ -18,7 +18,7 @@ export const RegisterComponent = React.createClass({
     ACTIONS.userRegister(registerObj);
   },
 
-  render: function(){
+  render: () => {
     return (
       <div className="register-container">
         <div className="input-form">

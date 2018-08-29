@@ -1,23 +1,20 @@
 import React from 'react';
 import GoogleMap from 'google-map-react';
-import {ACTIONS} from '../actions.js'
-import {STORE} from '../store.js'
-import {getViewCorners} from '../utils/utils-map.js'
-import Autocomplete from '@google/maps';
-import { maps } from '@google/maps';
+import {ACTIONS} from '../actions.js';
+import {STORE} from '../store.js';
+import {getViewCorners} from '../utils/utils-map.js';
 import {SnazzyMapOptions} from '../utils/custom-map-build.js';
 
 
 
 export const BasicMapView = React.createClass({
-  getInitialState: function(){
+  getInitialState: () => {
   return  {
           center: {lat: 32.7846418, lng: -79.940918},
           zoom: 14,
           markers: [],
           mapObj: {}
         };
-
   },
 
   _handleMapLoaded: function(map, maps) {

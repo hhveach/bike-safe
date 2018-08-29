@@ -1,14 +1,13 @@
 import React from 'react';
-import {NavComponent} from '../components/component-nav.js'
-import {FormComponent} from '../components/component-form.js'
+import {FormComponent} from '../components/component-form.js';
 import {RemindersComponent} from '../components/component-reminder.js';
 import {BasicMapView} from './map-view.js';
 import {SavedComponent} from '../components/component-saved.js';
 
 
 export const HomeView = React.createClass({
-  render: function(){
 
+  render: () => {
     return(
     <div>
       <SavedComponent {...this.props}/>
@@ -24,6 +23,6 @@ export const HomeView = React.createClass({
         </div>
       </div>
     </div>
-  )
+    )
   }
-})
+});

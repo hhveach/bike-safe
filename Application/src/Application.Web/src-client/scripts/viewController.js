@@ -12,7 +12,7 @@ import {ACTIONS} from './actions.js';
 
 export const ViewController = React.createClass({
 
-  getInitialState: function(){
+  getInitialState: () => {
     ACTIONS.changeNav(this.props.route, window.location.hash);
     return STORE.getStore();
   },
@@ -27,9 +27,10 @@ export const ViewController = React.createClass({
   },
 
   render: function(){
-    let renderComponent;
+    const { currentRoute } = this.state;
+    const renderComponent;
 
-    switch(this.state.currentRoute){
+    switch(currentRoute){
         case 'home':
           renderComponent = <HomeView {...this.state}/>;
           break;

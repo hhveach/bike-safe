@@ -2,15 +2,16 @@ import Backbone from 'backbone'
 import $ from 'jquery'
 
 export const UserModel = Backbone.Model.extend({
-	initialize: function(){
-
-	},
+	initialize: () => {},
+	
 	urlRoot: '/api/accounts',
 	idAttribute: 'id'
-})
+});
 
-UserModel.logIn =  function(username, password){
-	if(typeof username !== 'string' || typeof password !== 'string'  ){ throw new Error(`UserModel.login() must receive string 2 string paramaters for username and password`) }
+UserModel.logIn =  (username, password) => {
+	if(typeof username !== 'string' || typeof password !== 'string'  ){ 
+		throw new Error(`UserModel.login() must receive string 2 string paramaters for username and password`); 
+	};
 
 	return $.ajax({
 		method: 'POST',
@@ -19,12 +20,16 @@ UserModel.logIn =  function(username, password){
 			'Content-Type': 'application/json'
 		},
 		url: '/api/accounts/login'
-	})
-}
+	});
+};
 
-UserModel.register =  function(dataObj){
-	if(typeof dataObj !== 'object' ){ throw new Error(`UserModel.register() must receive an object`) }
-	if(typeof dataObj.email === 'undefined' || typeof dataObj.password === 'undefined'  ){ throw new Error(`UserModel.register() must receive an object w/ username + password`) }
+UserModel.register =  (dataObj) => {
+	if(typeof dataObj !== 'object' ){ 
+		throw new Error(`UserModel.register() must receive an object`);
+	};
+	if(typeof dataObj.email === 'undefined' || typeof dataObj.password === 'undefined'  ){ 
+		throw new Error(`UserModel.register() must receive an object w/ username + password`);
+	};
 
 	return $.ajax({
 		method: 'POST',
@@ -33,22 +38,22 @@ UserModel.register =  function(dataObj){
 			'Content-Type': 'application/json'
 		},
 		url: '/api/accounts/register'
-	})
-}
+	});
+};
 
-UserModel.getCurrentUser =  function(){
+UserModel.getCurrentUser = () => {
 	return $.ajax({
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
 		},
 		url: '/api/accounts'
-	})
-}
+	});
+};
 
-UserModel.logOut =  function(){
+UserModel.logOut =  () => {
 	return $.ajax({
 		method: 'POST',
 		url: '/api/accounts/logout'
-	})
-}
+	});
+};

@@ -1,12 +1,10 @@
 import Backbone from 'backbone';
-import {STORE} from '../store.js';
-import React from 'react';
 
 export const SingleRide = Backbone.Model.extend({
   urlRoot: '/api/consumer/rides',
   idAttribute: 'id',
 
-  initialize: function(id){
+  initialize: (id) => {
     if(id !== undefined){
       this.url = `/api/consumer/rides/${id}`;
     }
@@ -26,13 +24,9 @@ export const SingleHazard = Backbone.Model.extend({
 
 export const AllHazards = Backbone.Collection.extend({
   model: SingleHazard,
-  initialize : function(viewCorners){
+  initialize : (viewCorners) => {
+    const { upperLatitude, upperLongitude, lowerLatitude, lowerLongitude } = viewCorners;
 
-    let upperLatitude = viewCorners.upperLatitude
-    let upperLongitude = viewCorners.upperLongitude
-    let lowerLatitude = viewCorners.lowerLatitude
-    let lowerLongitude = viewCorners.lowerLongitude
-
-    this.url = `/api/consumer/hazards?upperLatitude=${upperLatitude}&upperLongitude=${upperLongitude}&lowerLatitude=${lowerLatitude}&lowerLongitude=${lowerLongitude}`
+    this.url = `/api/consumer/hazards?upperLatitude=${upperLatitude}&upperLongitude=${upperLongitude}&lowerLatitude=${lowerLatitude}&lowerLongitude=${lowerLongitude}`;
   }
 });

@@ -3,24 +3,20 @@ import {ACTIONS} from '../actions.js'
 
 export const LogInComponent = React.createClass({
 
-  _handleSubmit: function(evt){
+  _handleSubmit: (evt) => {
     evt.preventDefault();
-    let formEl = evt.target;
-    // let emailVal = formEl.emailfield.value
-    // let passwordVal = formEl.passwordfield.value
-    let emailVal = 'consumer@bike-safe.com';
-    let passwordVal = 'qwer1234';
+    const emailVal = 'consumer@bike-safe.com';
+    const passwordVal = 'qwer1234';
     ACTIONS.userLogin(emailVal, passwordVal);
   },
 
-  _handleRegisterClick: function(evt){
+  _handleRegisterClick: (evt) => {
     evt.preventDefault();
-    let hashRoute = 'register'
-    let appRouteName = 'register'
-    ACTIONS.changeNav(appRouteName, hashRoute)
+    const hashRouteAndAppRouteName = 'register';
+    ACTIONS.changeNav(hashRouteAndAppRouteName, hashRouteAndAppRouteName);
   },
 
-  render: function(){
+  render: () => {
     return (
       <div className="log-in-container">
         <div className="login-form-container">
@@ -39,4 +35,4 @@ export const LogInComponent = React.createClass({
       </div>
     )
   }
-})
+});

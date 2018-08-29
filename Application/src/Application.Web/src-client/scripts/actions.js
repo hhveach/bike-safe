@@ -1,7 +1,6 @@
 import {STORE} from './store.js';
 import {SingleRide, AllRides, SingleHazard, AllHazards} from './models/models.js';
 import {UserModel} from './models/model-user.js';
-import React from 'react';
 import moment from 'moment';
 
 
@@ -14,50 +13,42 @@ export const ACTIONS = {
   },
 
   deleteRide: function(rideId){
-    let delRide = new SingleRide();
+    const delRide = new SingleRide();
     delRide.set({id: rideId});
-    delRide.destroy().then(function(){
-      ACTIONS.getAllSavedRides();
-    });
+    delRide.destroy().then(() => ACTIONS.getAllSavedRides());
   },
 
   deleteHaz: function(hazardId){
-    let delHaz = new SingleHazard();
+    const delHaz = new SingleHazard();
     delHaz.set({id: hazardId})
-    delHaz.destroy().then( function(deletedRecord){
-      let newMapHazards = STORE.getStore().mapHazards
-      let filteredMapHazards = newMapHazards.filter( function(hazard){
-        return hazard.id !== deletedRecord.id
-      })
-      STORE.setStore('mapHazards', filteredMapHazards)
-    })
+    delHaz.destroy().then((deletedRecord) => {
+      const newMapHazards = STORE.getStore().mapHazards;
+      const filteredMapHazards = newMapHazards.filter((hazard) => { return hazard.id !== deletedRecord.id });
+      STORE.setStore('mapHazards', filteredMapHazards);
+    });
   },
 
   saveRide: function(newRideEntry){
-    let ride = new SingleRide();
+    const ride = new SingleRide();
       ride.set(newRideEntry);
-      ride.save().then(function(serverRes){
-        ACTIONS.getAllSavedRides();
-      });
+      ride.save().then(() => ACTIONS.getAllSavedRides());
   },
 
   getSingleSavedRide: function(rideId){
-    let rides = new AllRides();
-    let correctRide = rides.map(function(listEl){
+    const rides = new AllRides();
+    const correctRide = rides.map(function(listEl){
       if(rideId === listEl.id){return listEl;}
     })
     return correctRide;
   },
 
   getAllSavedRides: function(){
-    let rides = new AllRides();
-      rides.fetch().then(function(serverRes){
-        STORE.setStore('savedRides', serverRes)
-      });
+    const rides = new AllRides();
+      rides.fetch().then((serverRes) => STORE.setStore('savedRides', serverRes));
   },
 
   saveHazard: function(mapHazards){
-      let bad = new SingleHazard();
+      const bad = new SingleHazard();
       bad.set(mapHazards);
       bad.save().then(function(serverRes){
     }).fail(function(err){
@@ -99,17 +90,14 @@ export const ACTIONS = {
   },
 
   userLogout: function(){
-    UserModel.logOut().then(function(serverRes){
+    UserModel.logOut().then(() => {
       STORE.setStore('currentUser', '');
       ACTIONS.changeNav('login', 'login');
     })
   },
 
-  getUser: function(){
-    UserModel.getCurrentUser().then(function(serverRes){
-      STORE.setStore('currentUser', serverRes);
-    })
-  },
+  getUser: () => UserModel.getCurrentUser().then((serverRes) => 
+      STORE.setStore('currentUser', serverRes)),
 
   autoType: function(mapObj, elementOne, elementTwo){
     let options = {types: []}
@@ -158,24 +146,17 @@ export const ACTIONS = {
     });
   },
 
-  goToRide: function(org, dest){
-    STORE.setStore('inputRide', {origin: org, destination: dest});
+  goToRide: (org, dest) => {
+    STORE.setStore('inputRide', { origin: org, destination: dest });
     ACTIONS.changeNav('home', '');
   },
 
-  goToReminders: function(){
-    STORE.setStore('viewReminders', true)
-  },
+  goToReminders: () => STORE.setStore('viewReminders', true),
 
-  goOnRide: function(){
-    STORE.setStore('viewReminders', false);
-  },
+  goOnRide: () => STORE.setStore('viewReminders', false),
 
-  goToSaved: function(){
-    STORE.setStore('viewSaved', true);
-  },
+  goToSaved: () => STORE.setStore('viewSaved', true),
 
-  goBackToHomeView: function(){
-    STORE.setStore('viewSaved', false);
-  }
+  goBackToHomeView: () => STORE.setStore('viewSaved', false),
+
 };

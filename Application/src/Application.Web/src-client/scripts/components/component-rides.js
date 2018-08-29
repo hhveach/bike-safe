@@ -1,15 +1,15 @@
 import React from 'react';
 import {ACTIONS} from '../actions.js';
-import {STORE} from '../store.js';
 
 export const RideComponent = React.createClass({
 
-  render: function(){
+  render: () => {
+    const { currentUser, savedRides } = this.props;
     return (
             <div className="rides-list">
               <h1>My Rides</h1>
-              <h2>{this.props.currentUser.name}</h2>
-              <BuildRidesList rides={this.props.savedRides}/>
+              <h2>{currentUser.name}</h2>
+              <BuildRidesList rides={savedRides}/>
             </div>
     )
   }
@@ -17,10 +17,12 @@ export const RideComponent = React.createClass({
 
 const BuildRidesList = React.createClass({
 
-  _createRidesList: function(ridesArr){
+  _createRidesList: (ridesArr) => {
     let comp = this;
     let mapIt = ridesArr.map(function(listEl, index){
-      if(listEl.name === ""){listEl.name = 'Ride'}
+      if(listEl.name === ""){
+        listEl.name = 'Ride';
+      };
       return (
             <li key={index}>
               <h4>&middot; {listEl.name} &middot;</h4>
@@ -39,17 +41,15 @@ const BuildRidesList = React.createClass({
     return mapIt;
   },
 
-  _handleClick: function(org, dest){
-    ACTIONS.goToRide(org, dest);
-  },
+  _handleClick: (org, dest) => ACTIONS.goToRide(org, dest),
 
-  _handleDelete: function(id){
-    ACTIONS.deleteRide(id);
-  },
+  _handleDelete: (id) => ACTIONS.deleteRide(id),
 
-  render: function(){
-    return (<ul>
-              {this._createRidesList(this.props.rides)}
+  render: () => {
+    const { rides } = this.props;
+    return (
+            <ul>
+              {this._createRidesList(rides)}
             </ul>
     )
   }

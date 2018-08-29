@@ -1,8 +1,6 @@
-import {STORE} from '../store.js'
 
-export const getViewCorners = function(mapObj){
-  let map = mapObj;
-  let bounds = map.getBounds();
+export const getViewCorners = (mapObj) => {
+  let bounds = mapObj.getBounds();
   let southWest = bounds.getSouthWest();
   let northEast = bounds.getNorthEast();
   let minLat = southWest.lat();
@@ -14,6 +12,6 @@ export const getViewCorners = function(mapObj){
     lowerLatitude: minLat,
     upperLongitude: maxLon,
     lowerLongitude: minLon
-  }
-  return viewCorners
-}
+  };
+  return viewCorners;
+};
