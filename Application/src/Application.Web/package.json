@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "backbone": "1.3.3",
+    "google-map-react": "^1.0.6",
     "jquery": "3.0.0",
     "moment": "^2.18.1",
     "react": "15.4.2",
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.0",
     "copy-webpack-plugin": "^4.0.1",

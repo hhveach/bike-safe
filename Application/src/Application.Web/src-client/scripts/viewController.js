@@ -28,7 +28,7 @@ export const ViewController = React.createClass({
 
   render: function(){
     const { currentRoute } = this.state;
-    const renderComponent;
+    let renderComponent;
 
     switch(currentRoute){
         case 'home':
